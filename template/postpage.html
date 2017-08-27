@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="tinymce/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+
+
+</head>
+
+<body>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+    	<form action="coba.php" method="POST">
+    	<h2>Title</h2>
+        <input type="text" class="input input-sm" value="" name="title">
+        <textarea name="content"></textarea>
+    	<input class="btn btn-default" type="submit" name="submit" value="SAVE">
+        <input class="btn btn-default" type="submit" name="submit" value="SAVE & PUBLISH">
+
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+
+</body>
+</html>
