@@ -42,6 +42,7 @@ class Home extends CI_Controller {
 	 $this->load->js('assets/libraries/flexslider/jquery.flexslider-min.js');
 	    //$this->load->js('assets/dist/js/app.min.js');
 	 $this->load->js('assets/js/functions.js');
+	 $this->load->js('assets/js');
 	}
 
 	  
