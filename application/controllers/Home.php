@@ -33,7 +33,6 @@ class Home extends CI_Controller {
 	date_default_timezone_set('Asia/Jakarta');
      $this->load->css('assets/libraries/bootstrap/bootstrap.min.css');
 	 $this->load->css('assets/libraries/style.css');
-
 	    // $this->load->css('assets/libraries/owl-carousel/owl.theme.css');
 	 $this->load->css('assets/libraries/flexslider/flexslider.css');
 	 $this->load->css('assets/libraries/fonts/font-awesome.min.css');
@@ -95,14 +94,6 @@ class Home extends CI_Controller {
 		// $this->load->view('home');
 	}
 
-	public function login(){
-		if($this->isLogged()){
-			redirect('home');
-		}else{
-			$this->output->set_template('home');
-			$this->load->view('user/login');
-		}
-	}
 
 
 }

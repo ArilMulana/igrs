@@ -57,6 +57,11 @@
     background-color: transparent;
     color: #337ab7;
 	}
+	@media (min-width:1450px){
+		.container{
+			width: 1350px;
+		}
+	}
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -124,8 +129,8 @@
 									</li>
 									<?php }else{?>
 									
-									<li class="active">
-										<a class="" href="<?php echo base_url()?>article/newarticle">
+									<li class="">
+										<a class="" href="<?php echo base_url()?>artikel/buatartikel">
 											<i class="fa fa-pencil"></i>
 											<span>Buat Artikel</span>
 											<span class="badge" style="background-color: red;">N</span>

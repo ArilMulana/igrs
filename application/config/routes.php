@@ -53,8 +53,9 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //login
-$route['login'] ='Home/login';
+$route['login'] ='Login/login';
 $route['logging'] = 'Login/logging';
 $route['logout'] = 'Login/logout';
 //artikel
-$route['article/newarticle'] = 'artikel/artikel/new_artikel';
+$route['artikel/buatartikel'] = 'artikel/artikel/buatartikel';
+$route['artikel/uploadartikel'] = 'artikel/artikel/news';
