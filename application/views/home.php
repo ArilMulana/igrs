@@ -1,318 +1,222 @@
+<style>
+		.jumbotron {
+			background-color: #cd382e;
+			color: white;
+			padding: 60px 50px;
+			margin-bottom: 0px;
+		}
+		.container-fluid {
+			padding: 30px 50px;
+		}
+		.bg-grey {
+			background-color: #f6f6f6;
+		}
+		.col-xs-15,
+		.col-sm-15,
+		.col-md-15,
+		.col-lg-15 {
+			position: relative;
+			min-height: 1px;
+			padding-right: 10px;
+			padding-left: 10px;
+		}
+		.col-xs-15 {
+			width: 20%;
+			float: left;
+		}
 
+		@media (min-width: 768px) {
+		.col-sm-15 {
+				width: 20%;
+				float: left;
+			}
+		}
 
-	<div id="slider-section" class="slider-section slider2">
-		<!-- slider1-container -->
-		<div id="slider1_container" class="slider2-container">
-			<!-- Slides Container -->
-			<div data-u="slides" class="slides-new">
-			
-				<div>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="full-box-inner">
-									<div class="image-box">
-										<img src="<?php echo base_url()?>assets/images/sample/carousel1.jpg"  style="width: 1170px;height: 508px;" alt="home 2 slide" />
-										<!-- a href="#" class="add-sign-big color-green"><img src="images/icon/big-plus.png" alt="big-plus" /></a -->
-									</div>
-									<div class="box-content">
-										<a href="#" class="block-title">Indonesia Game Rating System</a>
-										<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- item /- -->
+		@media (min-width: 992px) {
+			.col-md-15 {
+				width: 20%;
+				float: left;
+			}
+		}
 
-				<div>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="full-box-inner">
-									<div class="image-box">
-										<img src="<?php echo base_url()?>assets/images/sample/carousel0.png"  style="width: 1170px;height: 508px;" alt="home 2 slide" />
-										<!-- a href="#" class="add-sign-big color-green"><img src="images/icon/big-plus.png" alt="big-plus" /></a --->
-									</div>
-									<div class="box-content">
-										<a href="#" class="block-title">Indonesia Game Rating System</a>
-										<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> <!-- item 2 /- -->
+		@media (min-width: 1200px) {
+			.col-lg-15 {
+				width: 20%;
+				float: left;
+			}
+		}
+	</style>
 
-				<div>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="full-box-inner">
-									<div class="image-box">
-										<img src="<?php echo base_url()?>assets/images/sample/carousel1.jpg"  style="width: 1170px;height: 508px;" alt="home 2 slide" />
-										<!--a href="#" class="add-sign-big color-green"><img src="images/icon/big-plus.png" alt="big-plus" /></a-->
-									</div>
-
-									<div class="box-content">
-										<a href="#" class="block-title">Workshop IGRS - Educastudio dan Keong Game</a>
-										<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- item 3 /- -->
-			</div>
-
-			<!-- Arrow Left -->
-			<span data-u="arrowleft" class="jssora13l">
-				<i class="fa fa-angle-left"></i>
-			</span>
-			<!-- Arrow Right -->
-			<span data-u="arrowright" class="jssora13r">
-				<i class="fa fa-angle-right"></i>
-			</span>
-		</div><!-- slider-container1 /- -->
-
-	</div>
-	<!-- Slider Section /- -->
+	<!-- jumbotron Section -->
 	
-	<div class="home-style2">
-	<!-- list direktori -->
-		<div id="list-direktori" class="latest-articles">
+	<!-- jumbotron Section -->
+	<div class="jumbotron text-center">
+		<h1>IGRS</h1>
+		<p>IGRS (Indonesia Game Rating System) adalah  Klasifikasi Permainan Interaktif Elektronik
+		yang berfungsi sebagai alat untuk mengklasifikasikan game berdasarkan kategori konten 
+		dan kelompok usia pengguna. <a href="faq.html"><small>Selengkapnya</small></a></p>
 		
-		<!-- Container -->
-		<div class="container">
-			<div class="row">
-			
-			<!-- Recent Articles -->
-			<div id="recent-article" class="recent-article row">
-					<!-- Section Header -->
-					<div class="section-header">
-						<h2>Game Pilihan</h2>
-					</div>
-					<!-- Section Header /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-				<!-- col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="post-box">
-						<div class="image-box">
-							<img src="<?php echo base_url()?>assets/images/sample/dreadout.jpg"/>
-						</div>
-						<div class="post-box-inner">							
-							<div class="box-content">
-								<a href="#" class="block-title">Dreadout</a>								
-							</div>
-						</div>
-					</div>
-				</div><!-- Col-md-3 /- -->
-				
-			</div><!-- Recent Articles /- -->
-			</div><!-- /row -->
-		</div><!-- container /- -->
-		</div><!-- list direktori /- -->
+		<form class="form-inline">
+			<div class="input-group">
+				<input type="text" class="form-control" size="90" placeholder="Nama Permainan" required>
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-primary">   Cari   </button>
+				</div>
+			</div>
+		</form>
 	</div>
+	<!-- /jumbotron Section -->
 	
-	<!-- Berita Pilihan -->
-	<div id="fashion-style-section" class="fashion-style-section">
-		<!-- Section Header -->
-		<div class="section-header">
-			<h2>Artikel Pilihan</h2>
+	<!-- apa itu igrs -->
+	<div class="container-fluid text-center bg-grey">
+		<div class="container">
+			<div class="section-header">
+			<h2>Apa itu IGRS?</h2>
+			</div>
+			<iframe width="500" height="300" src="http://www.youtube.com/embed/T4uNrqPjOuM?rel=0&playlist=tvEnYKrCAXc,br98lAhoeYc" frameborder="0" allowfullscreen></iframe>
 		</div>
-		<!-- Section Header /- -->
+	</div>
+	<!-- /apa itu igrs -->
+	
+	<!-- jenis rating Section -->
+	<div class="container-fluid text-center">
+		<div class="section-header">
+		<h2>Klasifikasi di IGRS</h2>
+		</div>
 		
-		<!-- Container -->
-		<div class="container">
-			<div class="row">
-				<!-- col-md-3 -->
-				<div class="col-md-3 no-padding">
-					<div class="col-md-12 col-sm-6">
-						<div class="post-box">
-							<div class="image-box">
-								<img src="<?php echo base_url()?>assets/images/berita2.jpg" alt="fashion style" />
+		<p>Rating berdasarkan kelompok usia digunakan untuk memastikan bahwa konten yang dimainkan 
+		untuk kelompok usia yang paling sesuai. IGRS dapat menjadi panduan bagi konsumen (terutama orang tua)
+		 untuk membantu mereka memutuskan apakah akan membeli game tertentu atau tidak<p>
+		<div class="row text-center">
+		<div class="col-md-15 col-xs-3">
+			<div class="thumbnail">
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
+				
+				<!-- modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
 							</div>
-
-							<div class="post-box-inner">
-								<a href="#" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a>
-								<div class="box-content">
-									<a href="#" class="block-title">Make all our dreams come true for</a>
-									<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									<p>Hills that is. Swimmin' pools movie stars. Just two good ol' boys Wouldn't change if they could. </p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 col-sm-6">				
-						<div class="post-box">
-							<div class="image-box">
-								<img src="<?php echo base_url()?>assets/images/berita3.jpg" alt="fashion style" />
-								<a href="#" class="add-sign-small color-light-orange"><img src="<?php echo base_url('assets/images/icon/small-plus.png')?>" alt="big-plus" /></a>
-							</div>
-							<div class="post-box-inner">
-								<a href="#" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a>
-								<div class="box-content">
-									<a href="#" class="block-title">A shadowy flight into the dangerous</a>
-									<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									<p>Hills that is. Swimmin' pools movie stars. Just two good ol' boys Wouldn't change if they could. </p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- col-md-3 /- -->
-			
-				<!-- col-md-6 -->
-				<div class="col-md-6 col-sm-12">
-					<div class="full-box-inner">
-						<div class="image-box">
-							<img src="<?php echo base_url('assets/images/images/berita1.jpg')?>" style="width:565px;height:480px;" alt="fashion style" />
-						</div>
-						<div class="box-content">
-							<a class="block-title" href="#">KEMKOMINFO BERSAMA AGI, KEMENDIKBUD, KPPPA, PSIKOLOG MEMPERSIAPKAN PELAKSANAAN IGRS </a>
-							<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-							<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							
-						</div>
-					</div>
-				</div><!-- col-md-6 /- -->
-			
-				<!-- col-md-3 -->
-				<div class="col-md-3 no-padding">
-					<div class="col-md-12 col-sm-6">
-						<div class="post-box">
-							<div class="image-box">
-								<img src="<?php echo base_url()?>assets/images/berita2.jpg" alt="fashion style" />
-								<a href="#" class="add-sign-small color-violate"><img src="<?php echo base_url('assets/images/images/small-plus.png')?>" alt="big-plus" /></a>
-							</div>
-							<div class="post-box-inner">
-								<a href="#" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a>
-								<div class="box-content">
-									<a href="#" class="block-title">my friends you're sure to get a smile</a>
-									<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									<p>Hills that is. Swimmin' pools movie stars. Just two good ol' boys Wouldn't change if they could. </p>
-								</div>
+							<div class="modal-body">
+								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya</p>
 							</div>
 						</div>
 					</div>
-					
-					<div class="col-md-12 col-sm-6">
-						<div class="post-box">
-							<div class="image-box">
-								<img src="<?php echo base_url()?>assets/images/berita3.jpg" alt="fashion style" />
-								<a href="#" class="add-sign-small color-green-dark"><img src="<?php echo base_url()?>assets/images/icon/small-plus.png" alt="big-plus" /></a>
-							</div>
-							<div class="post-box-inner">
-								<a href="#" class="box-read-more"><img src="<?php echo base_url()?>assets/images/icon/arrow.png" alt="arrow" /> Read More</a>
-								<div class="box-content">
-									<a href="#" class="block-title">He busy revin' up his Powerful Mach </a>
-									<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									<p>Hills that is. Swimmin' pools movie stars. Just two good ol' boys Wouldn't change if they could. </p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!-- col-md-3 -->
+				</div>
+				<!-- /modal -->
+				
 			</div>
-		</div><!-- Container /- -->
-	</div><!-- Berita Pilihan /- -->
+		</div>
+		<div class="col-md-15 col-xs-3" >
+			<div class="thumbnail">
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
+				<!-- modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+							</div>
+							
+							<div class="modal-body">
+								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /modal -->
+			</div>
+		</div>
+		<div class="col-md-15 col-xs-3">
+			<div class="thumbnail">
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
+				<!-- modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+							</div>
+							
+							<div class="modal-body">
+								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /modal -->
+			</div>
+		</div>
+		<div class="col-md-15 col-xs-3">
+			<div class="thumbnail">
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
+				<!-- modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+							</div>
+							
+							<div class="modal-body">
+								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /modal -->
+			</div>
+		</div>
+		<div class="col-md-15 col-xs-3">
+			<div class="thumbnail">
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
+				<!-- modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+							</div>
+							
+							<div class="modal-body">
+								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /modal -->
+			</div>
+		</div>
+		</div>
+
+	</div>
+	<!-- /jenis rating Section -->
+	
+	<!-- kontribusi -->
+	<div class="container-fluid bg-grey">
+		<h2>Kontribusi</h2>
+		<p>Anda dapat berkontribusi dengan cara <a href="masuk.html">mendaftarkan permainan anda</a>
+		atau  <a href="pengaduan.html">melaporkan permainan</a> yang tidak sesuai dengan rating usia</p>
+	</div>
+	<!-- /kontribusi -->
 	
 	<!-- News Feed -->
 		<div id="newsfeed" class="entertainment-and-fashion-section">
@@ -324,13 +228,13 @@
 					<div class="col-md-6 col-sm-6">
 						<!-- header newsfeed -->
 						<div class="section-header">
-							<h2>News Feed</h2>
+							<h2>Berita Favorit</h2>
 						</div>
 						<!-- header newsfeed -->
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" /></a>
+								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
@@ -341,7 +245,7 @@
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita4.jpg" alt="entertainment-and-fashion" /></a>
+								<a href="#"><img src="<?php echo base_url()?>assets/images/berita4.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="#" class="block-title">Peta Industri Game Indonesia 2015</a>
@@ -352,7 +256,7 @@
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" /></a>
+								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
@@ -368,13 +272,13 @@
 					
 					<!-- header newsfeed -->
 						<div class="section-header">
-							<h2>News Feed</h2>
+							<h2>Permainan Populer</h2>
 						</div>
 					<!-- header newsfeed -->
 					
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" /></a>
+								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
@@ -385,7 +289,7 @@
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita4.jpg" alt="entertainment-and-fashion" /></a>
+								<a href="#"><img src="<?php echo base_url()?>assets/images/berita4.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="#" class="block-title">Peta Industri Game Indonesia 2015</a>
@@ -396,7 +300,7 @@
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" /></a>
+								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion"  width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
@@ -408,6 +312,7 @@
 				</div>
 			</div><!-- container /- -->
 		</div><!-- News Feed -->
+	
 		
 	<script type="text/javascript">
 		$(function(){

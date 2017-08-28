@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">	
-	<title>Login</title>
+	<title><?php echo $title ?></title>
 		
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.png')?>">
     <?php
@@ -48,6 +48,15 @@
 	.glyphicon.glyphicon-user > li > a > span {
 		padding-right: 10px;
 	}
+	@media (max-width: 991px){
+		.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover, .navbar-toggle:hover {
+    	background-color: #337ab7;
+		}
+	}
+	.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover, .nav .open > a, .nav .open > a:focus, .nav .open > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    background-color: transparent;
+    color: #337ab7;
+	}
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +69,6 @@
     
 </head>
 <body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
-	
 	<a id="top"></a>
 	
 	<!-- Header Section /- -->
@@ -107,28 +115,59 @@
 									<li><a href="#">Hubungi Kami</a></li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
-
 									<?php 
 									$sesdat = $this->session->userdata('logged_in');
 									if($this->session->userdata('logged_in') == NULL){?>
 									<li class="">
 
-										<a href="<?php echo base_url('login');?>"><span class="glyphicon glyphicon-login">Login</span></a>
-									</li>
-									<li>
-										<a><span class="glyphicon glyphicon-user">Daftar</span></a>
+										<a href="<?php echo base_url('login');?>"><span class="glyphicon glyphicon">Login</span></a>
 									</li>
 									<?php }else{?>
-									<li>
-										<a href=""><span class="glyphicon glyphicon-user"><?php 
+									
+									<li class="active">
+										<a class="" href="<?php echo base_url()?>article/newarticle">
+											<i class="fa fa-pencil"></i>
+											<span>Buat Artikel</span>
+											<span class="badge" style="background-color: red;">N</span>
+										</a>
+									</li>
+									<li class="dropdown">
+							         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							         		<i class="glyphicon glyphicon-user"></i>
+							         		<span><?php 
 											if($sesdat['role'] < "6")
 												{echo $sesdat['nama'];}else{
 												echo $sesdat['nama_pemilik'];	
-											};?></span></a>
-									</li>
-									<li>
-										<a href="<?php echo base_url()?>logout"><span>Logout</span></a>
-									</li>
+											};?></span>
+							         	 	<span class="caret"></span>
+										</a>
+							          <ul class="dropdown-menu">
+							            <li>
+							            	<a href="#">Profil</a>
+							            </li>
+							            <li>
+							            	<a href="#">
+							            	<?php 
+							            		$role = $sesdat['role'];
+							            		$admin = 5;
+							            		$developer = 7;
+							            		if($role <= 5){
+							            			echo "Admin";
+							            		}
+							            		elseif ($role == $developer) {
+							            			echo "Developper";
+							            		}else{
+							            			echo "";
+							            		}
+
+
+							            	?>
+							            	<span class="<?php if($role == $developer){echo "label label-info";}?>">Active</span>	
+							            	</a>
+							            </li>
+							            <li><a href="<?php echo base_url()?>logout">Logout</a></li>
+							          </ul>
+       								</li>
 									<?php }?>
 								</ul>
 							</div><!-- .nav-collapse /- -->
@@ -191,3 +230,5 @@
 
 </body>
 </html>
+
+<script type="text/javascript" src="<?= base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>

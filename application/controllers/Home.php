@@ -33,6 +33,7 @@ class Home extends CI_Controller {
 	date_default_timezone_set('Asia/Jakarta');
      $this->load->css('assets/libraries/bootstrap/bootstrap.min.css');
 	 $this->load->css('assets/libraries/style.css');
+
 	    // $this->load->css('assets/libraries/owl-carousel/owl.theme.css');
 	 $this->load->css('assets/libraries/flexslider/flexslider.css');
 	 $this->load->css('assets/libraries/fonts/font-awesome.min.css');
@@ -77,15 +78,18 @@ class Home extends CI_Controller {
 		$this->load->js('assets/libraries/jssor.js');
 		$this->load->js('assets/libraries/jssor.slider.min.js');
 		$this->load->js('assets/libraries/jquery.marquee.js');
-		$this->output->set_template('home');		
+		$this->output->set_template('home');
+		$this->output->set_title('IGRS');		
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] != NULL){
-				echo "<script> alert('hy admin');</script>";
+				echo "<script> alert('hy admin');</script>";	
+				$this->load->view('home');
 			}else{
 				echo "<script> alert('hy pengembang');</script>";
+				$this->load->view('home');
 			}
 		}else{
-			echo "<script> alert('hy guest');</script>";
+			$this->load->view('home');
 		}
 		
 		// $this->load->view('home');
