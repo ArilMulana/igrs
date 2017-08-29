@@ -15,18 +15,23 @@
 			            <i class="fa fa-info-circle hint"></i> Ukuran Gambar Maksimal 300KB
 			          </div>
 			      	  <!--  -->
-			          <form class="form-horizontal" id="tokek" action="<?= base_url()?>artikel/uploadartikel" method="post" enctype="multipart/form-data">  
+			      	  <?php 
+			      	  $action = 'artikel/artikel/feedartikel';
+			      	  $attribute = array('id'=>'artikel','class'=>'form-horizontal');
+			      	  echo form_open($action,$attribute);?>
 			          	<div class="form-group">
 			            <!--   <label for="gambar" class="col-sm-2 control-label">Gambar</label> -->
 			              <div class="col-md-5 col-md-offset-5">
 			                <div class="input-group input-group-sm col-md-8 clearfix">
 			                  <input style="width: 200px;height: 160px;" id="cover" name="cover" type="file" class="form-control" />
+			                  
 			                  <!-- <span class="input-group-btn">
 			                    <input type="submit" value="Upload" class="btn btn-info btn-flat" />
 			                  </span> -->
 			                </div>
 			              </div>
-			            </div>   
+			            </div>
+			              
 			            <div class="form-group">
 			              <label for="judul" class="col-sm-2 control-label">Judul berita</label>
 			              <div class="col-sm-10">
@@ -53,14 +58,13 @@
 			            <div class="form-group">
 			            	<div class="col-md-12 text-center">
 					        	<div class="box-footer form-inline">
-					              <button type="submit" class="btn btn-primary">Batal</button>
-					              <button href="" type="submit" class="btn btn-primary">Simpan</button>
-					              <button type="submit" class="btn btn-primary">Lihat</button>
+					              <!-- <button type="submit" class="btn btn-primary">Batal</button> -->
+					             <a href="<?php base_url()?>artikel/feedartikel" class="btn btn-primary" type="submit">Save</a>
+					              <!-- <button type="submit" class="btn btn-primary">Lihat</button> -->
 					            </div>
 				            </div>
 			            </div>
 			          <!-- </form>  -->
-			          </form>
 			   
 			        </div>
 			      </div>
