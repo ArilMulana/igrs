@@ -8,22 +8,24 @@
 				<div class="well well-lg">
 					<section class="content">
 			      <!-- Main row -->
-			     
+			      <?php 
+			      	  $action = 'artikel/artikel/feedartikel';
+			      	  $attribute = array('id'=>'artikel','class'=>'form-horizontal','role'=>'form');
+			      	  echo form_open($action,$attribute);?>
 			      <div class="box box-info">
 			        <div class="box-body">
 			          <div class="alert alert-warning" role="alert">
 			            <i class="fa fa-info-circle hint"></i> Ukuran Gambar Maksimal 300KB
 			          </div>
 			      	  <!--  -->
-			      	  <?php 
-			      	  $action = 'artikel/artikel/feedartikel';
-			      	  $attribute = array('id'=>'artikel','class'=>'form-horizontal');
-			      	  echo form_open($action,$attribute);?>
+			      	 
 			          	<div class="form-group">
 			            <!--   <label for="gambar" class="col-sm-2 control-label">Gambar</label> -->
 			              <div class="col-md-5 col-md-offset-5">
 			                <div class="input-group input-group-sm col-md-8 clearfix">
 			                  <input style="width: 200px;height: 160px;" id="cover" name="cover" type="file" class="form-control" />
+			                  <span class="label label-danger"><i>Gambar ini ditampilkan untuk cover artikel</i></span>
+			                 
 			                  
 			                  <!-- <span class="input-group-btn">
 			                    <input type="submit" value="Upload" class="btn btn-info btn-flat" />
@@ -36,38 +38,41 @@
 			              <label for="judul" class="col-sm-2 control-label">Judul berita</label>
 			              <div class="col-sm-10">
 			               <input id="judul" name="judul" type="text" maxlength="100" class="form-control" placeholder=""><span id="count" class="label label-info"> </span>
+			               <?= form_error('judul');?>
 			              </div>	              
 			            </div>
 			            <div class="form-group">
 		                  <label for="inputIsi" class="col-sm-2 control-label">Isi</label>
 		                  <div class="col-sm-10">
 		                    <div class="box">
-		                      <form>
 		                        <textarea id="isi" name="isi" class="textarea" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-		                      </form>
+		                      
 		                    </div>
+		                   
 		                  </div>
 		                </div>
 			            <div class="form-group">
 			              <label for="referensi" class="col-sm-2 control-label">Referensi</label>
 			              <div class="col-sm-10">
-			                <input id="url" nama="url" required type="url" class="form-control" placeholder="http://www.lalala.com">
+			               <input id="refer" name="refer" type="url" class="form-control" placeholder="http://www.lalala.com">
 			              </div>
+			              <?= form_error('refer');?>
 			            </div>
 			            <br><br>
 			            <div class="form-group">
 			            	<div class="col-md-12 text-center">
 					        	<div class="box-footer form-inline">
-					              <!-- <button type="submit" class="btn btn-primary">Batal</button> -->
-					             <a href="<?php base_url()?>artikel/feedartikel" class="btn btn-primary" type="submit">Save</a>
+					              <button type="submit" class="btn btn-primary">Save</button>
+					           <!--   <a href="<?php base_url()?>artikel/feedartikel" class="btn btn-primary" type="submit">Save</a> -->
 					              <!-- <button type="submit" class="btn btn-primary">Lihat</button> -->
 					            </div>
 				            </div>
 			            </div>
 			          <!-- </form>  -->
-			   
+			   	
 			        </div>
 			      </div>
+			      <?php echo form_close();?>
 			      <!-- /.row (main row) -->
 			    	</section>	
 				</div>

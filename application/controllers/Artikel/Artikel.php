@@ -57,7 +57,19 @@ class Artikel extends CI_Controller
 	}
 
 	function feedartikel(){
-		$this->ArtikelModel->create_artikel();
+		$this->load->js('assets/tinymce/tinymce.min.js');
+		// $this->form_validation->set_rules('cover', 'Cover Artikel', 'trim|required');
+		$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+	   	$this->form_validation->set_rules('refer', 'Referensi', 'trim|required');
+	   	if($this->form_validation->run() == false)
+			{
+				$this->output->set_template('home');
+				$this->load->view('createartikel');
+			}else
+			{
+				$this->ArtikelModel->create_artikel();
+				redirect('home','refresh');
+			}
 
 	}
 }
