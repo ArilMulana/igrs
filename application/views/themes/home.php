@@ -105,7 +105,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<a href="index.html"><img src="images/responsive-logo.png" alt="logo" /></a>
+								<a href="#"><img src="images/responsive-logo.png" alt="logo" /></a>
 							</div>
 							<div class="navbar-collapse collapse" id="navbar">
 								<ul class="nav navbar-nav navbar-left">
@@ -114,7 +114,7 @@
 										</a>
 									</li>
 									<li><a href="#">Berita</a></li>
-									<li><a href="about-us.html">Direktori</a></li>
+									<li><a href="#">Direktori</a></li>
 									<li><a href="#">Pengaduan</a></li>
 									<li><a href="#">Pertanyaan Umum</a></li>
 									<li><a href="#">Hubungi Kami</a></li>
@@ -123,13 +123,17 @@
 									<?php 
 									$sesdat = $this->session->userdata('logged_in');
 									if($this->session->userdata('logged_in') == NULL){?>
-									<li class="">
+									<li class="<?php if($selected == 2){
+										echo "active";
+										}?>">
 
 										<a href="<?php echo base_url('login');?>"><span class="glyphicon glyphicon">Login</span></a>
 									</li>
 									<?php }else{?>
 									
-									<li class="">
+									<li class="<?php if($selected == 1){
+										echo "active";
+										}?>">
 										<a class="" href="<?php echo base_url()?>artikel/buatartikel">
 											<i class="fa fa-pencil"></i>
 											<span>Buat Artikel</span>

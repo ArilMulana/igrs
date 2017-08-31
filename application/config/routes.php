@@ -57,5 +57,6 @@ $route['login'] ='Login/login';
 $route['logging'] = 'Login/logging';
 $route['logout'] = 'Login/logout';
 //artikel
+$route['artikel']= 'artikel/artikel';
 $route['artikel/buatartikel'] = 'artikel/artikel/buatartikel';
 $route['artikel/feedartikel'] = 'artikel/artikel/feedartikel';

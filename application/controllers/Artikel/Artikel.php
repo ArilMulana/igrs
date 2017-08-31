@@ -27,7 +27,6 @@ class Artikel extends CI_Controller
 	 $this->load->css('assets/libraries/fonts/font-awesome.min.css');
 	 $this->load->css('assets/css/components.css');
 	    // $this->load->js('assets/libraries/jquery.animateNumber.min.js');
-	 $this->load->js('assets/libraries/jquery.min.js');
 	 $this->load->js('assets/libraries/flexslider/jquery.flexslider-min.js');
 	    //$this->load->js('assets/dist/js/app.min.js');
 	 $this->load->js('assets/js/functions.js');
@@ -43,20 +42,27 @@ class Artikel extends CI_Controller
 	}
 
 
+	function index (){
+		$this->output->set_title('Artikel');
+	}
 
 	function buatartikel(){
 		$this->load->js('assets/tinymce/tinymce.min.js');
 		$this->output->set_title('Artikel Baru');
 		if($this->isLogged()){
-			$this->load->view('createartikel');
+			$data = array(
+				'selected'=>$this->artikel,
+				);
+			$this->load->view('createartikel',$data);
 			$this->output->set_template('home');
 
 		}else{
 			redirect('home');
-		}
+		}	
 	}
 
 	function feedartikel(){
+		// $this->load->js('assets/libraries/jquery.min.js'); // kgk keload
 		$this->load->js('assets/tinymce/tinymce.min.js');
 		// $this->form_validation->set_rules('cover', 'Cover Artikel', 'trim|required');
 		$this->form_validation->set_rules('judul', 'Judul', 'trim|required');

@@ -35,14 +35,14 @@
 			            </div>
 			              
 			            <div class="form-group">
-			              <label for="judul" class="col-sm-2 control-label">Judul berita</label>
+			              <label for="judul" class="col-sm-2 control-label" style="text-align: center;">Judul berita<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 			              <div class="col-sm-10">
 			               <input id="judul" name="judul" type="text" maxlength="100" class="form-control" placeholder=""><span id="count" class="label label-info"> </span>
 			               <?= form_error('judul');?>
 			              </div>	              
 			            </div>
 			            <div class="form-group">
-		                  <label for="inputIsi" class="col-sm-2 control-label">Isi</label>
+		                  <label for="inputIsi" style="text-align: center;" class="col-sm-2 control-label">Isi<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 		                  <div class="col-sm-10">
 		                    <div class="box">
 		                        <textarea id="isi" name="isi" class="textarea" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
@@ -52,17 +52,35 @@
 		                  </div>
 		                </div>
 			            <div class="form-group">
-			              <label for="referensi" class="col-sm-2 control-label">Referensi</label>
-			              <div class="col-sm-10">
+			              <label style="text-align: center;" for="referensi" class="col-sm-2 control-label">Referensi<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
+			              <div class="col-sm-9">
 			               <input id="refer" name="refer" type="url" class="form-control" placeholder="http://www.lalala.com">
 			              </div>
+			              	<a data-toogle="tooltip" title="referensi tambahan" id="add_refer" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+			             </div>
+			              <div id="refer2" style="">
+			             	<div class="form-group">
+			              		<div class="col-sm-9 col-sm-offset-2">
+			               			<input id="refer2" name="refer2" type="url" class="form-control" placeholder="http://www.lalala.com">
+			              		</div>
+			              			<a id="del_refer2" class="btn btn-danger"><span class="fa fa-close"></span></a>
+			              			<a id="add_refer2" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+			              	</div>
+			              </div>
+			              <div id="refer3" style="">
+			             	<div class="form-group">
+			              		<div class="col-sm-9 col-sm-offset-2">
+			               			<input id="refer3" name="refer3" type="url" class="form-control" placeholder="http://www.lalala.com">
+			              		</div>
+			              			<a id="del_refer3" class="btn btn-danger"><span class="fa fa-close"></span></a>
+			              	</div>
+			              </div>
 			              <?= form_error('refer');?>
-			            </div>
 			            <br><br>
 			            <div class="form-group">
 			            	<div class="col-md-12 text-center">
 					        	<div class="box-footer form-inline">
-					              <button type="submit" class="btn btn-primary">Save</button>
+					              <button id="save" type="submit" class="btn btn-primary">Save</button>
 					           <!--   <a href="<?php base_url()?>artikel/feedartikel" class="btn btn-primary" type="submit">Save</a> -->
 					              <!-- <button type="submit" class="btn btn-primary">Lihat</button> -->
 					            </div>
@@ -127,7 +145,7 @@
 			</div>
 		</div>
 </div><!-- container /- -->
-
+<script type="text/javascript" src="<?= base_url()?>assets/libraries/jquery.min.js"></script>
 <script type="text/javascript">
 	var judul = document.getElementById('judul');
 	var length = judul.getAttribute("maxlength");
@@ -139,7 +157,6 @@
 
   		}
 	};
-	
 		tinymce.init({
   			selector: 'textarea',  // change this value according to your HTML
   			auto_focus: 'element1',
@@ -147,6 +164,27 @@
   			imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
   			images_upload_base_path: './assets/images'
 		});	
-	
+	$(document).ready(function(){
+		$("#refer2").hide();
+		$("#refer3").hide();
+		
+		$("#add_refer").click(function(){
+			$("#refer2").fadeIn(1000);
+			$("#add_refer").fadeOut(500);
+		})
+		$("#del_refer2").click(function(){
+			$("#add_refer").fadeIn(1000);
+			$("#refer2").fadeOut(500);
+			
+		})
+		$("#add_refer2").click(function(){
+			$("#refer3").fadeIn(1000);
+			$("#add_refer2").fadeOut(500);
+		})
+		$("#del_refer3").click(function(){
+			$("#refer3").fadeOut(500);
+			$("#add_refer2").fadeIn(1000);
+		})
+	})
 	
 </script>

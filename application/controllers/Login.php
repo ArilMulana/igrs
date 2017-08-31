@@ -1,6 +1,7 @@
 <?php
 class Login extends CI_Controller {
 
+		private $a_login = 2;
 		function __construct(){
 			parent::__construct();
 			$this->load->library('form_validation');
@@ -131,9 +132,12 @@ class Login extends CI_Controller {
 			if($this->isLogged()){
 				redirect('home');
 			}else{
+				$data = array(
+					'selected'=>$this->a_login,
+					);
 				$this->output->set_title('Login');
 				$this->output->set_template('home');
-				$this->load->view('user/login');
+				$this->load->view('user/login',$data);
 			}
 		}
 

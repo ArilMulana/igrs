@@ -67,6 +67,10 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$data = 
+			array(
+				'selected'=>'',
+			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
 		$this->load->css('assets/css/media.css');
@@ -81,14 +85,15 @@ class Home extends CI_Controller {
 		$this->output->set_title('IGRS');		
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] != NULL){
-				echo "<script> alert('hy admin');</script>";	
-				$this->load->view('home');
+				echo "<script> alert('hy admin');</script>";
+				
+				$this->load->view('home',$data);
 			}else{
 				echo "<script> alert('hy pengembang');</script>";
-				$this->load->view('home');
+				$this->load->view('home',$data);
 			}
 		}else{
-			$this->load->view('home');
+			$this->load->view('home',$data);
 		}
 		
 		// $this->load->view('home');
