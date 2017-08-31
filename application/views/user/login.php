@@ -48,7 +48,7 @@
 						<ul class="post">
 							<li>
 								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="<?php echo base_url('assets/images/widget/widget-post-1.jpg"')?> alt="popular-post" /></a>
+									<a href="#"><img src="<?php echo base_url('assets/images/widget/widget-post-1.jpg"')?>" alt="popular-post" /></a>
 								</div>
 								<div class="col-md-7 col-sm-7 col-xs-8">
 									<a href="#" class="post-title">where you can see our  of troubles are all </a>
