@@ -14,6 +14,7 @@ class Artikel extends CI_Controller
 	    $this->load->model('LoginModel');
 	    $this->load->model('ArtikelModel');
 	    $this->_init();
+
 	}
 
 	private function _init()
@@ -52,6 +53,7 @@ class Artikel extends CI_Controller
 		if($this->isLogged()){
 			$data = array(
 				'selected'=>$this->artikel,
+				'action'=>"artikel/artikel/upload",
 				);
 			$this->load->view('createartikel',$data);
 			$this->output->set_template('home');
@@ -62,20 +64,70 @@ class Artikel extends CI_Controller
 	}
 
 	function feedartikel(){
-		// $this->load->js('assets/libraries/jquery.min.js'); // kgk keload
-		$this->load->js('assets/tinymce/tinymce.min.js');
-		// $this->form_validation->set_rules('cover', 'Cover Artikel', 'trim|required');
-		$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
-	   	$this->form_validation->set_rules('refer', 'Referensi', 'trim|required');
-	   	if($this->form_validation->run() == false)
-			{
-				$this->output->set_template('home');
-				$this->load->view('createartikel');
-			}else
-			{
-				$this->ArtikelModel->create_artikel();
-				redirect('home','refresh');
-			}
+		
 
+	}
+
+	private function resizeImage($befImage){
+		$config['image_library'] = 'gb2';
+		$config['source_image']= $befImage;
+		$config['create_thumb'] = true;
+		$config['maintain_ratio'] = true;
+		$config['width'] = '170';
+		$config['height'] = '153';
+
+		$this->image_lib->resize($config);
+	}
+	public function upload(){
+		
+	//$this->load->library('upload');
+    $this->output->set_title('Create Artikel');
+    $this->output->set_template('home'); 
+     $nmfile = "artikel_".time(); //nama file saya beri nama langsung dan diikuti fungsi time
+     $config['upload_path'] = './assets/images/'; //path folder
+     $config['allowed_types'] = 'jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+     $config['max_size'] = '620'; //maksimum besar file 2M
+     $config['max_width']  = '3000'; //lebar maksimum 3000 px
+     $config['max_height']  = '1500'; //tinggi maksimu 1500 px
+     $config['file_name'] = $nmfile; //nama yang terupload nantinya
+     $this->upload->initialize($config);
+     if($_FILES['cover']['name'])
+        {
+            if ($this->upload->do_upload('cover'))
+            {
+                $images = $this->upload->data();
+                $data = array(
+                    'cover'=>$images['file_name'],
+        			'judul'=>$this->input->post('judul'),
+			        'slug'=>url_title(strtolower($this->input->post('judul'))),
+			        'isi'=>$this->input->post('isi'),
+			        'artikel_status'=>0, //no publish
+                  );
+                  if($this->session->userdata('logged_in')['role'] == "6"){
+                  	$data['artikel_by'] = $this->session->userdata('logged_in')['id_contri'];
+                  }else{
+                  	$data['artikel_by'] = $this->session->userdata('logged_in')['id'];
+                  }
+                $this->load->js('assets/tinymce/tinymce.min.js');
+				$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+				$this->form_validation->set_rules('isi', 'Isi', 'trim|required');
+	   			if($this->form_validation->run() == false)
+					{
+						$this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data !!</div></div>");
+                		redirect('artikel/buatartikel','refresh');
+					}else
+					{
+						 $this->ArtikelModel->create_artikel($data);
+               			 $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Data Berhasil Di Save !!</div></div>");
+               			 redirect('artikel/buatartikel','refresh'); //jika berhasil maka akan ditampilkan view vupload
+               		}
+            }else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data !!</div></div>");
+                redirect($this->buatartikel,'refresh'); //jika gagal maka akan ditampilkan form upload
+                //echo "<script>alert('gagal')</script>";
+            }
+        }
+		
 	}
 }

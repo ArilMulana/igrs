@@ -145,35 +145,31 @@
 							         		<i class="glyphicon glyphicon-user"></i>
 							         		<span><?php 
 											if($sesdat['role'] < "6")
-												{echo $sesdat['nama'];}else{
+												{echo $sesdat['nama'];}else if($sesdat['role'] == "7"){
 												echo $sesdat['nama_pemilik'];	
-											};?></span>
+											}else{echo $sesdat['nama_contributor'];}?></span>
 							         	 	<span class="caret"></span>
 										</a>
 							          <ul class="dropdown-menu">
 							            <li>
 							            	<a href="#">Profil</a>
 							            </li>
+							            <?php 
+						            		$role = $sesdat['role'];
+						            		$admin = 5;
+						            		$developer = 7;
+						            		if($role != "6"){
+							            	?>
 							            <li>
 							            	<a href="#">
-							            	<?php 
-							            		$role = $sesdat['role'];
-							            		$admin = 5;
-							            		$developer = 7;
-							            		if($role <= 5){
+							            	<?php if($role < 6){
 							            			echo "Admin";
-							            		}
-							            		elseif ($role == $developer) {
-							            			echo "Developper";
 							            		}else{
-							            			echo "";
-							            		}
-
-
-							            	?>
-							            	<span class="<?php if($role == $developer){echo "label label-info";}?>">Active</span>	
+							            			echo "Developper";
+ 							            		}?>
 							            	</a>
 							            </li>
+							            <?php }?>
 							            <li><a href="<?php echo base_url()?>logout">Logout</a></li>
 							          </ul>
        								</li>

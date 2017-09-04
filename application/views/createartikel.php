@@ -1,7 +1,14 @@
 <style type="text/css">
-
+.kotak{
+	border-radius: 5px;
+	border-style: inset;
+	background-color: white;
+	width: 170px;
+	height: 153px;
+}
 </style>
 <div  class="container">
+<?= $this->session->flashdata('pesan');?>
 		<div class="row">
 			<!-- col-md-8 -->
 			<div class="col-md-9">
@@ -9,9 +16,10 @@
 					<section class="content">
 			      <!-- Main row -->
 			      <?php 
-			      	  $action = 'artikel/artikel/feedartikel';
+			      	  // $action = 'artikel/artikel/feedartikel';
 			      	  $attribute = array('id'=>'artikel','class'=>'form-horizontal','role'=>'form');
-			      	  echo form_open($action,$attribute);?>
+			      	  echo form_open_multipart($action,$attribute);?>
+			      	    
 			      <div class="box box-info">
 			        <div class="box-body">
 			          <div class="alert alert-warning" role="alert">
@@ -23,7 +31,10 @@
 			            <!--   <label for="gambar" class="col-sm-2 control-label">Gambar</label> -->
 			              <div class="col-md-5 col-md-offset-5">
 			                <div class="input-group input-group-sm col-md-8 clearfix">
-			                  <input style="width: 200px;height: 160px;" id="cover" name="cover" type="file" class="form-control" />
+			                	<div class="kotak">
+			                  		<img data-toggle="tooltip" title="Cover Artikel" src="#" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
+			                  	</div>
+			                   <input data-toggle="tooltip" title="Input Cover Artikel" style="width: 170px;" id="cover" name="cover" required type="file" class="form-control" />
 			                  <span class="label label-danger"><i>Gambar ini ditampilkan untuk cover artikel</i></span>
 			                 
 			                  
@@ -31,6 +42,7 @@
 			                    <input type="submit" value="Upload" class="btn btn-info btn-flat" />
 			                  </span> -->
 			                </div>
+			                <?php echo form_error('cover');?>
 			              </div>
 			            </div>
 			              
@@ -38,7 +50,7 @@
 			              <label for="judul" class="col-sm-2 control-label" style="text-align: center;">Judul berita<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 			              <div class="col-sm-10">
 			               <input id="judul" name="judul" type="text" maxlength="100" class="form-control" placeholder=""><span id="count" class="label label-info"> </span>
-			               <?= form_error('judul');?>
+			               <?php echo form_error('judul');?>
 			              </div>	              
 			            </div>
 			            <div class="form-group">
@@ -48,17 +60,17 @@
 		                        <textarea id="isi" name="isi" class="textarea" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 		                      
 		                    </div>
-		                   
+		                   <?php echo form_error('isi')?>
 		                  </div>
 		                </div>
-			            <div class="form-group">
+			            <!-- <div class="form-group">
 			              <label style="text-align: center;" for="referensi" class="col-sm-2 control-label">Referensi<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 			              <div class="col-sm-9">
 			               <input id="refer" name="refer" type="url" class="form-control" placeholder="http://www.lalala.com">
 			              </div>
 			              	<a data-toogle="tooltip" title="referensi tambahan" id="add_refer" class="btn btn-primary"><span class="fa fa-plus"></span></a>
-			             </div>
-			              <div id="refer2" style="">
+			             </div> -->
+			            <!--   <div id="refer2" style="">
 			             	<div class="form-group">
 			              		<div class="col-sm-9 col-sm-offset-2">
 			               			<input id="refer2" name="refer2" type="url" class="form-control" placeholder="http://www.lalala.com">
@@ -66,16 +78,16 @@
 			              			<a id="del_refer2" class="btn btn-danger"><span class="fa fa-close"></span></a>
 			              			<a id="add_refer2" class="btn btn-primary"><span class="fa fa-plus"></span></a>
 			              	</div>
-			              </div>
-			              <div id="refer3" style="">
+			              </div> -->
+			              <!-- <div id="refer3" style="">
 			             	<div class="form-group">
 			              		<div class="col-sm-9 col-sm-offset-2">
 			               			<input id="refer3" name="refer3" type="url" class="form-control" placeholder="http://www.lalala.com">
 			              		</div>
 			              			<a id="del_refer3" class="btn btn-danger"><span class="fa fa-close"></span></a>
 			              	</div>
-			              </div>
-			              <?= form_error('refer');?>
+			              </div> -->
+			              <?php //echo form_error('refer');?>
 			            <br><br>
 			            <div class="form-group">
 			            	<div class="col-md-12 text-center">
@@ -164,27 +176,36 @@
   			imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
   			images_upload_base_path: './assets/images'
 		});	
-	$(document).ready(function(){
-		$("#refer2").hide();
-		$("#refer3").hide();
-		
-		$("#add_refer").click(function(){
-			$("#refer2").fadeIn(1000);
-			$("#add_refer").fadeOut(500);
-		})
-		$("#del_refer2").click(function(){
-			$("#add_refer").fadeIn(1000);
-			$("#refer2").fadeOut(500);
-			
-		})
-		$("#add_refer2").click(function(){
-			$("#refer3").fadeIn(1000);
-			$("#add_refer2").fadeOut(500);
-		})
-		$("#del_refer3").click(function(){
-			$("#refer3").fadeOut(500);
-			$("#add_refer2").fadeIn(1000);
-		})
-	})
+	function bacaGambar(input) {
+	   if (input.files && input.files[0]) {
+	      var reader = new FileReader();
+	 
+	      reader.onload = function (e) {
+	          $('#gambar_nodin').attr('src', e.target.result);
+	      }
+	 
+	      reader.readAsDataURL(input.files[0]);
+	   }
+	}
+
+	$("#cover").change(function(){
+   		bacaGambar(this);
+	});
+
+	//post ajax
+	// $(document).ready(function(){
+	// 	var save = document.getElementById('save');
+	// 	$(save).click(function(){
+	// 		$.ajax({
+	// 			type:"POST",
+	// 			url:base_url + "artikel/artikel/upload",
+	// 			data:{
+	// 				cover:$("#cover").val(),
+	// 				isi:$("#isi").val(),
+
+	// 			}
+	// 		})
+	// 	})
+	// })
 	
 </script>

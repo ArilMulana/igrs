@@ -27,10 +27,17 @@ class LoginModel extends CI_Model {
         $this->db->where('password',md5($pass));
         $this->db->limit(1);
         $pengembang = $this->db->get('ig_pengembang');
+        $this->db->join('ig_role','id = role');
+        $this->db->where('email',$email);
+        $this->db->where('password',md5($pass));
+        $this->db->limit(1);
+        $contributor = $this->db->get('ig_contributor');
         if($admin -> num_rows() == 1){
             return $admin->result();
         }else if($pengembang ->num_rows() == 1){
             return $pengembang->result();
+        }else if($contributor ->num_rows() == 1){
+            return $contributor->result();
         }else{
             return false;
         }
