@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => 'gurita.id/phpmyadmin',
+	'username' => 'igrs',
+	'password' => '1gr5',
 	'database' => 'igrs',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
