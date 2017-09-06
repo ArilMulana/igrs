@@ -99,6 +99,30 @@ class Home extends CI_Controller {
 		// $this->load->view('home');
 	}
 
+	public function berita()
+	{
+		$data = 
+			array(
+				'selected'=>'',
+			);	
+		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
+		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
+		$this->load->css('assets/css/media.css');
+		$this->load->js('assets/libraries/owl-carousel/owl.carousel.min.js');
+		$this->load->js('assets/libraries/expanding-search/modernizr.custom.js');
+		$this->load->js('assets/libraries/expanding-search/classie.js');
+		$this->load->js('assets/libraries/expanding-search/uisearch.js');
+		$this->load->js('assets/libraries/jssor.js');
+		$this->load->js('assets/libraries/jssor.slider.min.js');
+		$this->load->js('assets/libraries/jquery.marquee.js');
+		$this->output->set_template('home');
+		$this->output->set_title('IGRS');
+
+		$this->load->view('berita',$data);
+		
+		// $this->load->view('home');
+	}
+
 
 
 }

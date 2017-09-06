@@ -8,33 +8,24 @@
        <div class="form-group">
         <label for="studio" class="col-sm-2 control-label">Judul berita</label>
         <div class="col-sm-10">
-          <input type="text" name="berita_judul" class="form-control" placeholder=""><?php echo form_error('berita_judul');?>
+          <input type="text" name="judul" class="form-control" placeholder=""><?php echo form_error('judul');?>
         </div>
       </div>
 
       <div class="form-group">
         <label for="studio" class="col-sm-2 control-label">Isi berita</label>
         <div class="col-sm-10">
-          <textarea name="berita_teks" rows="8" cols="100"></textarea><?php echo form_error('berita_teks');?>
+          <textarea name="isi" rows="8" cols="100"></textarea><?php echo form_error('isi');?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="studio" class="col-sm-2 control-label">Status</label>
+        <div class="col-sm-4">
+          <input type="number" min="0" max="2" name="artikel_status" class="form-control"><?php echo form_error('artikel_status');?>
         </div>
       </div>
       
-      <div class="form-group">
-        <label for="studio" class="col-sm-2 control-label">Kategori</label>
-        <div class="col-sm-4">
-          <select class="form-control" name="kategori">
-          <option></option>
-          <option>Semua Genre</option>
-          <option>Action</option>
-          <option>Shooter</option>
-          <option>Adventure</option>
-          <option>Role-playing</option>
-          <option>Strategy</option>
-          <option>Sports</option>
-        </select>
-        <?php echo form_error('kategori');?>
-        </div>
-      </div>
       <div class="col-md-12 text-center">
       <div class="box-footer form-inline ">
         <button type="submit" class="btn btn-primary">Simpan</button>

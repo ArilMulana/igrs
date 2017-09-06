@@ -37,9 +37,9 @@
     //CKEDITOR.replace('editor1')
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
-  })
+  });
+
 </script>
-<?php echo base_url('assets/')?>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script> 
 <!-- Morris.js charts -->

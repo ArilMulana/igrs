@@ -107,19 +107,25 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="kelola_artikel.html">
+          <a href="<?php echo site_url('cms/artikel'); ?>">
             <i class="fa fa-book"></i>
             <span>Kelola artikel</span>
           </a>
         </li>
         <li class="treeview">
-          <a href="profil.html">
+          <a href="<?php echo site_url('cms/artikel-belum-konfirmasi'); ?>">
+            <i class="fa fa-book"></i>
+            <span>Validasi artikel</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo site_url('cms/profil'); ?>"> 
             <i class="fa fa-book"></i>
             <span>Profil</span>
           </a>
         </li>
         <li class="treeview">
-          <a href="../home.html">
+          <a href="<?php echo site_url('default_controller'); ?>"> 
             <i class="fa fa-home"></i>
             <span>Halaman Depan</span>
           </a>

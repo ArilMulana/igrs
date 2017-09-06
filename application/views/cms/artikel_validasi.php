@@ -37,11 +37,7 @@
               <td><?php echo $artikel_item['artikel_contributor']; ?></td>
               <td><?php echo $artikel_item['artikel_status']; ?></td>
               <td><?php echo $artikel_item['artikel_time']; ?></td>
-              <?php if($artikel_item["artikel_status"] == 1) : ?>
-              <td><a href="<?php echo site_url('cms/artikel/pinpost/'.$artikel_item['id_artikel']); ?>">Pinpost</a></td>
-              <?php else: ?>
-              <td><a href="<?php echo site_url('cms/artikel/unpin/'.$artikel_item['id_artikel']); ?>">Unpin</a></td>
-              <?php endif; ?>
+              <td><a href="<?php echo site_url('cms/artikel/konfirmasi/'.$artikel_item['id_artikel']); ?>">Konfirmasi</a></td>
               <td><a href="<?php echo site_url('cms/artikel/update/'.$artikel_item['id_artikel']); ?>">Edit</a></td>
               <td><a href="<?php echo site_url('cms/artikel/delete/'.$artikel_item['id_artikel']); ?>">Hapus</a></td>
             </tr>

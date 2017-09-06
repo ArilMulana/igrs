@@ -63,3 +63,16 @@ $route['artikel']= 'artikel/artikel';
 $route['artikel/buatartikel'] = 'artikel/artikel/buatartikel';
 $route['artikel/feedartikel'] = 'artikel/artikel/feedartikel';
 
+//berita
+$route['berita'] = 'home/berita';
+
+//cms artikel
+$route['cms/artikel/delete/(:any)'] = 'cms/artikel/delete/$1';
+$route['cms/artikel/update/(:any)'] = 'cms/artikel/update/$1';
+$route['cms/artikel/create'] = 'cms/artikel/create';
+$route['cms/artikel/konfirmasi'] = 'cms/artikel/konfirmasi/$1';
+$route['cms/artikel/pinpost'] = 'cms/artikel/pinpost/$1';
+$route['cms/artikel/unpin'] = 'cms/artikel/unpin/$1';
+$route['cms/artikel'] = 'cms/artikel';
+$route['cms/artikel-belum-konfirmasi'] = 'cms/artikel/validasi';
+$route['cms/artikel/(:any)'] = 'artikel/view/$1';
