@@ -3,7 +3,6 @@
     <!-- Main row -->
     <div class="box box-info">
       <div class="box-header">
-        <a href="<?php echo base_url('cms/artikel/create')?>" class="btn btn-primary btn-sm"><span class="fa fa-plus-circle"></span>Tambahkan berita</a>
       </div>
       <div class="box-body">
       <tbody>

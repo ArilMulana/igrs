@@ -13,6 +13,17 @@ class Artikel extends CI_Controller {
     	$string = substr($string, 0, 100);
     	return $string. "...";
     }
+
+    $sesdat = $this->session->userdata('logged_in');
+    
+    // if($sesdat['role'] == 5){
+    // 	//die($sesdat['role']);
+    // 	redirect(site_url('cms/artikel'));
+    // }
+    // else{
+    // 	redirect(site_url('berita'));
+    // }
+
   }
 
   private function _init()
@@ -40,7 +51,7 @@ class Artikel extends CI_Controller {
 
   public function view($slug = NULL)
 	{
-	    $artikel = $this->artikelModel->get_artikel($slug);
+	    $artikel = $this->ArtikelModel->get_artikel($slug);
 	    $data['artikel_item'] = $artikel;
 	    $this->load->view('cms/header');
 		$this->load->view('cms/lihat_artikel', $data);

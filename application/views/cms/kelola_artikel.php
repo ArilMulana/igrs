@@ -6,15 +6,6 @@
         <a href="<?php echo base_url('cms/artikel/create')?>" class="btn btn-primary btn-sm"><span class="fa fa-plus-circle"></span>Tambahkan berita</a>
       </div>
       <div class="box-body">
-      <tbody>
-          <?php foreach ($artikel as $artikel_item) { ?>
-          <tr>
-              
-              
-              
-          </tr>
-          <?php }; ?>
-      </tbody>
   </table>
         <table id="example2" class="table table-striped table-bordered">
           <thead>

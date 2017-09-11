@@ -2,6 +2,7 @@
 class Login extends CI_Controller {
 
 		private $a_login = 2;
+
 		function __construct(){
 			parent::__construct();
 			$this->load->library('form_validation');
@@ -11,7 +12,7 @@ class Login extends CI_Controller {
 
 		function isLogged(){
 			if($this->session->userdata('logged_in')){
-				return true;
+				return $this->session->userdata('logged_in');
 			}else{
 				return false;
 			}
@@ -131,6 +132,7 @@ class Login extends CI_Controller {
 				$data = array(
 					'selected'=>'',
 					);
+		
 				$this->output->set_template('home');
 				$this->load->view('user/login',$data);
 			}else
@@ -145,7 +147,7 @@ class Login extends CI_Controller {
 		redirect('home');
 		}
 
-		public function login(){
+		public function index(){
 			if($this->isLogged()){
 				redirect('home');
 			}else{

@@ -74,8 +74,8 @@
     
 </head>
 <body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
-	<a id="top"></a>
-	
+	<!-- <a id="top"></a>
+	 -->
 	<!-- Header Section /- -->
 	<header id="header" class="header">
 		<!-- logo-add-block -->
@@ -152,7 +152,7 @@
 										</a>
 							          <ul class="dropdown-menu">
 							            <li>
-							            	<a href="#">Profil</a>
+							            	<a href="<?php echo site_url('profil/'.$sesdat['nama_contributor']);?>">Profil</a>
 							            </li>
 							            <?php 
 						            		$role = $sesdat['role'];
@@ -161,10 +161,11 @@
 						            		if($role != "6"){
 							            	?>
 							            <li>
-							            	<a href="#">
+							            	<a href="<?php echo base_url('cms/artikel')?>">
 							            	<?php if($role < 6){
 							            			echo "Admin";
-							            		}else{
+							            		}
+							            		else{
 							            			echo "Developper";
  							            		}?>
 							            	</a>
@@ -184,12 +185,15 @@
 	</header>
 	<!-- Header Section /- -->
 	
+	
+		<?php echo $output ?>
+	
 	<!-- Single Post -->
 	
-		<?php echo $output ?>	
+			
 		<!-- Container -->
 		<!-- container /- -->
-	</div><!-- Single Post /- -->
+	<!-- Single Post /- -->
 	
 	<!-- Footer Section -->
 	<div id="footer-section" class="footer-section">

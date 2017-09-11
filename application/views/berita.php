@@ -1,15 +1,15 @@
-<?php echo base_url('assets/')?>
 <!-- home2 -->
 <div class="home-style2">
 	<!-- container -->
 	<div class="container">
 		<div class="row">
 			<div id="political-world" class="owl-carousel owl-theme">
+				<?php foreach ($artikel as $artikel_item): ?>
 				<div class="item">
 					<div class="col-md-12">
 						<div class="post-box">
 							<div class="image-box">
-								<img src="<?php echo base_url('assets/images/berita1.jpg')?>" style="width:271px; height: 248px" /> 
+								<img src="<?php echo base_url('assets/images/'.$artikel_item["cover"])?>" style="width:271px; height: 248px" /> 
 							</div>
 							<ul class="comments-social">
 								<li><a href="#"><img src="<?php echo base_url('assets/images/icon/like-icon.png')?>" alt="like" /></a></li>
@@ -24,11 +24,11 @@
 								</li>
 							</ul>
 							<div class="post-box-inner">
-								<a href="detail_berita.html" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
+								<a href="<?php echo site_url('berita/'.$artikel_item['slug']); ?>" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
 								<div class="box-content">
-									<a href="#" class="block-title">Persiapan IGRS</a>
-									<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-									<p>IGRS bertujuan memberikan edukasi kepada masyarakat mengenai konten game yang cocok sesuai dengan umur mereka</p>
+									<a href="#" class="block-title"><?php echo $artikel_item["judul"] ?></a>
+									<p class="time"><i class="fa fa-clock-o"></i> <?php echo $artikel_item["artikel_time"] ?></p>
+									<?php echo $artikel_item["isi"] ?>
 									<a href="#"><i class="fa fa-heart"></i> 8</a>
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/comment-icon.png')?>" alt="comment" /> 13</a>
 								</div>
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 				</div>
-				
+			<?php endforeach; ?>
 			</div>
 		</div>
 		<div class="row">

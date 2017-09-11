@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
@@ -23,7 +23,7 @@ class Home extends CI_Controller {
 	parent::__construct();
 	$this->load->helper('url', 'form');
     $this->load->library('form_validation','session');
-    $this->load->model('LoginModel');
+    $this->load->model(array('LoginModel', 'ArtikelModel'));
 	$this->_init();
 	}
 
@@ -82,7 +82,7 @@ class Home extends CI_Controller {
 		$this->load->js('assets/libraries/jssor.slider.min.js');
 		$this->load->js('assets/libraries/jquery.marquee.js');
 		$this->output->set_template('home');
-		$this->output->set_title('IGRS');		
+		$this->output->set_title('IGRS - Indonesian Game Rating System');		
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] != NULL){
 				echo "<script> alert('hy admin');</script>";
@@ -118,11 +118,44 @@ class Home extends CI_Controller {
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS');
 
-		$this->load->view('berita',$data);
-		
-		// $this->load->view('home');
+		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
+
+		$this->load->view('berita', $data);
+
+		//die(print_r($data1));
+
+		//$this->load->view('home');
 	}
 
+	public function view_berita($slug = NULL)
+	{
 
+		$data = 
+			array(
+				'selected'=>'',
+			);	
+		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
+		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
+		$this->load->css('assets/css/media.css');
+		$this->load->js('assets/libraries/owl-carousel/owl.carousel.min.js');
+		$this->load->js('assets/libraries/expanding-search/modernizr.custom.js');
+		$this->load->js('assets/libraries/expanding-search/classie.js');
+		$this->load->js('assets/libraries/expanding-search/uisearch.js');
+		$this->load->js('assets/libraries/jssor.js');
+		$this->load->js('assets/libraries/jssor.slider.min.js');
+		$this->load->js('assets/libraries/jquery.marquee.js');
+		$this->output->set_template('home');
+		$this->output->set_title('IGRS - Indonesian Game Rating System');
+
+	    $artikel = $this->ArtikelModel->get_artikel($slug);
+	    $data['artikel_item'] = $artikel;
+	    $this->load->view('detail_berita', $data);
+	}
+
+	//profil contributor
+
+	public function profil(){
+
+	}
 
 }

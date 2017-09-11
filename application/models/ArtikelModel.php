@@ -26,7 +26,7 @@ class ArtikelModel extends CI_Model {
 
   public function get_artikel_id($id = FALSE){
 
-    $query = $this->db->get_where('ig_artikel', array('id_artikel' => $id));
+    $query = $this->db->get_where('ig_artikel', array('id' => $id));
     return $query->row_array();
 
   }
@@ -58,12 +58,12 @@ class ArtikelModel extends CI_Model {
       'slug' => $slug
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
   public function delete_artikel($id){
-    return $this->db->delete('ig_artikel', array('id_artikel' => $id));
+    return $this->db->delete('ig_artikel', array('id' => $id));
   }
 
   public function get_artikel_validasi($slug = FALSE){
@@ -76,7 +76,19 @@ class ArtikelModel extends CI_Model {
     $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
     return $query->row_array();
 
+  }
+
+  public function get_artikel_pinpost($slug = FALSE){
+
+    if($slug === FALSE){
+      $query = $this->db->get_where('ig_artikel', array('artikel_status' => 2));
+      return $query->result_array();
     }
+
+    $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
+    return $query->row_array();
+
+  }
 
   public function konfirmasi_artikel($id){
     $this->load->helper('form');
@@ -85,7 +97,7 @@ class ArtikelModel extends CI_Model {
       'artikel_status' => 1,
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
@@ -96,7 +108,7 @@ class ArtikelModel extends CI_Model {
       'artikel_status' => 2,
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
@@ -107,7 +119,7 @@ class ArtikelModel extends CI_Model {
       'artikel_status' => 1,
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 

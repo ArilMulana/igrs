@@ -54,17 +54,20 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //login
-$route['login'] ='Login/login';
+$route['login'] ='login';
 $route['logging'] = 'Login/logging';
 $route['logout'] = 'Login/logout';
 
+//profil
+$route['profil/(.+)'] = 'contributor/profil/get_profil/$1';
 //artikel
-$route['artikel']= 'artikel/artikel';
-$route['artikel/buatartikel'] = 'artikel/artikel/buatartikel';
-$route['artikel/feedartikel'] = 'artikel/artikel/feedartikel';
+$route['artikel']= 'contributor/artikel';
+$route['artikel/buatartikel'] = 'contributor/artikel/buatartikel';
+$route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
 
 //berita
 $route['berita'] = 'home/berita';
+$route['berita/(:any)'] = 'home/view_berita/view/$1';
 
 //cms artikel
 $route['cms/artikel/delete/(:any)'] = 'cms/artikel/delete/$1';
@@ -75,4 +78,4 @@ $route['cms/artikel/pinpost'] = 'cms/artikel/pinpost/$1';
 $route['cms/artikel/unpin'] = 'cms/artikel/unpin/$1';
 $route['cms/artikel'] = 'cms/artikel';
 $route['cms/artikel-belum-konfirmasi'] = 'cms/artikel/validasi';
-$route['cms/artikel/(:any)'] = 'artikel/view/$1';
+$route['cms/artikel/(:any)'] = 'home/view_berita/$1';
