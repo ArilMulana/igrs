@@ -11,6 +11,9 @@ class whoami {
 	    $this->ci->load->library('form_validation','session');
 		}
 
+		public function sesdat(){
+			return $this->ci->session->userdata('logged_in');
+		}
         public function isLogged()
         {
         	$sesdat = $this->ci->session->userdata('logged_in');

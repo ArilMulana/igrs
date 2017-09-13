@@ -11,7 +11,7 @@ class upload_img {
 		}
 
 	public function set_upload($type){
-	 $nmfile = $type_.time(); //nama file saya beri nama langsung dan diikuti fungsi time
+	 $nmfile = $type."_".time(); //nama file saya beri nama langsung dan diikuti fungsi time
      $config['upload_path'] = './assets/images/'; //path folder
      $config['allowed_types'] = 'jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
      $config['max_size'] = '620'; //maksimum besar file 2M

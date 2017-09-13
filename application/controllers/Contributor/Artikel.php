@@ -5,7 +5,6 @@
 class Artikel extends CI_Controller
 {
 	private $artikel = 1;
-	private $type = "Artikel";
 
 	function __construct()
 	{
@@ -79,11 +78,12 @@ class Artikel extends CI_Controller
 	}
 
 	public function upload(){
-		
+	
+	$type = "Artikel";
 	//$this->load->library('upload');
     $this->output->set_title('Create Artikel');
     $this->output->set_template('home'); 
-    $config = $this->upload_img->set_upload($this->type); 
+    $config = $this->upload_img->set_upload($type); 
      $this->upload->initialize($config);
      if($_FILES['cover']['name'])
         {
@@ -95,6 +95,7 @@ class Artikel extends CI_Controller
         			'judul'=>$this->input->post('judul'),
 			        'slug'=>url_title(strtolower($this->input->post('judul'))),
 			        'isi'=>$this->input->post('isi'),
+			        'kategori_artikel'=>$this->input->post('cat'),
 			        'artikel_status'=>0, //no publish
                   );
                   if($this->session->userdata('logged_in')['role'] == "6"){

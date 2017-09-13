@@ -6,6 +6,7 @@
         <a href="<?php echo base_url('cms/artikel/create')?>" class="btn btn-primary btn-sm"><span class="fa fa-plus-circle"></span>Tambahkan berita</a>
       </div>
       <div class="box-body">
+  </table>
         <table id="example2" class="table table-striped table-bordered">
           <thead>
             <tr>
@@ -15,7 +16,7 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th colspan="3">Aksi</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -45,18 +46,3 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script type="text/javascript">
-  //$.widget.bridge('uibutton', $.ui.button);
-  
-    //$('#myTable').DataTable();
-    $('#example3').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
- 
-</script>

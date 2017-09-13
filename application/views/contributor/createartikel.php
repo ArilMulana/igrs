@@ -63,15 +63,15 @@
 		                   <?php echo form_error('isi')?>
 		                  </div>
 		                </div>
-			            <!-- <div class="form-group">
+			            <div class="form-group">
 			              <label style="text-align: center;" for="kategori" class="col-sm-2 control-label">Kategori<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 			              <div class="col-sm-10">
 			              	<select id="cat" name="cat" class="form-control">
 			              		<option>Pilih Categori</option>
-			              		<option>Kebijakan</option>
+			              		<option value="1">123</option>
 			              	</select>
 			              </div>
-			             </div> -->
+			             </div>
 			            <!--   <div id="refer2" style="">
 			             	<div class="form-group">
 			              		<div class="col-sm-9 col-sm-offset-2">
@@ -202,12 +202,13 @@
 	// 			type:"POST",
 	// 			url:base_url + "contributor/artikel/upload",
 	// 			data:{
-	// 				cover:$("#cover").val(),
-	// 				isi:$("#isi").val(),
-	// 				//kategori:$("#")
+	// 				//cover:$("#cover").val(),
+	// 				judul:$("#judul").val(),
+	// 				isi:$("#isi").text(),
+	// 				//kategory_artikel:$("#cat").val(),
 	// 			},
 	// 			success:function(res){
-	// 				alert('success');
+	// 				alert(res);
 	// 			}
 	// 		})
 	// 	})
