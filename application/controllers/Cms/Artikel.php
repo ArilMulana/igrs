@@ -7,47 +7,51 @@ class Artikel extends CI_Controller {
     parent::__construct();
     $this->load->model('ArtikelModel');
     $this->load->helper(array('url_helper', 'form', 'url'));
-    $this->load->library(array('pagination','form_validation'));
+    $this->load->library(array('pagination','form_validation', 'session'));
 
     function excerpt($string){
     	$string = substr($string, 0, 100);
     	return $string. "...";
     }
 
-    $sesdat = $this->session->userdata('logged_in');
-    
-    // if($sesdat['role'] == 5){
-    // 	//die($sesdat['role']);
-    // 	redirect(site_url('cms/artikel'));
-    // }
-    // else{
-    // 	redirect(site_url('berita'));
-    // }
-
   }
 
   private function _init()
 	{
-	setlocale(LC_ALL, 'id_ID.UTF8', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', 'IND.UTF-8', 'IND.8859-1', 'IND', 'Indonesian.UTF8', 'Indonesian.UTF-8', 'Indonesian.8859-1', 'Indonesian', 'Indonesia', 'id', 'ID', 'en_US.UTF8', 'en_US.UTF-8', 'en_US.8859-1', 'en_US', 'American', 'ENG', 'English');
-	date_default_timezone_set('Asia/Jakarta');
-	$this->load->css('assets/css/bootstrap.min.css');
-    $this->load->js('assets/js/jquery-2.2.3.js');
-    $this->load->css('assets/dist/css/skins/_all-skins.min.css');
-    $this->load->js('assets/plugins/fastclick/fastclick.min.js');
-    $this->load->js('assets/plugins/slimScroll/jquery.slimscroll.min.js');
-    $this->load->js('assets/dist/js/demo.js');
+		$this->load->css('assets/css/bootstrap.min.css');
+    	$this->load->js('assets/js/jquery-2.2.3.js');
+    	$this->load->css('assets/dist/css/skins/_all-skins.min.css');
+    	$this->load->js('assets/plugins/fastclick/fastclick.min.js');
+    	$this->load->js('assets/plugins/slimScroll/jquery.slimscroll.min.js');
+    	$this->load->js('assets/dist/js/demo.js');
 	}
 
-	public function index()
-	{
-		$data['artikel'] = $this->ArtikelModel->get_artikel();
-		$this->load->view('cms/header');	
-		$this->load->view('cms/kelola_artikel', $data);
-		$this->load->view('cms/footer');
+	function isAdmin(){
+		if($this->session->userdata('logged_in')){
+			return $this->session->userdata('logged_in');
+		}else{
+			redirect('home');
+		}
+	}
+
+	// public function index()
+	// {
+	// 	$this->output->set_template('dashboard');
+	// 	$data['artikel'] = $this->ArtikelModel->get_artikel();
+	// 	$this->load->view('cms/header');	
+	// 	$this->load->view('cms/kelola_artikel', $data);
+	// 	$this->load->view('cms/footer');
+	// }
+
+	public function index(){
+		//$this->isAdmin();
+		$this->load->view('blank');
+		$this->output->set_template('dashboard');
+
 	}
 
 
-  public function view($slug = NULL)
+  	public function view($slug = NULL)
 	{
 	    $artikel = $this->ArtikelModel->get_artikel($slug);
 	    $data['artikel_item'] = $artikel;
@@ -59,7 +63,7 @@ class Artikel extends CI_Controller {
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
+		$this->output->set_template('dashboard');
 		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));

@@ -62,13 +62,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?php echo site_url('assets/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image"> 
               <span class="hidden-xs">Amelia Apriliani</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo site_url('assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   Amelia Apriliani - Web Developer
@@ -112,7 +112,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo site_url('assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image"> 
         </div>
         <div class="pull-left info">
           <p>Amelia Apriliani</p>
@@ -134,45 +134,33 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="#">
+          <a href="<?php echo base_url('cms/artikel')?>">
             <i class="fa fa-dashboard"></i>
+            <span>Kelola Artikel</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo base_url('cms/artikel-belum-konfirmasi')?>">
+            <i class="fa fa-book"></i>
+            <span>Artikel Tertunda</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo base_url('cms/profil')?>">
+            <i class="fa fa-table"></i>
             <span>Profil</span>
           </a>
         </li>
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-book"></i>
-            <span>Sasaran Kerja</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Tupoksi</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
+          <a href="<?php echo base_url('home')?>">
             <i class="fa fa-folder"></i>
-            <span>Master Aktifitas</span>
+            <span>Halaman Depan</span>
           </a>
         </li>
         <li class="treeview">
           <a href="amel.html">
             <i class="fa fa-files-o"></i>
-            <span>Aktifitas Staff</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>Validasi</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-edit"></i>
-            <span>Penilaian</span>
+            <span>Keluar</span>
           </a>
         </li>
       </ul>
@@ -196,69 +184,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>Total Activity </p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Presentase Activity</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
-
-              <p>Validation Activity Staff</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Quesioner For Staff</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
       <!-- /.row -->
       <!-- Main row -->
    <div class="row">
@@ -293,6 +218,12 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+
+<!-- Bootstrap 3.3.6 -->
+<script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+
+<!-- jQuery 2.2.0 -->
+<script src="<?= base_url('assets/plugins/jQuery/jQuery-2.2.0.min.js') ?>"></script>
 
 <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?> "></script>
 <script src="<?= base_url('assets/dist/js/app.min.js')?>"></script>
