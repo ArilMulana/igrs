@@ -219,6 +219,9 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- Bootstrap 3.3.6 -->
+<script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+
 <!-- jQuery 2.2.0 -->
 <script src="<?= base_url('assets/plugins/jQuery/jQuery-2.2.0.min.js') ?>"></script>
 
