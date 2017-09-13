@@ -54,13 +54,32 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //login
-$route['login'] ='Home/login';
+$route['login'] ='login';
 $route['logging'] = 'Login/logging';
 $route['logout'] = 'Login/logout';
 
+
+//contributor//
+
+//profil
+$route['profil/(.+)'] = 'contributor/profil/get_profil/$1';
 //artikel
-$route['cms/artikel/delete/(:any)'] = 'artikel/delete/$1';
-$route['cms/artikel/update/(:any)'] = 'artikel/update/$1';
-$route['cms/artikel/create'] = 'artikel/create';
-$route['cms/artikel'] = 'artikel';
-$route['cms/artikel/(:any)'] = 'artikel/view/$1';
+$route['artikel']= 'contributor/artikel';
+$route['artikel/buatartikel'] = 'contributor/artikel/buatartikel';
+$route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
+
+//cms artikel
+$route['cms/artikel/coba'] = 'cms/artikel/coba';
+$route['cms/artikel/delete/(:any)'] = 'cms/artikel/delete/$1';
+$route['cms/artikel/update/(:any)'] = 'cms/artikel/update/$1';
+$route['cms/artikel/create'] = 'cms/artikel/create';
+$route['cms/artikel/konfirmasi'] = 'cms/artikel/konfirmasi/$1';
+$route['cms/artikel/pinpost'] = 'cms/artikel/pinpost/$1';
+$route['cms/artikel/unpin'] = 'cms/artikel/unpin/$1';
+$route['cms/artikel'] = 'cms/artikel';
+$route['cms/artikel-belum-konfirmasi'] = 'cms/artikel/validasi';
+$route['cms/artikel/(:any)'] = 'home/view_berita/$1';
+
+//berita
+$route['berita'] = 'home/berita';
+$route['berita/(:any)'] = 'home/view_berita/view/$1';

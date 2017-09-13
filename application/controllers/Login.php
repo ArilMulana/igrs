@@ -1,11 +1,21 @@
 <?php
 class Login extends CI_Controller {
 
+		private $a_login = 2;
+
 		function __construct(){
 			parent::__construct();
 			$this->load->library('form_validation');
 			$this->load->model('LoginModel');
 			$this->_init();
+		}
+
+		function isLogged(){
+			if($this->session->userdata('logged_in')){
+				return $this->session->userdata('logged_in');
+			}else{
+				return false;
+			}
 		}
 
 		private function _init()
@@ -50,7 +60,7 @@ class Login extends CI_Controller {
 							'informasi_umum'=>$row->informasi_umum
 						);
 					$this->session->set_userdata('logged_in',$sess_array);
-					}else{
+					}else if($row->role == "7"){
 						$sess_array = array(
 							'id'=> $row->id_pengembang,
 							'no_daftar'=>$row->no_daftar,
@@ -88,6 +98,20 @@ class Login extends CI_Controller {
 							'role'=>$row->role,
 						);
 					$this->session->set_userdata('logged_in',$sess_array);
+					}else if($row->role =="6"){
+						$sess_array = array(
+							'id_contri'=>$row->id_contributor,
+							'email'=>$row->email,
+							'password'=>$row->password,
+							'nama_contributor'=>$row->nama_contributor,
+							'tgl_lahir'=>$row->tgl_lahir,
+							'waktu_daftar'=>$row->waktu_daftar,
+							'konfirmasi'=>$row->konfirmasi,
+							'waktu_exp_aktivasi'=>$row->waktu_exp_aktivasi,
+							'token_forget_password'=>$row->token_forget_password,
+							'role'=>$row->role,
+							);
+						$this->session->set_userdata('logged_in',$sess_array);
 					}
 				return true;
 				}
@@ -105,8 +129,12 @@ class Login extends CI_Controller {
 	    	$this->form_validation->set_error_delimiters('<p class="text text-danger">','</p>');
 			if($this->form_validation->run() == false)
 			{
+				$data = array(
+					'selected'=>'',
+					);
+		
 				$this->output->set_template('home');
-				$this->load->view('user/login');
+				$this->load->view('user/login',$data);
 			}else
 			{
 				redirect('home','refresh');
@@ -117,6 +145,19 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('logged_in');
 		session_destroy();
 		redirect('home');
+		}
+
+		public function index(){
+			if($this->isLogged()){
+				redirect('home');
+			}else{
+				$data = array(
+					'selected'=>$this->a_login,
+					);
+				$this->output->set_title('Login');
+				$this->output->set_template('home');
+				$this->load->view('user/login',$data);
+			}
 		}
 
 }

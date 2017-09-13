@@ -1,3 +1,5 @@
+<?php  $sesdat = $this->session->userdata('logged_in'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +64,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>" class="user-image" alt="User Image">
-              <span class="hidden-xs">Amelia Apriliani</span>
+              <span class="hidden-xs"><?php echo $sesdat['nama']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -70,7 +72,7 @@
                 <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>"  class="img-circle" alt="User Image">
 
                 <p>
-                  Amelia Apriliani
+                  <?php echo $sesdat['nama']; ?>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -100,26 +102,32 @@
           <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Amelia Apriliani</p>
+          <p><?php echo $sesdat['nama']; ?></p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="kelola_artikel.html">
+          <a href="<?php echo site_url('cms/artikel'); ?>">
             <i class="fa fa-book"></i>
             <span>Kelola artikel</span>
           </a>
         </li>
         <li class="treeview">
-          <a href="profil.html">
+          <a href="<?php echo site_url('cms/artikel-belum-konfirmasi'); ?>">
+            <i class="fa fa-book"></i>
+            <span>Validasi artikel</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo site_url('cms/profil'); ?>"> 
             <i class="fa fa-book"></i>
             <span>Profil</span>
           </a>
         </li>
         <li class="treeview">
-          <a href="../home.html">
+          <a href="<?php echo site_url('home'); ?>"> 
             <i class="fa fa-home"></i>
             <span>Halaman Depan</span>
           </a>

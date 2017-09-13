@@ -1,10 +1,40 @@
-<div id="single-post" class="single-post">
-<div class="container">
-	<div class="row">
+	<div class="container">
+		<div class="row">
 			<!-- col-md-8 -->
-		<div class="col-md-8 col-sm-6">
-				<h1>Masuk</h1>
-				  <?php
+			<div class="col-md-8">
+				<h2>Developer</h2>
+				<p>
+					IGRS (Indonesia Game Rating System) atau Klasifikasi Permainan Interaktif Elektronik. IGRS merupakan implemetasi peraturan Menteri Komunikasi dan Informatika Republik Indonesia nomor 11 tahun 2016 tentang Klasifikasi Permainan Interaktif Elektronik</p>
+
+				<p>	Klasifikasi Permainan Interaktif  Elektronik berdasarkan :</p>
+
+				<p>	1. Kategori konten
+
+					Rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya;;
+					Kekerasan;
+					Darah, mutilasi, dan kanibalisme;
+					Penggunaan bahasa;
+					Penampilan tokoh;
+					Seksual;
+					Penyimpangan seksual;
+					Simulasi judi;
+					Horor; dan
+					Interaksi daring (dalam jaringan).</p>
+					
+				<p>	2. Kelompok usia pengguna
+
+					Kelompok usia 3+
+					Kelompok usia 7+
+					Kelompok usia 13+
+					Kelompok usia 18+ dan
+					Kelompok pengguna semua usia.</p>
+			</div>
+			<!-- col-md-8 /- -->
+		
+			<!-- col-md-4 -->
+			<div class="col-md-4 col-sm-6" style="">
+				<h1>MASUK</h1>
+				 <?php
 			          $attributes = array('id' => 'login','class' =>'form-signin');
 			          echo form_open('logging', $attributes);
         		 ?>
@@ -14,9 +44,9 @@
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-	                            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-	                            	<?php echo form_error('email')?>
+	                           <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 	                        </div>
+	                        <?php echo form_error('email')?>
 	                    </div>
 	                </div>
 	                <div class="form-group">
@@ -24,69 +54,33 @@
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
-	                            <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password" required>
-	                            <?php echo form_error('pass')?>
+	                           <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password" required>
 	                        </div>
+	                         <?php echo form_error('pass')?>
 	                    </div>
 	                </div>
+	                <span class="button-checkbox">
+	                	<div class="col-sm-10">
+		                	<div id="remember" class="checkbox">
+			                    <label>
+			                        <input type="checkbox" value="remember-me"> Ingat Saya
+			                    </label>
+			                    <a href="" class="text pull-right"><i class="fa fa-lock"></i> Lupa Kata Sandi?</a>
+			                </div>
+		                </div>
+	                </span>
 	                
-	                <div id="remember" class="checkbox">
-	                    <label>
-	                        <input autofocus type="checkbox" value="remember-me"> Ingat Saya
-	                    </label>
-	                </div>
-	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Masuk</button>
-	            <?php echo form_close();?>
-		</div><!-- col-md-8 /- -->
-		
-			<!-- col-md-4 -->
-		<div class="col-md-4 col-sm-6 widget-sidebar">				
-				<!-- Latest Post -->
-			<aside class="widget widget_latest_post">
-					<h3 class="widget-title">Related Post</h3>
-					<div class="widget-inner">
-						<ul class="post">
-							<li>
-								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="<?php echo base_url('assets/images/widget/widget-post-1.jpg"')?>" alt="popular-post" /></a>
-								</div>
-								<div class="col-md-7 col-sm-7 col-xs-8">
-									<a href="#" class="post-title">where you can see our  of troubles are all </a>
-									<p>
-										<a href="#"><i class="fa fa-heart"></i> 33</a> 
-										<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="<?php echo base_url('assets/images/widget/widget-post-2.jpg')?>" alt="popular-post" /></a>
-								</div>
-								<div class="col-md-7 col-sm-7 col-xs-8">
-									<a href="#" class="post-title">crew the Minnow would be lost the Minnow</a>
-									<p>
-										<a href="#"><i class="fa fa-heart"></i> 30</a> 
-										<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="<?php echo base_url('assets/images/widget/widget-post-3.jpg')?>" alt="popular-post" /></a>
-								</div>
-								<div class="col-md-7 col-sm-7 col-xs-8">
-									<a href="#" class="post-title">Come and listen to a story about Jed</a>
-									<p>
-										<a href="#"><i class="fa fa-heart"></i> 25</a> 
-										<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-									</p>
-								</div>
-							</li>
-						</ul>
+	      			<div class="row">
+	      			<div class="col-xs-6 col-sm-6 col-md-6">
+						<a href="daftar.html" class="btn btn-lg btn-primary btn-block">Daftar</a>
 					</div>
-			</aside><!-- Latest Post /- -->
-				
-		</div><!-- col-md-4 /- -->
-	</div>
-</div>
-</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Masuk">
+					</div>
+				</div>
+	                
+	            
+	            <?php echo form_close();?>
+			</div><!-- col-md-4 /- -->
+		</div>
+	</div><!-- container /- -->

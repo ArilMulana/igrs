@@ -57,6 +57,11 @@
     background-color: transparent;
     color: #337ab7;
 	}
+	@media (min-width:1450px){
+		.container{
+			width: 1350px;
+		}
+	}
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,8 +74,8 @@
     
 </head>
 <body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
-	<a id="top"></a>
-	
+	<!-- <a id="top"></a>
+	 -->
 	<!-- Header Section /- -->
 	<header id="header" class="header">
 		<!-- logo-add-block -->
@@ -100,7 +105,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<a href="index.html"><img src="images/responsive-logo.png" alt="logo" /></a>
+								<a href="#"><img src="images/responsive-logo.png" alt="logo" /></a>
 							</div>
 							<div class="navbar-collapse collapse" id="navbar">
 								<ul class="nav navbar-nav navbar-left">
@@ -109,7 +114,7 @@
 										</a>
 									</li>
 									<li><a href="#">Berita</a></li>
-									<li><a href="about-us.html">Direktori</a></li>
+									<li><a href="#">Direktori</a></li>
 									<li><a href="#">Pengaduan</a></li>
 									<li><a href="#">Pertanyaan Umum</a></li>
 									<li><a href="#">Hubungi Kami</a></li>
@@ -118,14 +123,18 @@
 									<?php 
 									$sesdat = $this->session->userdata('logged_in');
 									if($this->session->userdata('logged_in') == NULL){?>
-									<li class="">
+									<li class="<?php if($selected == 2){
+										echo "active";
+										}?>">
 
 										<a href="<?php echo base_url('login');?>"><span class="glyphicon glyphicon">Login</span></a>
 									</li>
 									<?php }else{?>
 									
-									<li class="active">
-										<a class="" href="<?php echo base_url()?>article/newarticle">
+									<li class="<?php if($selected == 1){
+										echo "active";
+										}?>">
+										<a class="" href="<?php echo base_url()?>artikel/buatartikel">
 											<i class="fa fa-pencil"></i>
 											<span>Buat Artikel</span>
 											<span class="badge" style="background-color: red;">N</span>
@@ -136,35 +145,32 @@
 							         		<i class="glyphicon glyphicon-user"></i>
 							         		<span><?php 
 											if($sesdat['role'] < "6")
-												{echo $sesdat['nama'];}else{
+												{echo $sesdat['nama'];}else if($sesdat['role'] == "7"){
 												echo $sesdat['nama_pemilik'];	
-											};?></span>
+											}else{echo $sesdat['nama_contributor'];}?></span>
 							         	 	<span class="caret"></span>
 										</a>
 							          <ul class="dropdown-menu">
 							            <li>
-							            	<a href="#">Profil</a>
+							            	<a href="<?php echo base_url('profil/'.md5($sesdat['id_contri']));?>">Profil</a>
 							            </li>
+							            <?php 
+						            		$role = $sesdat['role'];
+						            		$admin = 5;
+						            		$developer = 7;
+						            		if($role != "6"){
+							            	?>
 							            <li>
-							            	<a href="#">
-							            	<?php 
-							            		$role = $sesdat['role'];
-							            		$admin = 5;
-							            		$developer = 7;
-							            		if($role <= 5){
+							            	<a href="<?php echo base_url('cms/artikel')?>">
+							            	<?php if($role < 6){
 							            			echo "Admin";
 							            		}
-							            		elseif ($role == $developer) {
+							            		else{
 							            			echo "Developper";
-							            		}else{
-							            			echo "";
-							            		}
-
-
-							            	?>
-							            	<span class="<?php if($role == $developer){echo "label label-info";}?>">Active</span>	
+ 							            		}?>
 							            	</a>
 							            </li>
+							            <?php }?>
 							            <li><a href="<?php echo base_url()?>logout">Logout</a></li>
 							          </ul>
        								</li>
@@ -179,12 +185,15 @@
 	</header>
 	<!-- Header Section /- -->
 	
+	
+		<?php echo $output ?>
+	
 	<!-- Single Post -->
 	
-		<?php echo $output ?>	
+			
 		<!-- Container -->
 		<!-- container /- -->
-	</div><!-- Single Post /- -->
+	<!-- Single Post /- -->
 	
 	<!-- Footer Section -->
 	<div id="footer-section" class="footer-section">
