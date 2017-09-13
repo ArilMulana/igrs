@@ -43,10 +43,10 @@ class Artikel extends CI_Controller {
 
 	public function index()
 	{
-		$data['artikel'] = $this->ArtikelModel->get_artikel();
-		$this->load->view('cms/header');	
+		$this->output->set_template('dashboard');
+
+		$data['artikel'] = $this->ArtikelModel->get_artikel();	
 		$this->load->view('cms/kelola_artikel', $data);
-		$this->load->view('cms/footer');
 	}
 
   public function view($slug = NULL)

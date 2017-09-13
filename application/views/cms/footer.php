@@ -20,15 +20,13 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
-  $(function () {
-    $('#example2').DataTable({
+  $('#example2').DataTable({
       "paging": true,
       "lengthChange": true,
       "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false
-    });
   });
 </script>
 <!-- Bootstrap 3.3.6 -->
