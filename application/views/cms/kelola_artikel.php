@@ -16,7 +16,7 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th>Aksi</th>
+              <th colspan="3">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -46,3 +46,17 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>

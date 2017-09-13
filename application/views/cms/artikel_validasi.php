@@ -24,7 +24,7 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th>Aksi</th>
+              <th colspan="3">Aksi</th>
             </tr>
           </thead>
           <tbody>
