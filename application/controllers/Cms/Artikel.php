@@ -63,7 +63,7 @@ class Artikel extends CI_Controller {
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
+		$this->output->set_template('dashboard');
 		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));

@@ -34,10 +34,9 @@ class Admin extends CI_Controller{
 
 	public function index(){
 		//$this->isAdmin();
-		$this->load->css('assets/plugins/dataTables/dataTables.bootstrap.css');
-		$this->load->js('assets/plugins/dataTables/dataTables.bootstrap.min.js');
-		$this->load->css('assets/plugins/dataTables/jquery.dataTables.min.css');
-		$this->load->js('assets/plugins/dataTables/jquery.dataTables.min.js');
+		$this->load->css('assets/css/datatables.min.css');
+		$this->load->js('assets/js/datatables.min.js');
+		//$this->load->js('assets/bootstrap/js/bootstrap.min.js');
 
 		$data['artikel'] = $this->ArtikelModel->get_artikel();
 		$this->load->view('cms/kelola_artikel', $data);
@@ -53,10 +52,19 @@ class Admin extends CI_Controller{
 		$this->output->set_template('dashboard');
 	}
 
+	public function test(){
+		//nih yog
+		$data['artikel'] = $this->ArtikelModel->get_artikel();
+		$this->load->css('assets/css/datatables.min.css');
+		$this->load->js('assets/js/datatables.min.js');
+		$this->output->set_template('dashboard');
+		$this->load->view('blank',$data);
+	}
+
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
+		//$this->load->css('')
 		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));
