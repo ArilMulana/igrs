@@ -30,15 +30,12 @@ class Artikel extends CI_Controller {
 	{
 	setlocale(LC_ALL, 'id_ID.UTF8', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', 'IND.UTF-8', 'IND.8859-1', 'IND', 'Indonesian.UTF8', 'Indonesian.UTF-8', 'Indonesian.8859-1', 'Indonesian', 'Indonesia', 'id', 'ID', 'en_US.UTF8', 'en_US.UTF-8', 'en_US.8859-1', 'en_US', 'American', 'ENG', 'English');
 	date_default_timezone_set('Asia/Jakarta');
-	$this->load->css('assets/libraries/bootstrap/bootstrap.min.css');
-	$this->load->css('assets/libraries/style.css');
-	// $this->load->css('assets/libraries/owl-carousel/owl.theme.css');
-	$this->load->css('assets/libraries/fonts/font-awesome.min.css');
-	$this->load->css('assets/css/components.css');
-	// $this->load->js('assets/libraries/jquery.animateNumber.min.js');
-	$this->load->js('assets/libraries/jquery.min.js');
-	//$this->load->js('assets/dist/js/app.min.js');
-	$this->load->js('assets/js/functions.js');
+	$this->load->css('assets/css/bootstrap.min.css');
+    $this->load->js('assets/js/jquery-2.2.3.js');
+    $this->load->css('assets/dist/css/skins/_all-skins.min.css');
+    $this->load->js('assets/plugins/fastclick/fastclick.min.js');
+    $this->load->js('assets/plugins/slimScroll/jquery.slimscroll.min.js');
+    $this->load->js('assets/dist/js/demo.js');
 	}
 
 	public function index()
@@ -48,6 +45,7 @@ class Artikel extends CI_Controller {
 		$this->load->view('cms/kelola_artikel', $data);
 		$this->load->view('cms/footer');
 	}
+
 
   public function view($slug = NULL)
 	{
@@ -126,6 +124,11 @@ class Artikel extends CI_Controller {
 	public function unpin($id){
 		$this->ArtikelModel->unpin_artikel($id);
 		redirect('cms/artikel');
+	}
+
+	public function coba(){
+		$this->load->js('assets/js/bootstrap.min.js');
+		$this->output->set_template('dashboard');
 	}
 
 }

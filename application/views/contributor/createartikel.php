@@ -195,22 +195,22 @@
 	});
 
 	//post ajax
-	$(document).ready(function(){
-		var save = document.getElementById('save');
-		$(save).click(function(){
-			$.ajax({
-				type:"POST",
-				url:base_url + "contributor/artikel/upload",
-				data:{
-					cover:$("#cover").val(),
-					isi:$("#isi").val(),
-					//kategori:$("#")
-				},
-				success:function(res){
-					console.log('Bisa');
-				}
-			})
-		})
-	})
+	// $(document).ready(function(){
+	// 	var save = document.getElementById('save');
+	// 	$(save).click(function(){
+	// 		$.ajax({
+	// 			type:"POST",
+	// 			url:base_url + "contributor/artikel/upload",
+	// 			data:{
+	// 				cover:$("#cover").val(),
+	// 				isi:$("#isi").val(),
+	// 				//kategori:$("#")
+	// 			},
+	// 			success:function(res){
+	// 				alert('success');
+	// 			}
+	// 		})
+	// 	})
+	// })
 	
 </script>

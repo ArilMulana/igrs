@@ -5,6 +5,9 @@
 .biodata{
 	font: bold 20px arial;
 }
+.contrainer{
+	padding-right: 10px;
+}
 </style>
 <div class="jumbotron">
 	<div class="container">
@@ -31,7 +34,7 @@
 		<div class="panel panel-info" style="padding-top: 35px;text-align: center; background-color: #fff;height: auto;">
 		<?php 
 		$attribute = array('id'=>'form','class'=>'form-horizontal','role'=>'form',);
-		echo form_open($action,$attribute);?>
+		echo form_open_multipart($action,$attribute);?>
 			<div class="container">
 				<div class="form-group">
 					<div class="row">
@@ -103,7 +106,7 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-9 col-md-offset-2">
-							<a class="btn btn-primary">Save</a>
+							<button id="save" type="submit" class="btn btn-primary">Save</button>
 							<a class="btn btn-danger">Cancel</a>
 						</div>
 					</div>
@@ -114,3 +117,26 @@
 	</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	var foto_profil = document.getElementById('img_profil');
+	$(document).ready(function(){
+		var save = document.getElementById('save');
+		$(save).click(function(){
+			$.ajax({
+				type:"POST",
+				url:base_url + "contributor/artikel/upload",
+				data:{
+					cover:$("#cover").val(),
+					isi:$("#isi").val(),
+					//kategori:$("#")
+				},
+				success:function(res){
+					console.log('Bisa');
+				}
+			})
+		})
+	})
+
+	})
+</script>

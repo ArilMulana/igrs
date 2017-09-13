@@ -5,14 +5,17 @@
 class Artikel extends CI_Controller
 {
 	private $artikel = 1;
-	
+	private $type = "Artikel";
+
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
+	    $this->load->library('upload_img');
 	    $this->load->model('LoginModel');
 	    $this->load->model('ArtikelModel');
+	    $this->load->model('UploadModel');
 	    $this->_init();
 
 	}
@@ -49,7 +52,7 @@ class Artikel extends CI_Controller
 		if($this->isLogged()){
 			$data = array(
 				'selected'=>$this->artikel,
-				'action'=>"",
+				'action'=>"contributor/artikel/upload",
 				);
 			$this->load->view('contributor/createartikel',$data);
 			$this->output->set_template('home');
@@ -74,18 +77,13 @@ class Artikel extends CI_Controller
 
 		$this->image_lib->resize($config);
 	}
+
 	public function upload(){
 		
 	//$this->load->library('upload');
     $this->output->set_title('Create Artikel');
     $this->output->set_template('home'); 
-     $nmfile = "artikel_".time(); //nama file saya beri nama langsung dan diikuti fungsi time
-     $config['upload_path'] = './assets/images/'; //path folder
-     $config['allowed_types'] = 'jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-     $config['max_size'] = '620'; //maksimum besar file 2M
-     $config['max_width']  = '3000'; //lebar maksimum 3000 px
-     $config['max_height']  = '1500'; //tinggi maksimu 1500 px
-     $config['file_name'] = $nmfile; //nama yang terupload nantinya
+    $config = $this->upload_img->set_upload($this->type); 
      $this->upload->initialize($config);
      if($_FILES['cover']['name'])
         {

@@ -154,8 +154,5 @@ class Home extends CI_Controller {
 
 	//profil contributor
 
-	public function profil(){
-
-	}
 
 }

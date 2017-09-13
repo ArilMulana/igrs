@@ -58,6 +58,9 @@ $route['login'] ='login';
 $route['logging'] = 'Login/logging';
 $route['logout'] = 'Login/logout';
 
+
+//contributor//
+
 //profil
 $route['profil/(.+)'] = 'contributor/profil/get_profil/$1';
 //artikel
@@ -65,11 +68,8 @@ $route['artikel']= 'contributor/artikel';
 $route['artikel/buatartikel'] = 'contributor/artikel/buatartikel';
 $route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
 
-//berita
-$route['berita'] = 'home/berita';
-$route['berita/(:any)'] = 'home/view_berita/view/$1';
-
 //cms artikel
+$route['cms/artikel/coba'] = 'cms/artikel/coba';
 $route['cms/artikel/delete/(:any)'] = 'cms/artikel/delete/$1';
 $route['cms/artikel/update/(:any)'] = 'cms/artikel/update/$1';
 $route['cms/artikel/create'] = 'cms/artikel/create';
@@ -79,3 +79,7 @@ $route['cms/artikel/unpin'] = 'cms/artikel/unpin/$1';
 $route['cms/artikel'] = 'cms/artikel';
 $route['cms/artikel-belum-konfirmasi'] = 'cms/artikel/validasi';
 $route['cms/artikel/(:any)'] = 'home/view_berita/$1';
+
+//berita
+$route['berita'] = 'home/berita';
+$route['berita/(:any)'] = 'home/view_berita/view/$1';

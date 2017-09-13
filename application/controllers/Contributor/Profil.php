@@ -9,9 +9,8 @@ class Profil extends CI_Controller{
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
+	    $this->load->library('whoami');
 	    $this->load->model('LoginModel');
-	    //$this->load->library('Login/isLogged');
-	    //$this->load->model('ArtikelModel');
 	    $this->_init();
 	}
 
@@ -32,33 +31,20 @@ class Profil extends CI_Controller{
 	 $this->load->js('assets/js');
 	}
 
-	function isLogged(){
-		$sesdat = $this->session->userdata('logged_in');
-		$role = $sesdat['role'];
-		if($sesdat){
-			if($role == 6){
-				return $sesdat;
-			}else{
-				show_404();
-			}
-		}else{
-			echo "";
-		}
-	}
-
-	public function get_profil($nama){
-		$sesdat = $this->session->userdata('logged_in');
-		$iden_user = $sesdat['nama_contributor'];
-		if($nama == $iden_user){
+	public function get_profil($id){
+		$this->whoami->decrypt_identity($id);
+		if($id){
 			$data =array(
 			'action'=>'',
 			'selected'=>'',
+			'sesdat'=>$this->session->userdata('logged_in'),
 			);
 		$this->output->set_title('Artikel');
 		$this->output->set_template('home');
-		$this->load->view('contributor/profil',$data);	
+		$this->load->view('contributor/profil',$data);
+
 		}else{
-			print_r($iden_user);
+			show_404();
 		}
 
 	} 
