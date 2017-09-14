@@ -39,7 +39,7 @@ class ArtikelModel extends CI_Model {
     $data = array(
       'judul' => $this->input->post('judul'),
       'isi' => $this->input->post('isi'),
-      'artikel_status' => $this->input->post('artikel_status'),
+      'artikel_status' => 1,
       'slug' => $slug
     );
 
@@ -54,7 +54,6 @@ class ArtikelModel extends CI_Model {
     $data = array(
       'judul' => $this->input->post('judul'),
       'isi' => $this->input->post('isi'),
-      'artikel_status' => $this->input->post('artikel_status'),
       'slug' => $slug
     );
 

@@ -13,7 +13,7 @@ class Admin extends CI_Controller{
     	$string = substr($string, 0, 100);
     	return $string. "...";
     }
-	}
+}
 
 	function _init(){
 		$this->load->css('assets/css/bootstrap.min.css');
@@ -64,11 +64,12 @@ class Admin extends CI_Controller{
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->js('assets/tinymce/tinymce.min.js');
 		//$this->load->css('')
+		
 		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
-		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));
-
+	
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('cms/tambah_artikel');
 			$this->output->set_template('dashboard');
@@ -84,10 +85,10 @@ class Admin extends CI_Controller{
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->js('assets/tinymce/tinymce.min.js');
 
 		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
-		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));
 
 		if($this->form_validation->run() === FALSE){
 			$data['artikel_item'] = $this->ArtikelModel->get_artikel_id($id);
@@ -109,6 +110,8 @@ class Admin extends CI_Controller{
 	public function validasi()
 	{
 		$data['artikel'] = $this->ArtikelModel->get_artikel_validasi();
+		$this->load->css('assets/css/datatables.min.css');
+		$this->load->js('assets/js/datatables.min.js');
 		$this->load->view('cms/artikel_validasi', $data);
 		$this->output->set_template('dashboard');
 	}
