@@ -6,6 +6,7 @@ class Admin extends CI_Controller{
 		parent:: __construct();
 		$this->load->helper('url');
 		$this->load->library('session');
+		$this->load->library('whoami');
 		$this->_init();
 	}
 
@@ -18,17 +19,30 @@ class Admin extends CI_Controller{
     	$this->load->js('assets/dist/js/demo.js');
 	}
 
-	function isAdmin(){
-		if($this->session->userdata('logged_in')){
-			return $this->session->userdata('logged_in');
-		}else{
-			redirect('home');
-		}
-	}
 	public function index(){
-		//$this->isAdmin();
-		$this->load->view('blank');
+		$this->whoami->isLogged();
+		$data['selected']= "";
+		$ses['sesdat'] = $this->whoami->sesdat();
+		$role = $ses['sesdat'];
 		$this->output->set_template('dashboard');
+		if($role['role'] > "6"){
+			$data = array(
+				//'sesdat'=>$this->whoami->sesdat(),
+				'nama_pemilik'=>"nama_pemilik",
+				);
+			echo "<script>alert('hy pegembang')</script>";
+			$this->load->view('blank',$data);
+		}else{
+			$data = array(
+				'sesdat'=>$ses['sesdat'],
+				'nama'=>"nama",
+				);
+			echo "<script>alert('hy cms')</script>";
+			$this->load->view('blank',$data);
+		}
+		//$this->isAdmin();
+		
+		
 
 	}
 }

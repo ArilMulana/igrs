@@ -4,6 +4,7 @@ class ArtikelModel extends CI_Model {
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('whoami');
     }
 	function create_artikel($data)
     {
@@ -122,6 +123,43 @@ class ArtikelModel extends CI_Model {
     $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
+
+  public function insert_comment(){
+    $id = $this->input->post('id_artikel');
+    $sesdat = $this->whoami->sesdat();
+    if(!isset($sesdat)){
+    $data = array(
+      'email'=>$this->input->post('email'),
+      'nama'=>$this->input->post('nama'),
+      'artikel_id'=>$id,
+      'comment_post'=>$this->input->post('komentar'),
+      );
+    }else{
+      $data = array(
+      'artikel_id'=>$id,
+      'comment_post'=>$this->input->post('komentar'),
+      );
+    }
+    //$data['artikel_id']=$id;
+    //$data['comment_post']=$this->input->post('comment');
+    $this->db->insert('ig_artikel_comment',$data);
+  }
+
+   public function get_komentar($id){
+    //$id = $this->input->post('id_artikel');
+    $this->db->select('*');
+    $this->db->from('ig_artikel_comment');
+    $this->db->where('artikel_id',$id);
+    $query = $this->db->get('');
+    $data = $query->result_array();
+    //print_r($data);
+    return $query->result_array();
+    // $query = $this->db->get_where('ig_artikel_comment', array('artikel_id' => $id));
+    // return $query->row_array();
+    // $this->db->where('artikel_id',$id);
+    // $query = $this->db->get('ig_artikel_comment');
+    // return $query->result_array();
+    }
 
 }
 ?>

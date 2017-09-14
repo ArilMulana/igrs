@@ -15,7 +15,7 @@
 
               IGRS bertujuan untuk memberikan edukasi kepada masyarakat mengenai konten game mana yang cocok sesuai dengan umur mereka dan juga karakter budaya Indonesia serta menjadi panduan untuk Penyelenggara Permainan Interaktif Elektronik / Developer Game dalam berkarya membuat Permainan Interaktif Elektronik.<br><br>
 
-              Dalam diskusi ini terkait menghasilkan bahan untuk membuat materi sosialisasi yang akan disosialisasika melalui media massa cetak/online, institusi pendidikan,serta perangkat pendukung yang perlu dibentuk untuk menjalankan IGRS seperti pembentukkan komite, prosedur dalam melakukan pengujian dan perangkat lain yang selambat-lambatnya sudah siap di akhir tahun 2016.<br><br>
+              Dalam diskusi ini terkait menghasilkan bahan untuk membuat materi sosialisasi yang akan disosialisasika melalui media massa cetak/online, institusi pendidikan,serta perangkat pendukung yang perlu dibentuk untuk menjalankan IGRS seperti pembentukkan komite, prosedur dalam melakukan pengujian dan perangkat lain yang selambat-lambatnya sudah siap di akhir tahun 2016.<brx><br>
 
               Dengan adanya Peraturan ini diharapkan Masyarakat dapat lebih bijak dalam memilih Permainan Interaktif Elektronik / game serta Peraturan ini diharapkan bisa menjadi mendia promosi industri game lokal untuk tumbuh dan bisa menguasai market game di Indonesia.(HBK)</td>
               </tr>

@@ -152,7 +152,14 @@
 										</a>
 							          <ul class="dropdown-menu">
 							            <li>
-							            	<a href="<?php echo base_url('profil/'.md5($sesdat['id_contri']));?>">Profil</a>
+							            	<a href="<?php 
+							            	if(isset($sesdat['id_contri'])){
+							           		echo base_url('profil/'.md5($sesdat['id_contri']));
+							           		}else if(isset($sesdat['id_pengembang'])){
+							           		echo base_url('profil/'.md5($sesdat['id_pengembang']));
+							           		}else{
+							           		echo base_url('profil/'.md5($sesdat['no']));
+							           		};?>">Profil</a>
 							            </li>
 							            <?php 
 						            		$role = $sesdat['role'];

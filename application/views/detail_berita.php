@@ -7,9 +7,9 @@
 				<!-- blog-box -->
 				<div class="blog-box">
 					<div class="entry-cover">
-						<a href="#"><img src="images/berita1.jpg" style="width:765px; height: 535px"></a>
-					</div>
-			
+						<!-- <a href="#"><img src="images/berita1.jpg" style="width:765px; height: 535px"></a>
+					 --></div>
+				
 					<div class="blog-content">
 						<h2 class="entry-title"><?php echo $artikel_item['judul']; ?></h2>
 						<p class="time"><i class="fa fa-clock-o"></i><?php echo $artikel_item['artikel_time']; ?></p>
@@ -47,34 +47,21 @@
 							<!-- Section Header /- -->
 							
 							<ul class="commentlist"> 
+							<?php foreach($komentar_item as $row){?>
 								<li>
 									<div class="comment">
 										<span class="comment-image">
 											<img alt="avatar image" src="images/home/home4/blog/comment-1.png" class="avatar">
 										</span>
 										<span class="comment-info d-text-c">
-											<span>10 Min ago </span>Chris Hemsworth
+											<span>10 Min ago </span><?php echo $row['nama'];?>
 										</span>
-										<p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call him Flipper Flipper faster than lightning. No one you see is smarter than he</p>
+										<p><?= $row['comment_post'];?></p>
 										<a class="comment-reply-link d-text-c" href="#"><i class="fa fa-mail-reply"></i> Reply</a>
 									</div>
-
-									<ul class="children">
-										<li>
-											<div class="comment">
-												<span class="comment-image">
-													<img alt="avatar image" src="images/home/home4/blog/comment-2.png" class="avatar">
-												</span>
-												<span class="comment-info d-text-c">
-													<span>10 Min ago </span>jEsS ben
-												</span>
-												<p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call him Flipper Flipper faster than lightning. No one you see is smarter than he</p>
-												<a class="comment-reply-link d-text-c" href="#"><i class="fa fa-mail-reply"></i> Reply</a>
-											</div>
-										</li>
-									</ul>
 								</li>
-								<li>
+								<?php }?>
+								<!-- <li>
 									<div class="comment">
 										<span class="comment-image">
 											<img alt="avatar image" src="images/home/home4/blog/comment-3.png" class="avatar">
@@ -85,39 +72,49 @@
 										<p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call him Flipper Flipper faster than lightning. No one you see is smarter than he</p>
 										<a class="comment-reply-link d-text-c" href="#"><i class="fa fa-mail-reply"></i> Reply</a>
 									</div>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 						
+							<?php 
+			      	  // $action = 'artikel/artikel/feedartikel';
+
+			      	  $attribute = array('id'=>'comment','class'=>'form-horizontal','role'=>'form');
+			      	  echo form_open($action,$attribute);?>
 						<div class="comment-form">
 							<!-- Section Header -->
 							<div class="section-header">
 								<h2>Tulis Komentar</h2>
 							</div>
 							<!-- Section Header /- -->
-							<form action="#" method="post">
+								<input type="hidden" id="id_artikel" name="id_artikel" value="<?php echo $artikel_item['id_artikel'];?>">			      	    
+						<?php if(!isset($sesdat)){?>
 								<div class="col-md-6">
 									<div class="input-group">
-										<span class="input-group-addon" id="sizing-addon1"><img src="images/icon/user.png" alt="user"></span>
-										<input type="text" class="form-control" placeholder="Nama *" aria-describedby="sizing-addon1" required />
+										<span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user"></i></span>
+										<input id="nama" name="nama" type="text" class="form-control" placeholder="Nama *" aria-describedby="sizing-addon1" required />
+
 									</div>
+									<?php echo form_error('nama');?>
 								</div>
 								<div class="col-md-6">
 									<div class="input-group">
 										<span class="input-group-addon" id="sizing-addon2"><i class="fa fa-envelope"></i></span>
-										<input type="email" class="form-control" placeholder="Email *" aria-describedby="sizing-addon2" required />
+										<input id="email" type="email" name="email" class="form-control" placeholder="Email *" aria-describedby="sizing-addon2" required />
 									</div>
+									<?php echo form_error('email');?>
 								</div>
+							<?php }?>
 								<div class="col-md-12">
 									<div class="input-group textarea-control">
 										<span class="input-group-addon" id="sizing-addon4"><i class="fa fa-pencil"></i></span>
-										<textarea class="form-control " rows="6"  placeholder="Pesan"></textarea>
+										<textarea id="komentar" name="komentar" class="form-control " required rows="6"  placeholder="Pesan"></textarea>
 									</div>
+									<?php echo form_error('komentar');?>
 								</div>
-								<a href="" type="submit" class="btn btn-default pull-right">Kirim</a>
-							</form>
+								<button class="btn btn-default pull-right" type="submit" id="send">Kirim</button>
 						</div>
-						
+						<?php echo form_close();?>
 					</div>								
 					
 				</div><!-- blog-box /- -->

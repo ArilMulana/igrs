@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 	{
 	parent::__construct();
 	$this->load->helper('url', 'form');
-    $this->load->library('form_validation','session');
+    $this->load->library(array('form_validation','session','whoami'));
     $this->load->model(array('LoginModel', 'ArtikelModel'));
 	$this->_init();
 	}
@@ -84,12 +84,15 @@ class Home extends CI_Controller {
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS - Indonesian Game Rating System');		
 		if($this->session->userdata('logged_in')){
-			if($this->session->userdata('logged_in')['role'] != NULL){
+			if($this->session->userdata('logged_in')['role'] < "6"){
 				echo "<script> alert('hy admin');</script>";
-				
+				redirect('admin');
+				//$this->load->view('home',$data);
+			}else if($this->session->userdata('logged_in')['role'] > "6"){
+				echo "<script> alert('hy pengembang');</script>";
 				$this->load->view('home',$data);
 			}else{
-				echo "<script> alert('hy pengembang');</script>";
+				echo "<script> alert('hy user')</script>";
 				$this->load->view('home',$data);
 			}
 		}else{
@@ -130,10 +133,10 @@ class Home extends CI_Controller {
 	public function view_berita($slug = NULL)
 	{
 
-		$data = 
-			array(
-				'selected'=>'',
-			);	
+		// $data = 
+		// 	array(
+		// 		'selected'=>'',
+		// 	);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
 		$this->load->css('assets/css/media.css');
@@ -149,7 +152,43 @@ class Home extends CI_Controller {
 
 	    $artikel = $this->ArtikelModel->get_artikel($slug);
 	    $data['artikel_item'] = $artikel;
+	    $id = $data['artikel_item']['id_artikel'];
+	    $komentar = $this->ArtikelModel->get_komentar($id);
+	    $data['komentar_item'] = $komentar;
+	    
+	    $data =array(
+	    	'artikel_item'=>$artikel,
+	    	'action'=>'home/comment/'.$slug,
+	    	'selected'=>'',
+	    	'komentar_item'=>$komentar,
+	    	'sesdat'=>$this->whoami->sesdat(),
+	    	);
 	    $this->load->view('detail_berita', $data);
+	}
+
+	public function comment($slug = NULL){
+
+	    $artikel = $this->ArtikelModel->get_artikel($slug);
+	    $data['artikel_item'] = $artikel;
+		$data = array(
+			'artikel_item'=>$artikel,
+			'sesdat'=>$this->whoami->sesdat(),
+			'selected'=>'',
+			'action'=>'',
+			);
+		$sesdat = $this->whoami->sesdat() ;
+		$this->output->set_template('home');
+		 if(!isset($sesdat)){
+		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		}
+		$this->form_validation->set_rules('komentar','Komentar','trim|required');
+		if($this->form_validation->run() == false){
+			$this->load->view('detail_berita',$data);
+		}else{
+			$this->ArtikelModel->insert_comment();
+			redirect('cms/artikel/'.$slug);
+		}
 	}
 
 	//profil contributor
