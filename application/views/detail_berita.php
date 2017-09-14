@@ -7,20 +7,14 @@
 				<!-- blog-box -->
 				<div class="blog-box">
 					<div class="entry-cover">
-						<a href="#"><img src="images/berita1.jpg" style="width:765px; height: 535px"></a>
+						<a href="#"><img src="<?php echo base_url('assets/images/'.$artikel_item["cover"])?>" style="width:765px; height: 535px"></a>
 					</div>
 			
 					<div class="blog-content">
 						<h2 class="entry-title"><?php echo $artikel_item['judul']; ?></h2>
 						<p class="time"><i class="fa fa-clock-o"></i><?php echo $artikel_item['artikel_time']; ?></p>
-						<p>Bogor 21 September 2016 – Direktorat Pemberdayaan Industri Informatika, Kementerian Komunikasi dan Informatika (Kominfo) bersama dengan Asosiasi Game Indonesia (AGI), Kementerian Pendidikan dan Kebudayaan, Kementerian Pemberdayaan Perempuan dan Perlindungan Anak mempersiapkan manteri edukasi beserta perangkat pendukung Peraturan Menteri Kominfo No.11 Tahun 2016 tentang Klasifikasi Permainan Interaktif Elektronik / Indonesia Game Rating System (IGRS).</p>
-						
-						<p>IGRS bertujuan untuk memberikan edukasi kepada masyarakat mengenai konten game mana yang cocok sesuai dengan umur mereka dan juga karakter budaya Indonesia serta menjadi panduan untuk Penyelenggara Permainan Interaktif Elektronik / Developer Game dalam berkarya membuat Permainan Interaktif Elektronik.</p>
-						
-						<p>Dalam diskusi ini terkait menghasilkan bahan untuk membuat materi sosialisasi yang akan disosialisasika melalui media massa cetak/online, institusi pendidikan,serta perangkat pendukung yang perlu dibentuk untuk menjalankan IGRS seperti pembentukkan komite, prosedur dalam melakukan pengujian dan perangkat lain yang selambat-lambatnya sudah siap di akhir tahun 2016.</p>
+						<?php echo $artikel_item['isi']; ?>
 
-						<p>Dengan adanya Peraturan ini diharapkan Masyarakat dapat lebih bijak dalam memilih Permainan Interaktif Elektronik / game serta Peraturan ini diharapkan bisa menjadi mendia promosi industri game lokal untuk tumbuh dan bisa menguasai market game di Indonesia.(HBK)</p>
-						
 						<div class="tags">
 							<a href="#">Kemkominfo</a>
 							<a href="#">AGI</a>
