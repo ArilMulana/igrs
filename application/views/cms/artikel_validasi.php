@@ -5,6 +5,16 @@
       <div class="box-header">
       </div>
       <div class="box-body">
+      <tbody>
+          <?php foreach ($artikel as $artikel_item) { ?>
+          <tr>
+              
+              
+              
+          </tr>
+          <?php }; ?>
+      </tbody>
+  </table>
         <table id="example2" class="table table-striped table-bordered">
           <thead>
             <tr>
@@ -14,9 +24,7 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th>Konfirmasi</th>
-              <th>Edit</th>
-              <th>Tolak</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -30,7 +38,7 @@
               <td><?php echo $artikel_item['artikel_time']; ?></td>
               <td><a href="<?php echo site_url('cms/artikel/konfirmasi/'.$artikel_item['id_artikel']); ?>">Konfirmasi</a></td>
               <td><a href="<?php echo site_url('cms/artikel/update/'.$artikel_item['id_artikel']); ?>">Edit</a></td>
-              <td><a href="<?php echo site_url('cms/artikel/delete/'.$artikel_item['id_artikel']); ?>">Tolak</a></td>
+              <td><a href="<?php echo site_url('cms/artikel/delete/'.$artikel_item['id_artikel']); ?>">Hapus</a></td>
             </tr>
             <?php }; ?>
           </tbody>
@@ -42,14 +50,3 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<script type="text/javascript">
-    $('#example2').DataTable({
-    "paging": true,
-    "lengthChange": true,
-    "searching": true,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false
-  });
-</script>

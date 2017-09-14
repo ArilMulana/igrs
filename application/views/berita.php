@@ -44,11 +44,10 @@
 			<div class="col-md-8 col-sm-6">	
 				<div class="row">	
 					<!-- col-md-4 -->
-					<?php foreach ($publish as $publish_item):?>
 					<div class="col-md-4">
 						<div class="post-box">
 							<div class="image-box">
-								<img src="<?php echo base_url('assets/images/'.$publish_item["cover"])?>" style="width:243px; height: 248px"> 
+								<img src="<?php echo base_url('assets/images/berita4.jpg')?>" style="width:243px; height: 248px"> 
 							</div>
 							<ul class="comments-social">
 								<li><a href="#"><img src="<?php echo base_url('assets/images/icon/like-icon.png')?>" alt="like" /></a></li>
@@ -64,19 +63,19 @@
 							</ul>
 							
 							<div class="post-box-inner">
-								<a href="<?php echo site_url('berita/'.$publish_item['slug']); ?>" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
+								<a href="#" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
 								<div class="box-content">
 									<span>Industri Game</span>
-									<a href="#" class="block-title"><?php echo $publish_item["judul"] ?></a>
-									<p class="time"><i class="fa fa-clock-o"></i> <?php echo $publish_item["artikel_time"] ?></p>
-									<?php echo $publish_item["isi"] ?>
+									<a href="#" class="block-title">Peta Industri Game Indonesia 2015 </a>
+									<p class="time"><i class="fa fa-clock-o"></i> 45 Min ago</p>
+									<p>Buku peta pelaku permainan interaktif elektronik Indonesia 2015 hasil kajian yang dibuat antara Kominfo, Akademisi, Praktisi dengan melibatkan beberapa pelaku ekosistem yang terdiri dari game developer, game publisher, payment gateway, telco, institusi pendidikan dan komunitas game. </p>
 									<a href="#"><i class="fa fa-heart"></i> 8</a>
 									<a href="#"><img src="images/icon/comment-icon.png" alt="comment" /> 13</a>
 								</div>
 							</div>
 						</div>
 					</div><!-- col-md-4 -->
-					<?php endforeach; ?>
+
 				</div>
 								
 			</div><!-- col-md-8 /- -->				

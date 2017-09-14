@@ -122,7 +122,6 @@ class Home extends CI_Controller {
 		$this->output->set_title('IGRS');
 
 		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
-		$data['publish'] = $this->ArtikelModel->get_artikel_publish();
 
 		$this->load->view('berita', $data);
 
