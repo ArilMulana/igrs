@@ -77,6 +77,18 @@ class ArtikelModel extends CI_Model {
 
   }
 
+  public function get_artikel_publish($slug = FALSE){
+
+    if($slug === FALSE){
+      $query = $this->db->get_where('ig_artikel', array('artikel_status' => 1));
+      return $query->result_array();
+    }
+
+    $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
+    return $query->row_array();
+
+  }
+
   public function get_artikel_pinpost($slug = FALSE){
 
     if($slug === FALSE){
