@@ -6,8 +6,7 @@
         <a href="<?php echo base_url('cms/artikel/create')?>" class="btn btn-primary btn-sm"><span class="fa fa-plus-circle"></span>Tambahkan berita</a>
       </div>
       <div class="box-body">
-  </table>
-        <table id="example2" class="table table-striped table-bordered">
+        <table  id="example1" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>Id Artikel</th>
@@ -16,7 +15,9 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th>Aksi</th>
+              <th>Pinpost</th>
+              <th>Edit</th>
+              <th>Hapus</th>
             </tr>
           </thead>
           <tbody>
@@ -46,3 +47,9 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script type="text/javascript">
+    $('#example1').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,

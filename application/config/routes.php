@@ -82,4 +82,8 @@ $route['cms/artikel/(:any)'] = 'home/view_berita/$1';
 
 //berita
 $route['berita'] = 'home/berita';
-$route['berita/(:any)'] = 'home/view_berita/view/$1';
+
+//$route['berita/(:any)'] = 'home/view_berita/view/$1';
+
+$route['berita/(:any)'] = 'home/view_berita/$1';
+

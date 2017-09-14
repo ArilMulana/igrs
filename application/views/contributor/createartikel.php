@@ -6,6 +6,7 @@
 	width: 170px;
 	height: 153px;
 }
+
 </style>
 <div  class="container">
 <?= $this->session->flashdata('pesan');?>

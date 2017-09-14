@@ -40,7 +40,7 @@ class ArtikelModel extends CI_Model {
     $data = array(
       'judul' => $this->input->post('judul'),
       'isi' => $this->input->post('isi'),
-      'artikel_status' => $this->input->post('artikel_status'),
+      'artikel_status' => 1,
       'slug' => $slug
     );
 
@@ -55,7 +55,6 @@ class ArtikelModel extends CI_Model {
     $data = array(
       'judul' => $this->input->post('judul'),
       'isi' => $this->input->post('isi'),
-      'artikel_status' => $this->input->post('artikel_status'),
       'slug' => $slug
     );
 
@@ -71,6 +70,18 @@ class ArtikelModel extends CI_Model {
 
     if($slug === FALSE){
       $query = $this->db->get_where('ig_artikel', array('artikel_status' => 0));
+      return $query->result_array();
+    }
+
+    $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
+    return $query->row_array();
+
+  }
+
+  public function get_artikel_publish($slug = FALSE){
+
+    if($slug === FALSE){
+      $query = $this->db->get_where('ig_artikel', array('artikel_status' => 1));
       return $query->result_array();
     }
 
