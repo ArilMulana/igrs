@@ -90,7 +90,6 @@ class ArtikelModel extends CI_Model {
     return $query->row_array();
 
   }
-
   public function konfirmasi_artikel($id){
     $this->load->helper('form');
 
@@ -146,7 +145,6 @@ class ArtikelModel extends CI_Model {
   }
 
    public function get_komentar($id){
-    //$id = $this->input->post('id_artikel');
     $this->db->select('*');
     $this->db->from('ig_artikel_comment');
     $this->db->where('artikel_id',$id);

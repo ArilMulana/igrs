@@ -6,7 +6,6 @@
         <a href="<?php echo base_url('cms/artikel/create')?>" class="btn btn-primary btn-sm"><span class="fa fa-plus-circle"></span>Tambahkan berita</a>
       </div>
       <div class="box-body">
-  </table>
         <table id="example2" class="table table-striped table-bordered">
           <thead>
             <tr>

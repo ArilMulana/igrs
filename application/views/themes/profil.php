@@ -191,9 +191,43 @@
 		</div><!-- menu-block /- -->
 	</header>
 	<!-- Header Section /- -->
+	<div class="jumbotron">
+	<div class="container">
+	<div class="col-md-2">
+		<div class="panel-group">
+		<div class="panel panel-default">
+			<div style="padding-top:35px;text-align: center;height: auto;" class="panel-heading">
+				<img class="img-circle" src="<?php echo base_url()?>assets/images/footer/popular-post-3.png">
+				<p><span style="font-size: 12px;" class="label label-info">Aril Mulana</span></p>
+				<br>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked" role="tablist">
+				    <li class="<?php if($selected == '1'){echo "active";}else{ echo "";}?>">
+				    	<a href="#">Profil</a>
+				    </li>
+				    <li class="<?php if($selected == '2'){echo "active";}else{ echo "";}?>">
+				    	<a href="#">Ubah Sandi</a>
+				    </li>
+				    <li class="<?php if($selected == '3'){echo "active";}else{ echo "";}?>">
+				    	<a href="#">Artikel Saya</a>
+				    </li>
+				    <li class="<?php if($selected == '4'){echo "active";}else{ echo "";}?>">
+				    	<a href="#">Komentar Terakhir</a>
+				    </li>        
+  				</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div style="padding-left:0px;" class="col-md-10">
+		<div class="panel panel-info" style="padding-top: 35px;text-align: center; background-color: #fff;	height: auto;">
+		<?php echo $output;?>
+		</div>
+	</div>
+	</div>
+</div>
 	
-	
-		<?php echo $output ?>
 	
 	<!-- Single Post -->
 	

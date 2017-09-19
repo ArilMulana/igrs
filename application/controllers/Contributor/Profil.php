@@ -3,7 +3,9 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Profil extends CI_Controller{
 	private $role = '6';
-
+	private $m_artikel = '3'; 
+	//folder
+	private $folder = 'contributor';
 	function __construct()
 	{
 		parent::__construct();
@@ -11,6 +13,7 @@ class Profil extends CI_Controller{
 	    $this->load->library('form_validation','session');
 	    $this->load->library('whoami');
 	    $this->load->model('LoginModel');
+	    $this->load->model('ArtikelModel');
 	    $this->_init();
 	}
 
@@ -40,13 +43,24 @@ class Profil extends CI_Controller{
 			'sesdat'=>$this->session->userdata('logged_in'),
 			);
 		$this->output->set_title('Artikel');
-		$this->output->set_template('home');
-		$this->load->view('contributor/profil',$data);
+		$this->output->set_template('profil');
+		$this->load->view('contributor/edit_profil',$data);
 
 		}else{
 			show_404();
 		}
 
+	}
+
+	public function my_artikel(){
+		$data = array(
+			'selected'=>$this->m_artikel,
+			'data'
+			);
+		//$this->whoami->decrypt_identity($id);
+		$this->output->set_title('Artikel Saya');
+		$this->output->set_template('profil');
+		$this->load->view($this->folder.'/'.'my_artikel',$data);
 	} 
 
 

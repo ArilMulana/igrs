@@ -5,16 +5,6 @@
       <div class="box-header">
       </div>
       <div class="box-body">
-      <tbody>
-          <?php foreach ($artikel as $artikel_item) { ?>
-          <tr>
-              
-              
-              
-          </tr>
-          <?php }; ?>
-      </tbody>
-  </table>
         <table id="example2" class="table table-striped table-bordered">
           <thead>
             <tr>
@@ -38,7 +28,7 @@
               <td><?php echo $artikel_item['artikel_time']; ?></td>
               <td><a href="<?php echo site_url('cms/artikel/konfirmasi/'.$artikel_item['id_artikel']); ?>">Konfirmasi</a></td>
               <td><a href="<?php echo site_url('cms/artikel/update/'.$artikel_item['id_artikel']); ?>">Edit</a></td>
-              <td><a href="<?php echo site_url('cms/artikel/delete/'.$artikel_item['id_artikel']); ?>">Hapus</a></td>
+              <td><a href="<?php echo site_url('cms/artikel/delete/'.$artikel_item['id_artikel']); ?>">Tolak</a></td>
             </tr>
             <?php }; ?>
           </tbody>

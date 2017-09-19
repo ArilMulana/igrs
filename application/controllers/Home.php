@@ -86,7 +86,7 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] < "6"){
 				echo "<script> alert('hy admin');</script>";
-				redirect('admin');
+				redirect('cms/artikel');
 				//$this->load->view('home',$data);
 			}else if($this->session->userdata('logged_in')['role'] > "6"){
 				echo "<script> alert('hy pengembang');</script>";
@@ -122,7 +122,7 @@ class Home extends CI_Controller {
 		$this->output->set_title('IGRS');
 
 		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
-
+		print_r($data['artikel']);
 		$this->load->view('berita', $data);
 
 		//die(print_r($data1));
@@ -187,7 +187,7 @@ class Home extends CI_Controller {
 			$this->load->view('detail_berita',$data);
 		}else{
 			$this->ArtikelModel->insert_comment();
-			redirect('cms/artikel/'.$slug);
+			redirect('home/view_berita/'.$slug);
 		}
 	}
 
