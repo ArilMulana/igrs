@@ -69,7 +69,8 @@ class Home extends CI_Controller {
 	{
 		$data = 
 			array(
-				'selected'=>'',
+				'selected'=>array('parent'=>'','child'=>''),
+				'sesdat'=>$this->whoami->sesdat(),
 			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
@@ -86,8 +87,8 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] < "6"){
 				echo "<script> alert('hy admin');</script>";
-				redirect('cms/artikel');
-				//$this->load->view('home',$data);
+				//redirect('cms/artikel');
+				$this->load->view('home',$data);
 			}else if($this->session->userdata('logged_in')['role'] > "6"){
 				echo "<script> alert('hy pengembang');</script>";
 				$this->load->view('home',$data);
@@ -106,7 +107,7 @@ class Home extends CI_Controller {
 	{
 		$data = 
 			array(
-				'selected'=>'',
+				'selected'=>array('parent'=>'','child'=>'',),
 			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
@@ -159,7 +160,7 @@ class Home extends CI_Controller {
 	    $data =array(
 	    	'artikel_item'=>$artikel,
 	    	'action'=>'home/comment/'.$slug,
-	    	'selected'=>'',
+	    	'selected'=>array('parent'=>'',),
 	    	'komentar_item'=>$komentar,
 	    	'sesdat'=>$this->whoami->sesdat(),
 	    	);

@@ -130,7 +130,7 @@ class Login extends CI_Controller {
 			if($this->form_validation->run() == false)
 			{
 				$data = array(
-					'selected'=>'',
+					'selected'=>array('parent'=>'','child'=>''),
 					);
 		
 				$this->output->set_template('home');
@@ -152,7 +152,7 @@ class Login extends CI_Controller {
 				redirect('home');
 			}else{
 				$data = array(
-					'selected'=>$this->a_login,
+					'selected'=>array('parent'=>$this->a_login,'child'=>'',),
 					);
 				$this->output->set_title('Login');
 				$this->output->set_template('home');

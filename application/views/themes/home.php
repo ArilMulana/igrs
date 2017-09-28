@@ -113,7 +113,7 @@
 										<a class="nav-brand"><i class="fa fa-home"></i>
 										</a>
 									</li>
-									<li><a href="<?php echo base_url()?>home/berita">Berita</a></li>
+									<li><a href="<?php echo base_url()?>berita">Berita</a></li>
 									<li><a href="#">Direktori</a></li>
 									<li><a href="#">Pengaduan</a></li>
 									<li><a href="#">Pertanyaan Umum</a></li>
@@ -123,15 +123,14 @@
 									<?php 
 									$sesdat = $this->session->userdata('logged_in');
 									if($this->session->userdata('logged_in') == NULL){?>
-									<li class="<?php if($selected == 2){
+									<li class="<?php if($selected['parent'] == 2){
 										echo "active";
 										}?>">
 
 										<a href="<?php echo base_url('login');?>"><span class="glyphicon glyphicon">Login</span></a>
 									</li>
 									<?php }else{?>
-									
-									<li class="<?php if($selected == 1){
+									<li class="<?php if($selected['parent'] == 1){
 										echo "active";
 										}?>">
 										<a class="" href="<?php echo base_url()?>artikel/buatartikel">
@@ -151,16 +150,18 @@
 							         	 	<span class="caret"></span>
 										</a>
 							          <ul class="dropdown-menu">
+							          <?php if($this->session->userdata('logged_in')){?>
 							            <li>
 							            	<a href="<?php 
-							            	if(isset($sesdat['id_contri'])){
+							            	if($sesdat['role'] == "6"){
 							           		echo base_url('profil/'.md5($sesdat['id_contri']));
-							           		}else if(isset($sesdat['id_pengembang'])){
-							           		echo base_url('profil/'.md5($sesdat['id_pengembang']));
+							           		}else if($sesdat['role'] == "7"){
+							           		echo base_url('profil/'.md5($sesdat['id']));
 							           		}else{
 							           		echo base_url('profil/'.md5($sesdat['no']));
 							           		};?>">Profil</a>
 							            </li>
+							            <?php }?>
 							            <?php 
 						            		$role = $sesdat['role'];
 						            		$admin = 5;

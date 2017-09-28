@@ -4,14 +4,22 @@
 */
 class Artikel extends CI_Controller
 {
-	private $artikel = 1;
-
+	private $role = '6';
+	//parent
+	private $artikel = '1';
+	//child
+	private $m_profil = '1';
+	private $m_ubah_pass = '2';
+	private $m_artikel = '3'; 
+	private $m_comment = '4';
+	private $folder = 'contributor';
+	//var $sesdat;
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
-	    $this->load->library('upload_img');
+	    $this->load->library(array('upload_img','whoami'));
 	    $this->load->model('LoginModel');
 	    $this->load->model('ArtikelModel');
 	    $this->load->model('UploadModel');
@@ -36,21 +44,36 @@ class Artikel extends CI_Controller
 	 $this->load->js('assets/js');
 	}
 
-	function isLogged(){
-		if($this->session->userdata('logged_in')){
-			return true;
-		}else{
-			return false;
-		}
-	}
+	// function isLogged(){
+	// 	if($this->session->userdata('logged_in')){
+	// 		return true;
+	// 	}else{
+	// 		return false;
+	// 	}
+	// }
 
+	public function my_artikel(){
+		$data = $this->whoami->get_role_id();
+		if($data['my_role'] == '6'){
+				$data = array(
+				'selected'=>array('parent'=>'','child'=>$this->m_artikel),
+				'get_artikel'=>$this->ArtikelModel->my_artikel($data['id'],$data['my_role']),
+				);
+		//$this->whoami->decrypt_identity($id);
+			$this->output->set_title('Artikel Saya');
+			$this->output->set_template('profil');
+			$this->load->view($this->folder.'/'.'my_artikel',$data);
+			}else{
+				show_404();
+			}
+	} 
 
 	function buatartikel(){
 		$this->load->js('assets/tinymce/tinymce.min.js');
 		$this->output->set_title('Artikel Baru');
-		if($this->isLogged()){
+		if($this->whoami->isLogged()){
 			$data = array(
-				'selected'=>$this->artikel,
+				'selected'=>array('parent'=>$this->artikel,'child'=>'',),
 				'action'=>"contributor/artikel/upload",
 				);
 			$this->load->view('contributor/createartikel',$data);
@@ -61,9 +84,21 @@ class Artikel extends CI_Controller
 		}	
 	}
 
-	function feedartikel(){
-		
-
+	function edit_artikel($id_artikel){
+		$sesdat = $this->whoami->isLogged();
+		$identity = $this->whoami->get_role_id($sesdat);
+		$data = array(
+			'action'=>'',
+			'id_user'=>'',
+			'id_artikel'=>'',
+			'selected'=>array('parent'=>'','child'=>''),
+			//'artikel_slug'=>$slug,
+			'get'=>$this->ArtikelModel->data_artikel($id_artikel,$identity),
+		);
+		$this->load->js('assets/tinymce/tinymce.min.js');
+		$this->output->set_title('Edit Artikel | '.$data['get']['slug']	);
+		$this->output->set_template('home');
+		$this->load->view($this->folder.'/createartikel',$data);
 	}
 
 	private function resizeImage($befImage){

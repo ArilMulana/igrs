@@ -65,8 +65,10 @@ $route['logout'] = 'Login/logout';
 $route['profil/(.+)'] = 'contributor/profil/get_profil/$1';
 //artikel
 $route['artikel']= 'contributor/artikel';
-$route['artikel/buatartikel'] = 'contributor/artikel/buatartikel';
-$route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
+$route['artikel/buatartikel'] = 'contributor/artikel/buatartikel'; // create_artikel
+$route['my_artikel'] = 'contributor/artikel/my_artikel'; // read_artikel
+$route['my_artikel/edit/(:any)'] = 'contributor/artikel/edit_artikel/$1';
+//$route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
 
 //cms artikel
 $route['cms/artikel/coba'] = 'cms/artikel/coba';

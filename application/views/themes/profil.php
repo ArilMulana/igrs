@@ -123,7 +123,7 @@
 									<?php 
 									$sesdat = $this->session->userdata('logged_in');
 									if($this->session->userdata('logged_in') == NULL){?>
-									<li class="<?php if($selected == 2){
+									<li class="<?php if($selected['parent'] == 2){
 										echo "active";
 										}?>">
 
@@ -131,7 +131,7 @@
 									</li>
 									<?php }else{?>
 									
-									<li class="<?php if($selected == 1){
+									<li class="<?php if($selected['parent'] == 1){
 										echo "active";
 										}?>">
 										<a class="" href="<?php echo base_url()?>artikel/buatartikel">
@@ -151,16 +151,18 @@
 							         	 	<span class="caret"></span>
 										</a>
 							          <ul class="dropdown-menu">
+							           <?php if($this->session->userdata('logged_in')){?>
 							            <li>
 							            	<a href="<?php 
-							            	if(isset($sesdat['id_contri'])){
+							            	if($sesdat['role'] == "6"){
 							           		echo base_url('profil/'.md5($sesdat['id_contri']));
-							           		}else if(isset($sesdat['id_pengembang'])){
-							           		echo base_url('profil/'.md5($sesdat['id_pengembang']));
+							           		}else if($sesdat['role'] == "7"){
+							           		echo base_url('profil/'.md5($sesdat['id']));
 							           		}else{
 							           		echo base_url('profil/'.md5($sesdat['no']));
 							           		};?>">Profil</a>
 							            </li>
+							            <?php }?>
 							            <?php 
 						            		$role = $sesdat['role'];
 						            		$admin = 5;
@@ -203,16 +205,25 @@
 			</div>
 			<div class="panel-body">
 				<ul class="nav nav-pills nav-stacked" role="tablist">
-				    <li class="<?php if($selected == '1'){echo "active";}else{ echo "";}?>">
-				    	<a href="#">Profil</a>
+				    <li class="<?php if($selected['child'] == '1'){echo "active";}else{ echo "";}?>">
+				    	<a href="<?php 
+				            	if($sesdat['role'] == "6"){
+				           		echo base_url('profil/'.md5($sesdat['id_contri']));
+				           		}else if($sesdat['role'] == "7"){
+				           		echo base_url('profil/'.md5($sesdat['id']));
+				           		}else{
+				           		echo base_url('profil/'.md5($sesdat['no']));
+				           		};?>">Profil</a>
 				    </li>
-				    <li class="<?php if($selected == '2'){echo "active";}else{ echo "";}?>">
+				    <li class="<?php if($selected['child'] == '2'){echo "active";}else{ echo "";}?>">
 				    	<a href="#">Ubah Sandi</a>
 				    </li>
-				    <li class="<?php if($selected == '3'){echo "active";}else{ echo "";}?>">
-				    	<a href="#">Artikel Saya</a>
+				    <?php if($sesdat['role'] != "7"){?>
+				    <li class="<?php if($selected['child'] == '3'){echo "active";}else{ echo "";}?>">
+				    	<a href="<?php echo base_url('my_artikel')?>">Artikel Saya</a>
 				    </li>
-				    <li class="<?php if($selected == '4'){echo "active";}else{ echo "";}?>">
+				    <?php }?>
+				    <li class="<?php if($selected['child'] == '4'){echo "active";}else{ echo "";}?>">
 				    	<a href="#">Komentar Terakhir</a>
 				    </li>        
   				</ul>
