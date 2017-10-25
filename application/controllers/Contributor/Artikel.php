@@ -77,7 +77,7 @@ class Artikel extends CI_Controller
 
 		$this->image_lib->resize($config);
 	}
-
+ 
 	public function upload(){
 		
 	//$this->load->library('upload');

@@ -4,7 +4,7 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 class Admin extends CI_Controller{
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('ArtikelModel');
+		$this->load->model(array('ArtikelModel', 'LoginModel'));
 		$this->load->helper(array('url_helper', 'form', 'url'));
 		$this->load->library(array('pagination','form_validation', 'session'));
 		$this->_init();
@@ -64,8 +64,6 @@ class Admin extends CI_Controller{
 	public function create(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->js('assets/tinymce/tinymce.min.js');
-		//$this->load->css('')
 		
 		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
 		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
@@ -78,7 +76,6 @@ class Admin extends CI_Controller{
 			$this->ArtikelModel->set_artikel();
       		redirect('cms/artikel');
 		}
-
 	}
 
 	public function update($id){

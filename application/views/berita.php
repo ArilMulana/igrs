@@ -27,7 +27,7 @@
 								<a href="<?php echo site_url('berita/'.$artikel_item['slug']); ?>" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
 								<div class="box-content">
 									<a href="#" class="block-title"><?php echo $artikel_item["judul"] ?></a>
-									<p class="time"><i class="fa fa-clock-o"></i> <?php echo $artikel_item["artikel_time"] ?></p>
+									<p class="time"><i class="fa fa-clock-o"></i> <?php echo substr($artikel_item["artikel_time"], 0, 10) ?></p>
 									<?php echo $artikel_item["isi"] ?>
 									<a href="#"><i class="fa fa-heart"></i> 8</a>
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/comment-icon.png')?>" alt="comment" /> 13</a>
@@ -68,7 +68,7 @@
 								<div class="box-content">
 									<span>Industri Game</span>
 									<a href="#" class="block-title"><?php echo $publish_item["judul"] ?></a>
-									<p class="time"><i class="fa fa-clock-o"></i> <?php echo $publish_item["artikel_time"] ?></p>
+									<p class="time"><i class="fa fa-clock-o"></i> <?php echo substr($publish_item["artikel_time"], 0, 10) ?></p>
 									<?php echo $publish_item["isi"] ?>
 									<a href="#"><i class="fa fa-heart"></i> 8</a>
 									<a href="#"><img src="images/icon/comment-icon.png" alt="comment" /> 13</a>
@@ -113,44 +113,22 @@
 				<aside class="widget widget_latest_post">
 					<h3 class="widget-title">latest Post</h3>
 					<div class="widget-inner">
+						<?php foreach (array_slice($latestpost, 0, 3) as $latestpost_item):?>
 						<ul class="post">
 							<li>
 								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="images/widget/widget-post-1.jpg" alt="popular-post" /></a>
+									<a href="#"><img src="<?php echo base_url('assets/images/'.$latestpost_item["cover"])?>" alt="popular-post" /></a>
 								</div>
 								<div class="col-md-7 col-sm-7 col-xs-8">
-									<a href="#" class="post-title">where you can see our  of troubles are all </a>
+									<a href="<?php echo site_url('berita/'.$latestpost_item['slug']); ?>" class="post-title"><?php echo $latestpost_item["judul"] ?> </a>
 									<p>
 										<a href="#"><i class="fa fa-heart"></i> 33</a> 
-										<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
+										<span><i class="fa fa-clock-o"></i> <?php echo substr($latestpost_item["artikel_time"], 0, 10) ?></span>
 									</p>
 								</div>
-							</li>
-							<li>
-								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="images/widget/widget-post-2.jpg" alt="popular-post" /></a>
-								</div>
-								<div class="col-md-7 col-sm-7 col-xs-8">
-									<a href="#" class="post-title">crew the Minnow would be lost the Minnow</a>
-									<p>
-										<a href="#"><i class="fa fa-heart"></i> 30</a> 
-										<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="col-md-5 col-sm-5 col-xs-4">
-									<a href="#"><img src="images/widget/widget-post-3.jpg" alt="popular-post" /></a>
-								</div>
-								<div class="col-md-7 col-sm-7 col-xs-8">
-									<a href="#" class="post-title">Come and listen to a story about Jed</a>
-									<p>
-										<a href="#"><i class="fa fa-heart"></i> 25</a> 
-										<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-									</p>
-								</div>
-							</li>
+							</li>							
 						</ul>
+						<?php endforeach; ?>
 					</div>
 				</aside><!-- Latest Post /- -->
 			</div><!-- col-md-4 /- -->

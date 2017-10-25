@@ -120,6 +120,7 @@ class Home extends CI_Controller {
 
 		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
 		$data['publish'] = $this->ArtikelModel->get_artikel_publish();
+		$data['latestpost'] = $this->ArtikelModel->get_artikel_latest();
 
 		$this->load->view('berita', $data);
 
@@ -150,7 +151,7 @@ class Home extends CI_Controller {
 
 	    $artikel = $this->ArtikelModel->get_artikel($slug);
 	    $data['artikel_item'] = $artikel;
-	    $this->load->view('detail_berita', $data);
+    	$this->load->view('detail_berita', $data);
 	}
 
 	//profil contributor
