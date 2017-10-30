@@ -5,8 +5,8 @@ class UploadModel extends CI_Model {
     {
         parent::__construct();
         $this->load->library('form_validation','session');
-        $this->load->library('upload');
-        $this->load->library('whoami');
+        $this->load->library('Upload_img');
+        $this->load->library('Whoami');
         $this->_init();
     }
 
@@ -14,9 +14,9 @@ class UploadModel extends CI_Model {
 
     }
 
-    function upload_data(){
-        $role != "7";
-        $images = $this->upload->data();
+    function upload_artikel_img(){
+        //$role != "7";
+        $images = $this->Upload_img->data();
         $data = array(
                     'cover'=>$images['file_name'],
                     'judul'=>$this->input->post('judul'),
@@ -25,8 +25,18 @@ class UploadModel extends CI_Model {
                     'artikel_status'=>0, //no publish
         );
         //if() beloman
+         if($this->session->userdata('logged_in')['role'] == "6"){
+            $data['artikel_contributor'] = $this->session->userdata('logged_in')['id_contri'];
+          }else{
+            $data['artikel_admin'] = $this->session->userdata('logged_in')['id'];
+          }
 
+        return $data;
     }
+
+    // function upload_profil_img(){
+
+    // }
 
 }
 ?>

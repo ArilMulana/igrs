@@ -1,11 +1,3 @@
-<?php 
-
-	if(!$artikel_item['slug']){
-	   redirect('berita');
-	}
-
- ?>
-
 <!-- Container -->
 <div class="container">
 	<div class="row">

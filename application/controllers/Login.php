@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 			if($result){
 				$sess_array = array();
 				foreach ($result as $row) {
-					echo $row->role;
+					//echo $row->role;
 					if($row->role < "6" ){
 						$sess_array = array(
 							'no'=> $row->no,
@@ -104,7 +104,9 @@ class Login extends CI_Controller {
 							'email'=>$row->email,
 							'password'=>$row->password,
 							'nama_contributor'=>$row->nama_contributor,
+							'foto_profil'=>$row->foto_profil,
 							'tgl_lahir'=>$row->tgl_lahir,
+							'alamat'=>$row->alamat,
 							'waktu_daftar'=>$row->waktu_daftar,
 							'konfirmasi'=>$row->konfirmasi,
 							'waktu_exp_aktivasi'=>$row->waktu_exp_aktivasi,
@@ -130,7 +132,7 @@ class Login extends CI_Controller {
 			if($this->form_validation->run() == false)
 			{
 				$data = array(
-					'selected'=>'',
+					'selected'=>array('parent'=>'','child'=>''),
 					);
 		
 				$this->output->set_template('home');
@@ -152,7 +154,7 @@ class Login extends CI_Controller {
 				redirect('home');
 			}else{
 				$data = array(
-					'selected'=>$this->a_login,
+					'selected'=>array('parent'=>$this->a_login,'child'=>'',),
 					);
 				$this->output->set_title('Login');
 				$this->output->set_template('home');

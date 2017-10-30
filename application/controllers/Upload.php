@@ -2,16 +2,9 @@
 /**
 * 
 */
-class Artikel extends CI_Controller
+class Upload extends CI_Controller
 {
-	private $role = '6';
-	//parent
-	private $artikel = '1';
-	//child
-	private $m_profil = '1';
-	private $m_ubah_pass = '2';
-	private $m_artikel = '3'; 
-	private $m_comment = '4';
+	
 	private $folder = 'contributor';
 	//var $sesdat;
 	function __construct()
@@ -19,9 +12,9 @@ class Artikel extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
-	    $this->load->library(array('upload_img','whoami'));
+	    $this->load->library(array('Upload_img','Whoami'));
 	    $this->load->model('LoginModel');
-	    $this->load->model('ArtikelModel');
+	    $this->load->model('UserModel');
 	    $this->load->model('UploadModel');
 	    $this->_init();
 
@@ -54,7 +47,6 @@ class Artikel extends CI_Controller
 
 	public function my_artikel(){
 		$data = $this->whoami->get_role_id();
-		print_r($this->ArtikelModel->artikel_saya());
 		if($data['my_role'] == '6'){
 				$data = array(
 				'selected'=>array('parent'=>'','child'=>$this->m_artikel),
@@ -125,20 +117,21 @@ class Artikel extends CI_Controller
         {
             if ($this->upload->do_upload('cover'))
             {
-                $images = $this->upload->data();
-                $data = array(
-                    'cover'=>$images['file_name'],
-        			'judul'=>$this->input->post('judul'),
-			        'slug'=>url_title(strtolower($this->input->post('judul'))),
-			        'isi'=>$this->input->post('isi'),
-			        'kategori_artikel'=>$this->input->post('cat'),
-			        'artikel_status'=>0, //no publish
-                  );
-                  if($this->session->userdata('logged_in')['role'] == "6"){
-                  	$data['artikel_contributor'] = $this->session->userdata('logged_in')['id_contri'];
-                  }else{
-                  	$data['artikel_admin'] = $this->session->userdata('logged_in')['id'];
-                  }
+            	$get = $this->UploadModel->upload_data();
+           //      $images = $this->upload->data();
+           //      $data = array(
+           //          'cover'=>$images['file_name'],
+        			// 'judul'=>$this->input->post('judul'),
+			        // 'slug'=>url_title(strtolower($this->input->post('judul'))),
+			        // 'isi'=>$this->input->post('isi'),
+			        // 'kategori_artikel'=>$this->input->post('cat'),
+			        // 'artikel_status'=>0, //no publish
+           //        );
+           //        if($this->session->userdata('logged_in')['role'] == "6"){
+           //        	$data['artikel_contributor'] = $this->session->userdata('logged_in')['id_contri'];
+           //        }else{
+           //        	$data['artikel_admin'] = $this->session->userdata('logged_in')['id'];
+           //        }
                 $this->load->js('assets/tinymce/tinymce.min.js');
 				$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
 				$this->form_validation->set_rules('isi', 'Isi', 'trim|required');
@@ -148,7 +141,7 @@ class Artikel extends CI_Controller
                 		redirect('artikel/buatartikel','refresh');
 					}else
 					{
-						 $this->ArtikelModel->create_artikel($data);
+						 $this->ArtikelModel->create_artikel($get);
                			 $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Data Berhasil Di Save !!</div></div>");
                			 redirect('artikel/buatartikel','refresh'); //jika berhasil maka akan ditampilkan view vupload
                		}

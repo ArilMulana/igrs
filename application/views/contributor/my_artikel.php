@@ -7,9 +7,9 @@
               <div class="row">
               <div class="col-md-3"> 
                 <select class="form-control">
-                  <option>Waiting for Verification</option>
-                  <option>Publish</option>
-                  <option>Not Publish</option>
+                  <option value="1">Waiting for Verification</option>
+                  <option value="2">Publish</option>
+                  <option value="3">Not Publish</option>
                 </select>
               </div>
               <div class="col-md-2 col-md-offset-7">
@@ -31,42 +31,34 @@
                   <th style="text-align: left;width: 5%;">No</th>
                   <th style="text-align: left;width: 15%;">Judul</th>
                   <th style="text-align: left;width: 35%;">Isi</th>
-                  <th style="text-align: center;width: 15%;">Komentar</th>
                   <th style="text-align: center;width: 15%;">Status</th>
+                  <th style="text-align: center;width: 15%;">Komentar</th>
                   <th style="text-align: center;width: 15%;">Action</th>
                 </tr>
+                <?php 
+                  $no = 1;
+                  //echo print_r($get_artikel);
+                foreach($get_artikel as $my_artikel){?>
                 <tr>
-                  <td style="text-align: left;">1</td>
-                  <td style="text-align: left;">Nana</td>
-                  <td style="text-align: left;">Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td>11</td>
-                  <td><span class="label label-success">Approved</span></td>
+                  <td style="text-align: left;"><?php echo $no++ ;?></td>
+                  <td style="text-align: left;"><?php echo $my_artikel['judul'];?></td>
+                  <td style="text-align: left;"><?php echo substr(strip_tags($my_artikel['isi']),0,20)."...";?></td>
                   <td>
-                    <a class="btn btn-info"><span class="fa fa-edit"></span></a>
+                    <?php if($my_artikel['artikel_status'] == "2"){?>
+                    <span class="label label-success">Approved</span>
+                    <?php }else if($my_artikel['artikel_status'] == "1"){?>
+                    <span class="label label-warning">Wait</span>
+                    <?php }else{?>
+                    <span class="label label-danger">Ditolak</span>
+                    <?php }?>
+                  </td>
+                  <td><a class="btn btn-info" href="#"><span class="fa fa-comment"></span><?php echo $my_artikel['total_comment'];?></a></td>
+                  <td>
+                    <a href="<?php echo base_url("my_artikel/edit".'/'.$my_artikel['artikel_id']);?>" class="btn btn-info"><span class="fa fa-edit"></span></a>
                     <a class="btn btn-danger"><span class="fa fa-close"></span></a>
                   </td>
                 </tr>
-                <!-- <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr> -->
+                <?php }?>
               </table>
             </div>
             <!-- /.box-body -->
@@ -75,3 +67,7 @@
         </div>
       </div>
 </div>
+
+<script type="text/javascript">
+  
+</script>

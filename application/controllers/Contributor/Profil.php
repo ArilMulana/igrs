@@ -3,7 +3,10 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Profil extends CI_Controller{
 	private $role = '6';
+	private $m_profil = '1';
+	private $m_ubah_pass = '2';
 	private $m_artikel = '3'; 
+	private $m_comment = '4';
 	//folder
 	private $folder = 'contributor';
 	function __construct()
@@ -11,7 +14,9 @@ class Profil extends CI_Controller{
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
-	    $this->load->library('whoami');
+	    $this->load->library(array('Whoami'));
+	    $this->load->library('encryption');
+	    //$this->load->driver('cache',array('adapter'=>'apc','backup'=>'file'));
 	    $this->load->model('LoginModel');
 	    $this->load->model('ArtikelModel');
 	    $this->_init();
@@ -35,34 +40,69 @@ class Profil extends CI_Controller{
 	}
 
 	public function get_profil($id){
-		$this->whoami->decrypt_identity($id);
+		$this->load->css('assets/test/jquery.datetimepicker.css');
+		$sess = $this->whoami->decrypt_identity($id);
 		if($id){
 			$data =array(
-			'action'=>'',
-			'selected'=>'',
-			'sesdat'=>$this->session->userdata('logged_in'),
+			//'id_user'=>$sess['id_real'],
+			'action'=>'contributor/profil/updateprofil',
+			'selected'=>array('parent'=>'','child'=>$this->m_profil),
+			'sesdat'=>$this->whoami->sesdat(),
+			//'role'=>$this->whoami->role_me($get_profil),
 			);
-		$this->output->set_title('Artikel');
+		$this->output->set_title('My Profil');
 		$this->output->set_template('profil');
-		$this->load->view('contributor/edit_profil',$data);
-
+			if($sess['role'] == "6"){
+				$this->load->view($this->folder.'/edit_profil',$data);	
+			}else{ // if( <= 5 // admin redirect profil admin ) / if(==7 developper redirect profil developper)
+				$this->load->view('blank',$data);
+			}		
 		}else{
 			show_404();
 		}
-
 	}
 
-	public function my_artikel(){
-		$data = array(
-			'selected'=>$this->m_artikel,
-			'data'
-			);
-		//$this->whoami->decrypt_identity($id);
-		$this->output->set_title('Artikel Saya');
-		$this->output->set_template('profil');
-		$this->load->view($this->folder.'/'.'my_artikel',$data);
-	} 
+	public function updateprofil(){
+		//redirect('home');
+		$type = "my_foto";
+	//$this->load->library('upload');
+    $this->output->set_title('Update Profil');
+    $this->output->set_template('profil'); 
+    $config = $this->upload_img->set_upload($type); 
+     $this->upload->initialize($config);
+     if($_FILES['img_profil']['name'])
+        {
+            if ($this->upload->do_upload('img_profil'))
+            {
+                $images = $this->upload->data();
+                $data = array(
+                    'foto_profil'=>$images['file_name'],
+        			'tgl_lahir'=>$this->input->post('date'),
+			        'alamat'=>$this->input->post('address'),
+                  );
+                $this->load->js('assets/tinymce/tinymce.min.js');
+				$this->form_validation->set_rules('date', 'Tanggal Lahir', 'trim|required');
+				$this->form_validation->set_rules('address', 'Alamat', 'trim|required');
+	   			if($this->form_validation->run() == false)
+					{
+						$this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data sessiom !!</div></div>");
+                		redirect('profil/'.md5($this->session->userdata('logged_in')['id_contri']),'refresh');
+					}else
+					{
+						 $this->UserModel->edit_profil($data);
+						 //$this->session->unset_userdata($this->session->userdata('logged_in')['id_contri']);
+               			 $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Data Berhasil Di Save !!</div></div>");
+               			 redirect('profil/'.md5($this->session->userdata('logged_in')['id_contri']),'refresh'); //jika berhasil maka akan ditampilkan view vupload
+               		}
+            }else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data do upload ga kebaca!!</div></div>");
+                redirect('profil/'.md5($this->session->userdata('logged_in')['id_contri']),'refresh'); //jika gagal maka akan ditampilkan form upload
+                //echo "<script>alert('gagal')</script>";
+            }
+        }
+		
+	}
+	}
 
-
-}
 ?>

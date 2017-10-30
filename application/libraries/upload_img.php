@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
  
-class upload_img {
+class Upload_img {
 	var $ci;
 
 	function __construct()
@@ -12,7 +12,7 @@ class upload_img {
 
 	public function set_upload($type){
 	 $nmfile = $type."_".time(); //nama file saya beri nama langsung dan diikuti fungsi time
-     $config['upload_path'] = './assets/images/'; //path folder
+     $config['upload_path'] = './assets/images/'.$type; //path folder
      $config['allowed_types'] = 'jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
      $config['max_size'] = '620'; //maksimum besar file 2M
      $config['max_width']  = '3000'; //lebar maksimum 3000 px

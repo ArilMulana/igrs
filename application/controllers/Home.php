@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 	{
 	parent::__construct();
 	$this->load->helper('url', 'form');
-    $this->load->library(array('form_validation','session','whoami'));
+    $this->load->library(array('form_validation','session','Whoami'));
     $this->load->model(array('LoginModel', 'ArtikelModel'));
 	$this->_init();
 	}
@@ -69,7 +69,8 @@ class Home extends CI_Controller {
 	{
 		$data = 
 			array(
-				'selected'=>'',
+				'selected'=>array('parent'=>'','child'=>''),
+				'sesdat'=>$this->whoami->sesdat(),
 			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
@@ -86,8 +87,8 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] < "6"){
 				echo "<script> alert('hy admin');</script>";
-				redirect('cms/artikel');
-				//$this->load->view('home',$data);
+				//redirect('cms/artikel');
+				$this->load->view('home',$data);
 			}else if($this->session->userdata('logged_in')['role'] > "6"){
 				echo "<script> alert('hy pengembang');</script>";
 				$this->load->view('home',$data);
@@ -101,15 +102,12 @@ class Home extends CI_Controller {
 		
 		// $this->load->view('home');
 	}
-
+	
 	public function berita()
 	{
 		$data = 
 			array(
-				'selected'=>'',
-				'artikel'=>$this->ArtikelModel->get_artikel_pinpost(),
-				'publish'=>$this->ArtikelModel->get_artikel_publish(),
-				'latestpost'=>$this->ArtikelModel->get_artikel_latest(),
+				'selected'=>array('parent'=>'','child'=>'',),
 			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
@@ -123,6 +121,9 @@ class Home extends CI_Controller {
 		$this->load->js('assets/libraries/jquery.marquee.js');
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS');
+
+		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
+		print_r($data['artikel']);
 		$this->load->view('berita', $data);
 
 		//die(print_r($data1));
@@ -155,10 +156,11 @@ class Home extends CI_Controller {
 	    $id = $data['artikel_item']['id_artikel'];
 	    $komentar = $this->ArtikelModel->get_komentar($id);
 	    $data['komentar_item'] = $komentar;
+	    
 	    $data =array(
 	    	'artikel_item'=>$artikel,
 	    	'action'=>'home/comment/'.$slug,
-	    	'selected'=>'',
+	    	'selected'=>array('parent'=>'',),
 	    	'komentar_item'=>$komentar,
 	    	'sesdat'=>$this->whoami->sesdat(),
 	    	);

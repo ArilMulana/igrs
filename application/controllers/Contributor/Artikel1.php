@@ -54,7 +54,6 @@ class Artikel extends CI_Controller
 
 	public function my_artikel(){
 		$data = $this->whoami->get_role_id();
-		print_r($this->ArtikelModel->artikel_saya());
 		if($data['my_role'] == '6'){
 				$data = array(
 				'selected'=>array('parent'=>'','child'=>$this->m_artikel),
@@ -113,7 +112,7 @@ class Artikel extends CI_Controller
 		$this->image_lib->resize($config);
 	}
 
-	public function upload(){
+public function upload(){
 	
 	$type = "Artikel";
 	//$this->load->library('upload');
