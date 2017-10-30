@@ -107,6 +107,9 @@ class Home extends CI_Controller {
 		$data = 
 			array(
 				'selected'=>'',
+				'artikel'=>$this->ArtikelModel->get_artikel_pinpost(),
+				'publish'=>$this->ArtikelModel->get_artikel_publish(),
+				'latestpost'=>$this->ArtikelModel->get_artikel_latest(),
 			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
@@ -120,9 +123,6 @@ class Home extends CI_Controller {
 		$this->load->js('assets/libraries/jquery.marquee.js');
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS');
-
-		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
-		print_r($data['artikel']);
 		$this->load->view('berita', $data);
 
 		//die(print_r($data1));
@@ -155,7 +155,6 @@ class Home extends CI_Controller {
 	    $id = $data['artikel_item']['id_artikel'];
 	    $komentar = $this->ArtikelModel->get_komentar($id);
 	    $data['komentar_item'] = $komentar;
-	    
 	    $data =array(
 	    	'artikel_item'=>$artikel,
 	    	'action'=>'home/comment/'.$slug,

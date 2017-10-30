@@ -113,7 +113,7 @@
 										<a class="nav-brand"><i class="fa fa-home"></i>
 										</a>
 									</li>
-									<li><a href="<?php echo base_url()?>home/berita">Berita</a></li>
+									<li><a href="<?php echo base_url('berita')?>">Berita</a></li>
 									<li><a href="#">Direktori</a></li>
 									<li><a href="#">Pengaduan</a></li>
 									<li><a href="#">Pertanyaan Umum</a></li>

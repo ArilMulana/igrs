@@ -32,7 +32,7 @@ class ArtikelModel extends CI_Model {
 
   }
 
-  public function set_artikel(){
+  public function set_artikel($data){
     $this->load->helper('url');
 
     $slug = url_title($this->input->post('judul'), 'dash', TRUE);
@@ -71,6 +71,31 @@ class ArtikelModel extends CI_Model {
 
     if($slug === FALSE){
       $query = $this->db->get_where('ig_artikel', array('artikel_status' => 0));
+      return $query->result_array();
+    }
+
+    $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
+    return $query->row_array();
+
+  }
+
+  public function get_artikel_publish($slug = FALSE){
+
+    if($slug === FALSE){
+      $query = $this->db->get_where('ig_artikel', array('artikel_status' => 1));
+      return $query->result_array();
+    }
+
+    $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
+    return $query->row_array();
+
+  }
+
+  public function get_artikel_latest($slug = FALSE){
+
+    if($slug === FALSE){
+      $this->db->order_by('artikel_time', 'DESC');
+      $query = $this->db->get('ig_artikel');
       return $query->result_array();
     }
 
