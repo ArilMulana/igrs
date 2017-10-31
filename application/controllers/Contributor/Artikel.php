@@ -19,7 +19,7 @@ class Artikel extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
-	    $this->load->library(array('upload_img','whoami'));
+	    $this->load->library(array('Upload_img','Whoami'));
 	    $this->load->model('LoginModel');
 	    $this->load->model('ArtikelModel');
 	    $this->load->model('UploadModel');

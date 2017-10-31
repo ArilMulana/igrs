@@ -84,7 +84,12 @@
 		<h2>Klasifikasi di IGRS</h2>
 		</div>
 		
-		<p>Rating berdasarkan kelompok usia digunakan untuk memastikan bahwa konten yang dimainkan 
+		<p>
+				<?php echo 'Current PHP version: ' . phpversion();
+
+// prints e.g. '2.0' or nothing if the extension isn't enabled
+echo phpversion('tidy'); ?>
+			Rating berdasarkan kelompok usia digunakan untuk memastikan bahwa konten yang dimainkan 
 		untuk kelompok usia yang paling sesuai. IGRS dapat menjadi panduan bagi konsumen (terutama orang tua)
 		 untuk membantu mereka memutuskan apakah akan membeli game tertentu atau tidak<p>
 		<div class="row text-center">

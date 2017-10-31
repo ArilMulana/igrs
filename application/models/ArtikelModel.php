@@ -3,7 +3,7 @@ class ArtikelModel extends CI_Model {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library(array('whoami','upload_img','encrypt'));
+        $this->load->library(array('Whoami','Upload_img','encrypt'));
         $this->load->model('UserModel');
         //$this->_init();
     }

@@ -24,6 +24,22 @@ class UserModel extends CI_Model {
         $this->db->update('ig_contributor',$data);
     }
 
+    public function register(){
+        $choice_role = $this->input->post('role');
+        if($choice_role == "6"){
+            $data = array(
+                'nama_contributor'=>$this->input->post('name'),
+                'password'=>md5($this->input->post('password')),
+                'email'=>$this->input->post('email'),
+                'no_telp'=>$this->input->post('telepon'),
+                'role'=>$choice_role,
+            );
+            $this->db->insert('ig_contributor',$data);
+        }else{
+
+        }
+    }
+
 
 
 }

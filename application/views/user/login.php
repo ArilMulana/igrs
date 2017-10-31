@@ -72,7 +72,7 @@
 	                
 	      			<div class="row">
 	      			<div class="col-xs-6 col-sm-6 col-md-6">
-						<a href="daftar.html" class="btn btn-lg btn-primary btn-block">Daftar</a>
+						<a href="<?php echo base_url()?>register" class="btn btn-lg btn-primary btn-block">Daftar</a>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6">
                         <input type="submit" class="btn btn-lg btn-success btn-block" value="Masuk">

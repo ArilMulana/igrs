@@ -62,26 +62,26 @@ $route['logout'] = 'Login/logout';
 //contributor//
 
 //profil
-$route['profil/(.+)'] = 'contributor/profil/get_profil/$1';
+$route['profil/(.+)'] = 'Contributor/Profil/get_profil/$1';
 //artikel
-$route['artikel']= 'contributor/artikel';
-$route['artikel/buatartikel'] = 'contributor/artikel/buatartikel'; // create_artikel
-$route['my_artikel'] = 'contributor/artikel/my_artikel'; // read_artikel
-$route['my_artikel/edit/(:any)'] = 'contributor/artikel/edit_artikel/$1';
+$route['artikel']= 'Contributor/Artikel';
+$route['artikel/buatartikel'] = 'Contributor/Artikel/buatartikel'; // create_artikel
+$route['my_artikel'] = 'Contributor/Artikel/my_artikel'; // read_artikel
+$route['my_artikel/edit/(:any)'] = 'Contributor/Artikel/edit_artikel/$1';
 //$route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
 
 //cms artikel
-$route['cms/artikel/coba'] = 'cms/artikel/coba';
-$route['cms/artikel/delete/(:any)'] = 'cms/artikel/delete/$1';
-$route['cms/artikel/update/(:any)'] = 'cms/artikel/update/$1';
-$route['cms/artikel/create'] = 'cms/artikel/create';
-$route['cms/artikel/konfirmasi'] = 'cms/artikel/konfirmasi/$1';
-$route['cms/artikel/pinpost'] = 'cms/artikel/pinpost/$1';
-$route['cms/artikel/unpin'] = 'cms/artikel/unpin/$1';
-$route['cms/artikel'] = 'cms/artikel';
-$route['cms/artikel-belum-konfirmasi'] = 'cms/artikel/validasi';
-$route['cms/artikel/(:any)'] = 'home/view_berita/$1';
+$route['cms/artikel/coba'] = 'Cms/Artikel/coba';
+$route['cms/artikel/delete/(:any)'] = 'Cms/Artikel/delete/$1';
+$route['cms/artikel/update/(:any)'] = 'Cms/Artikel/update/$1';
+$route['cms/artikel/create'] = 'Cms/Artikel/create';
+$route['cms/artikel/konfirmasi'] = 'Cms/Artikel/konfirmasi/$1';
+$route['cms/artikel/pinpost'] = 'Cms/Artikel/pinpost/$1';
+$route['cms/artikel/unpin'] = 'Cms/Artikel/unpin/$1';
+$route['cms/artikel'] = 'Cms/Artikel';
+$route['cms/artikel-belum-konfirmasi'] = 'Cms/Artikel/validasi';
+$route['cms/artikel/(:any)'] = 'Home/view_berita/$1';
 
 //berita
-$route['berita'] = 'home/berita';
-$route['berita/(:any)'] = 'home/view_berita/$1';
+$route['berita'] = 'Home/berita';
+$route['berita/(:any)'] = 'Home/view_berita/$1';
