@@ -154,6 +154,31 @@ class Home extends CI_Controller {
     	$this->load->view('detail_berita', $data);
 	}
 
+	public function comment($slug = NULL){
+
+	    $artikel = $this->ArtikelModel->get_artikel($slug);
+	    $data['artikel_item'] = $artikel;
+		$data = array(
+			'artikel_item'=>$artikel,
+			'sesdat'=>$this->whoami->sesdat(),
+			'selected'=>'',
+			'action'=>'',
+			);
+		$sesdat = $this->whoami->sesdat() ;
+		$this->output->set_template('home');
+		 if(!isset($sesdat)){
+		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		}
+		$this->form_validation->set_rules('komentar','Komentar','trim|required');
+		if($this->form_validation->run() == false){
+			$this->load->view('detail_berita',$data);
+		}else{
+			$this->ArtikelModel->insert_comment();
+			redirect('home/view_berita/'.$slug);
+		}
+	}
+
 	//profil contributor
 
 
