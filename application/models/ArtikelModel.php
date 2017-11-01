@@ -147,5 +147,26 @@ class ArtikelModel extends CI_Model {
     return $this->db->update('ig_artikel', $data);
   }
 
+  public function insert_comment(){
+    $id = $this->input->post('id_artikel');
+    $sesdat = $this->whoami->sesdat();
+    if(!isset($sesdat)){
+    $data = array(
+      'email'=>$this->input->post('email'),
+      'nama'=>$this->input->post('nama'),
+      'artikel_id'=>$id,
+      'comment_post'=>$this->input->post('komentar'),
+      );
+    }else{
+      $data = array(
+      'artikel_id'=>$id,
+      'comment_post'=>$this->input->post('komentar'),
+      );
+    }
+    //$data['artikel_id']=$id;
+    //$data['comment_post']=$this->input->post('comment');
+    $this->db->insert('ig_artikel_comment',$data);
+  }
+
 }
 ?>
