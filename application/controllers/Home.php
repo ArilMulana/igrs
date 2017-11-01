@@ -151,7 +151,18 @@ class Home extends CI_Controller {
 
 	    $artikel = $this->ArtikelModel->get_artikel($slug);
 	    $data['artikel_item'] = $artikel;
-    	$this->load->view('detail_berita', $data);
+	    $id = $data['artikel_item']['id_artikel'];
+	    $komentar = $this->ArtikelModel->get_komentar($id);
+	    $data['komentar_item'] = $komentar;
+	    
+	    $data =array(
+	    	'artikel_item'=>$artikel,
+	    	'action'=>'home/comment/'.$slug,
+	    	'selected'=>array('parent'=>'',),
+	    	'komentar_item'=>$komentar,
+	    	'sesdat'=>$this->whoami->sesdat(),
+	    	);
+	    $this->load->view('detail_berita', $data);
 	}
 
 	public function comment($slug = NULL){
