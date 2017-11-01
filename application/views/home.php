@@ -253,7 +253,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							</div>
-						</div>
+						</div><br>
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
@@ -264,7 +264,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Buku peta pelaku permainan interaktif elektronik Indonesia 2015 hasil kajian yang dibuat antara Kominfo, Akademisi, Praktisi dengan melibatkan beberapa pelaku ekosistem yang</p>
 							</div>
-						</div>
+						</div><br>
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
@@ -275,7 +275,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							</div>
-						</div>
+						</div><br>
 						
 					</div><!-- col-md-6 /- -->
 					
@@ -297,7 +297,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							</div>
-						</div>
+						</div><br>
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
@@ -308,7 +308,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Buku peta pelaku permainan interaktif elektronik Indonesia 2015 hasil kajian yang dibuat antara Kominfo, Akademisi, Praktisi dengan melibatkan beberapa pelaku ekosistem yang</p>
 							</div>
-						</div>
+						</div><br>
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
@@ -319,7 +319,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							</div>
-						</div>
+						</div><br>
 					</div><!-- col-md-6 /- -->
 				</div>
 			</div><!-- container /- -->
