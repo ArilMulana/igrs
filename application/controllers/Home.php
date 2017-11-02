@@ -82,7 +82,8 @@ class Home extends CI_Controller {
 		$this->load->js('assets/libraries/jssor.slider.min.js');
 		$this->load->js('assets/libraries/jquery.marquee.js');
 		$this->output->set_template('home');
-		$this->output->set_title('IGRS - Indonesian Game Rating System');		
+		$this->output->set_title('IGRS - Indonesian Game Rating System');
+		$data['populer'] = $this->ArtikelModel->get_artikel_popular();
 		if($this->session->userdata('logged_in')){
 			if($this->session->userdata('logged_in')['role'] != NULL){
 				echo "<script> alert('hy admin');</script>";
@@ -121,6 +122,7 @@ class Home extends CI_Controller {
 		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
 		$data['publish'] = $this->ArtikelModel->get_artikel_publish();
 		$data['latestpost'] = $this->ArtikelModel->get_artikel_latest();
+		$data['jml_komen'] = $this->ArtikelModel->jml_komen();
 
 		$this->load->view('berita', $data);
 
@@ -160,7 +162,7 @@ class Home extends CI_Controller {
 	    	'action'=>'home/comment/'.$slug,
 	    	'selected'=>array('parent'=>'',),
 	    	'komentar_item'=>$komentar,
-	    	'sesdat'=>$this->whoami->sesdat(),
+	    	//'sesdat'=>$this->whoami->sesdat(),
 	    	);
 	    $this->load->view('detail_berita', $data);
 	}
@@ -171,11 +173,11 @@ class Home extends CI_Controller {
 	    $data['artikel_item'] = $artikel;
 		$data = array(
 			'artikel_item'=>$artikel,
-			'sesdat'=>$this->whoami->sesdat(),
+			//'sesdat'=>$this->whoami->sesdat(),
 			'selected'=>'',
 			'action'=>'',
 			);
-		$sesdat = $this->whoami->sesdat() ;
+		//$sesdat = $this->whoami->sesdat() ;
 		$this->output->set_template('home');
 		 if(!isset($sesdat)){
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');

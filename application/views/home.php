@@ -1,3 +1,23 @@
+<?php 
+	
+	//print_r($list);
+	// foreach ($list as $list_item){
+	// 	echo $list_item['jumlah'];
+	// 	echo ' '.$list_item['artikel_id'].'<br>';
+	// }
+	//print_r($populer);
+	
+	// foreach ($populer as $populer_item){
+	//  	echo $populer_item['judul'];
+	//  	echo ' '.$populer_item['artikel_id'];
+	//  	echo ' '.$populer_item['id_artikel'];
+	//  	echo ' '.$populer_item['slug'];
+	//  	echo ' '.$populer_item['jumlah'].'<br>';
+	// }
+	// print_r($populer_item);
+	//die();
+ ?>
+
 <style>
 		.jumbotron {
 			background-color: #cd382e;
@@ -232,38 +252,18 @@
 						</div>
 						<!-- header newsfeed -->
 						
+						<?php foreach (array_slice($populer, 0, 3) as $populer_item):?>
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
+								<a href="#"><img src="<?php echo base_url('assets/images/'.$populer_item["cover"])?>" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
-								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
-								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
+								<a href="<?php echo site_url('berita/'.$populer_item['slug']); ?>" class="block-title"><?php echo $populer_item['judul']; ?></a>
+								<p class="time"><i class="fa fa-clock-o"></i> <?php echo substr($populer_item["artikel_time"], 0, 10) ?></p>
+								<?php echo $populer_item['isi']; ?>
 							</div>
 						</div>
-						
-						<div class="entertainment-box row">
-							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita4.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
-							</div>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<a href="#" class="block-title">Peta Industri Game Indonesia 2015</a>
-								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-								<p>Buku peta pelaku permainan interaktif elektronik Indonesia 2015 hasil kajian yang dibuat antara Kominfo, Akademisi, Praktisi dengan melibatkan beberapa pelaku ekosistem yang</p>
-							</div>
-						</div>
-						
-						<div class="entertainment-box row">
-							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
-							</div>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
-								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
-							</div>
-						</div>
+						<?php endforeach; ?>
 						
 					</div><!-- col-md-6 /- -->
 					
