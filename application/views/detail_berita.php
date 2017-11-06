@@ -32,11 +32,10 @@
 							<aside class="widget widget_social_icons">
 								<h4>Share this post</h4>
 								<ul class="pull-right">
-									<li><a href="#" target="_blank" class="fb"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#" target="_blank" class="tw"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#" target="_blank" class="gp"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#" target="_blank" class="lin"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#" target="_blank" class="dr"><i class="fa fa-dribbble"></i></a></li>						
+									<li><a href="http://www.facebook.com/sharer.php?u=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank" class="fb"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="http://twitter.com/share?url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank" class="tw"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="https://plus.google.com/share?url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank" class="gp"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>&summary="" target="_blank" class="lin"><i class="fa fa-linkedin"></i></a></li>		
 								</ul>
 							</aside>
 						</div>

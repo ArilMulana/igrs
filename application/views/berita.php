@@ -36,10 +36,10 @@
 								<li class="dropdown">
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/more-icon.png')?>" alt="more-icon" /></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Facebook</a></li>
-										<li><a href="#">Twitter</a></li>
-										<li><a href="#">Google</a></li>
-										<li><a href="#">Linkedin</a></li>
+										<li><a href="http://www.facebook.com/sharer.php?u=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank">Facebook</a></li>
+										<li><a href="http://twitter.com/share?url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank">Twitter</a></li>
+										<li><a href="https://plus.google.com/share?url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank">Google</a></li>
+										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>&summary=" target="_blank">Linkedin</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -84,10 +84,10 @@
 								<li class="dropdown">
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/more-icon.png')?>" alt="more-icon" /></a> 
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Facebook</a></li>
-										<li><a href="#">Twitter</a></li>
-										<li><a href="#">Google</a></li>
-										<li><a href="#">Linkedin</a></li>
+										<li><a href="http://www.facebook.com/sharer.php?u=<?php echo site_url('berita/'.$publish_item['slug']); ?>" target="_blank">Facebook</a></li>
+										<li><a href="http://twitter.com/share?url=<?php echo site_url('berita/'.$publish_item['slug']); ?>" target="_blank">Twitter</a></li>
+										<li><a href="https://plus.google.com/share?url=<?php echo site_url('berita/'.$publish_item['slug']); ?>" target="_blank">Google</a></li>
+										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo site_url('berita/'.$publish_item['slug']); ?>&summary=" target="_blank">Linkedin</a></li>
 									</ul>
 								</li>
 							</ul>
