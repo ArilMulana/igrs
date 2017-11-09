@@ -21,8 +21,8 @@ class Home extends CI_Controller {
   	function __construct()
 	{
 	parent::__construct();
-	$this->load->helper('url', 'form');
-    $this->load->library('form_validation','session');
+	$this->load->helper(array('url_helper', 'form', 'url'));
+    $this->load->library(array('form_validation','session'));
     $this->load->model(array('LoginModel', 'ArtikelModel'));
 	$this->_init();
 	}
@@ -102,6 +102,9 @@ class Home extends CI_Controller {
 
 	public function berita()
 	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		
 		$data = 
 			array(
 				'selected'=>'',
@@ -122,6 +125,8 @@ class Home extends CI_Controller {
 		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
 		$data['publish'] = $this->ArtikelModel->get_artikel_publish();
 		$data['latestpost'] = $this->ArtikelModel->get_artikel_latest();
+		$data['publish'] = $this->ArtikelModel->get_artikel_publish();
+		$data['kategori'] = $this->ArtikelModel->kategori();
 		$data['jml_komen'] = $this->ArtikelModel->jml_komen();
 
 		$this->load->view('berita', $data);
@@ -164,6 +169,10 @@ class Home extends CI_Controller {
 	    	'komentar_item'=>$komentar,
 	    	//'sesdat'=>$this->whoami->sesdat(),
 	    	);
+	    //die(print_r($artikel['artikel_kategori']));
+	    $kategori = $artikel['artikel_kategori'];
+	    $id = $artikel['id_artikel'];
+	    $data['terkait'] = $this->ArtikelModel->get_artikel_related($kategori, $id);
 	    $this->load->view('detail_berita', $data);
 	}
 

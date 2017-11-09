@@ -189,15 +189,16 @@ class ArtikelModel extends CI_Model {
 
     if($slug === FALSE){
       //SELECT *, COUNT(DISTINCT id_comment) as jumlah  FROM ig_artikel_comment JOIN ig_artikel ON ig_artikel_comment.artikel_id = ig_artikel.id_artikel GROUP BY artikel_id ORDER BY jumlah DESC
+      //SELECT *, COUNT(id_artikel) as jumlah FROM ig_artikel LEFT JOIN ig_artikel_comment ON ig_artikel.id_artikel = ig_artikel_comment.artikel_id GROUP BY id_artikel ORDER BY jumlah DESC
       //$query = $this->db->get('ig_artikel');
       //return $query->result_array();
       // $this->db->select('*');
       // $this->db->from('blogs');
       // $this->db->join('comments', 'comments.id = blogs.id');
-      $this->db->select('*, COUNT(DISTINCT id_comment) as jumlah');
-      $this->db->from('ig_artikel_comment');
-      $this->db->join('ig_artikel', 'ig_artikel_comment.artikel_id = ig_artikel.id_artikel');
-      $this->db->group_by('artikel_id');
+      $this->db->select('*, COUNT(id_artikel) as jumlah');
+      $this->db->from('ig_artikel');
+      $this->db->join('ig_artikel_comment', 'ig_artikel.id_artikel = ig_artikel_comment.artikel_id', 'left');
+      $this->db->group_by('id_artikel');
       $this->db->order_by('jumlah', 'DESC');
       //$query = $this->db->get('ig_artikel_comment');
       //$query = $this->db->get('ig_artikel');
@@ -213,6 +214,33 @@ class ArtikelModel extends CI_Model {
       // $this->db->join('category_master', 'category_master.Category_Id = business_mapping.Category_Id');
       // $query = $this->db->get();
       // return $query->result();
+    }
+
+    $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
+    return $query->row_array();
+
+  }
+
+  public function get_artikel_related($kategori, $id){
+
+      //SELECT * FROM `ig_artikel` ORDER BY FIELD(artikel_kategori, "edukasi") DESC
+      //$this->db->order_by('FIELD(artikel_kategori, edukasi)');
+      //$this -> db -> order_by('FIELD ( products.country_id, 2, 0, 1 )');
+      //$query = $this->db->('ig_artikel');
+      $query = $this->db->query("SELECT * FROM ig_artikel WHERE id_artikel != $id ORDER BY FIELD(artikel_kategori, '$kategori') DESC, artikel_time DESC");
+      return $query->result_array();
+
+  }
+
+  public function kategori($slug = FALSE){
+
+    if($slug === FALSE){
+      //SELECT *, COUNT(artikel_kategori) as jumlah  FROM ig_artikel GROUP BY artikel_kategori
+      $this->db->select('*, COUNT(artikel_kategori) as jumlah');
+      //$this->db->from('ig_artikel');
+      $this->db->group_by('artikel_kategori');
+      $query = $this->db->get('ig_artikel');
+      return $query->result_array();
     }
 
     $query = $this->db->get_where('ig_artikel', array('slug' => $slug));

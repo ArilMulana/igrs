@@ -2,7 +2,7 @@
   <i class="fa fa-info-circle hint"></i> Ukuran Gambar Maksimal 300KB
 </div>
 
-<form class = "form-horizontal" <?php echo form_open('cms/artikel/create');?>>    
+<form class = "form-horizontal" <?php echo form_open('cms/artikel/create');?>>     
 
   <div class="form-group">
     <!--   <label for="gambar" class="col-sm-2 control-label">Gambar</label> -->

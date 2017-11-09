@@ -1,10 +1,18 @@
 <?php 
+	
+	// $tgl=date('d-m-Y-h:i:s');
+ // 	echo $tgl;
+	// die();
+	
+	//print_r($terkait);
+	//die(print_r($artikel_item['artikel_kategori']));
+	//die();
 
 	if(!$artikel_item['slug']){
 	   redirect('berita');
 	}
 
- ?>
+?>
 
 <!-- Container -->
 <div class="container">
@@ -20,13 +28,11 @@
 				
 					<div class="blog-content">
 						<h2 class="entry-title"><?php echo $artikel_item['judul']; ?></h2>
-						<p class="time"><i class="fa fa-clock-o"></i><?php echo $artikel_item['artikel_time']; ?></p>
+						<p class="time"><i class="fa fa-clock-o"></i><?php echo hitung_mundur(strtotime($artikel_item['artikel_time'])); ?></p>
 						<?php echo $artikel_item['isi']; ?>
 						
 						<div class="tags">
-							<a href="#">Kemkominfo</a>
-							<a href="#">AGI</a>
-							<a href="#">IGRS</a>
+							<a href="#"><?php echo $artikel_item['artikel_kategori']; ?></a>
 						</div>
 						<div class="blog-social blog-content-inner">
 							<aside class="widget widget_social_icons">
@@ -55,7 +61,7 @@
 											<img alt="avatar image" src="images/home/home4/blog/comment-1.png" class="avatar">
 										</span>
 										<span class="comment-info d-text-c">
-											<span>10 Min ago </span><?php echo $row['nama'];?>
+											<span><?php echo hitung_mundur(strtotime($row['comment_time'])); ?> </span><?php echo $row['nama'];?>
 										</span>
 										<p><?= $row['comment_post'];?></p>
 										<a class="comment-reply-link d-text-c" href="#"><i class="fa fa-mail-reply"></i> Reply</a>
@@ -130,42 +136,19 @@
 				<h3 class="widget-title">Berita Terkait</h3>
 				<div class="widget-inner">
 					<ul class="post">
+						<?php foreach ($terkait as $terkait_item):?>
 						<li>
 							<div class="col-md-5 col-sm-5 col-xs-4">
-								<a href="#"><img src="images/widget/widget-post-1.jpg" alt="popular-post" /></a>
+								<a href="<?php echo site_url('berita/'.$terkait_item['slug']); ?>"><img src="<?php echo base_url('assets/images/'.$terkait_item["cover"])?>" alt="popular-post" /></a>
 							</div>
 							<div class="col-md-7 col-sm-7 col-xs-8">
-								<a href="#" class="post-title">where you can see our  of troubles are all </a>
-								<p>
-									<a href="#"><i class="fa fa-heart"></i> 33</a> 
-									<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
+								<a href="<?php echo site_url('berita/'.$terkait_item['slug']); ?>" class="post-title"><?php echo $terkait_item["judul"] ?></a>
+								<p>									 
+									<span><i class="fa fa-clock-o"></i> <?php echo $terkait_item["artikel_time"] ?></span>
 								</p>
 							</div>
 						</li>
-						<li>
-							<div class="col-md-5 col-sm-5 col-xs-4">
-								<a href="#"><img src="images/widget/widget-post-2.jpg" alt="popular-post" /></a>
-							</div>
-							<div class="col-md-7 col-sm-7 col-xs-8">
-								<a href="#" class="post-title">crew the Minnow would be lost the Minnow</a>
-								<p>
-									<a href="#"><i class="fa fa-heart"></i> 30</a> 
-									<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="col-md-5 col-sm-5 col-xs-4">
-								<a href="#"><img src="images/widget/widget-post-3.jpg" alt="popular-post" /></a>
-							</div>
-							<div class="col-md-7 col-sm-7 col-xs-8">
-								<a href="#" class="post-title">Come and listen to a story about Jed</a>
-								<p>
-									<a href="#"><i class="fa fa-heart"></i> 25</a> 
-									<span><i class="fa fa-clock-o"></i> 1 Hour ago</span>
-								</p>
-							</div>
-						</li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</aside><!-- Latest Post /- -->
