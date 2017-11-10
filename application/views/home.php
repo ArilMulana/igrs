@@ -58,7 +58,7 @@
 		
 		<form class="form-inline">
 			<div class="input-group">
-				<input type="text" class="form-control" size="90" placeholder="Nama Permainan" required>
+				<input type="text" class="form-control" size="90" placeholder="Search" required>
 				<div class="input-group-btn">
 					<button type="button" class="btn btn-primary">   Cari   </button>
 				</div>
@@ -73,17 +73,7 @@
 			<div class="section-header">
 			<h2>Apa itu IGRS?</h2>
 			</div>
-			<center>
-			
-			<div class="col-md-2"></div>
-			<div class="col-md-8 col-xs-12">
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/T4uNrqPjOuM?rel=0&playlist=tvEnYKrCAXc,br98lAhoeYc" frameborder="0" allowfullscreen=""></iframe>
-				</div>
-			</div>
-			<div class="col-md-2"></div>
-			
-			</center>
+			<iframe width="500" height="300" src="http://www.youtube.com/embed/T4uNrqPjOuM?rel=0&playlist=tvEnYKrCAXc,br98lAhoeYc" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
 	<!-- /apa itu igrs -->
@@ -94,11 +84,12 @@
 		<h2>Klasifikasi di IGRS</h2>
 		</div>
 		
-		<p>Rating berdasarkan kelompok usia digunakan untuk memastikan bahwa konten yang dimainkan 
+		<p>
+			Rating berdasarkan kelompok usia digunakan untuk memastikan bahwa konten yang dimainkan 
 		untuk kelompok usia yang paling sesuai. IGRS dapat menjadi panduan bagi konsumen (terutama orang tua)
 		 untuk membantu mereka memutuskan apakah akan membeli game tertentu atau tidak<p>
 		<div class="row text-center">
-		<div class="col-md-15 col-xs-12">
+		<div class="col-md-15 col-xs-3">
 			<div class="thumbnail">
 				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
 				<p><strong>3 Tahun atau lebih</strong></p>
@@ -114,9 +105,7 @@
 							</div>
 							
 							<div class="modal-body">
-								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya
-							
-								</p>
+								<p>Tidak memperlihatkan tulisan atau gambar yang berhubungan dengan rokok, minuman keras, dan narkotika, psikotropika dan zat adiktif lainnya</p>
 							</div>
 						</div>
 					</div>
@@ -125,18 +114,18 @@
 				
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-12" >
+		<div class="col-md-15 col-xs-3" >
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate7.png" width="150px">
-				<p><strong>7 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate7">Selengkapnya</button>
-				<div class="modal fade" id="rate7" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 7 tahun atau lebih</h4>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -148,18 +137,18 @@
 				<!-- /modal -->
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-12">
+		<div class="col-md-15 col-xs-3">
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate13.png" width="150px">
-				<p><strong>13 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate13">Selengkapnya</button>
-				<div class="modal fade" id="rate13" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 13 tahun atau lebih</h4>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -171,18 +160,18 @@
 				<!-- /modal -->
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-12">
+		<div class="col-md-15 col-xs-3">
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate18.png" width="150px">
-				<p><strong>18 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate18">Selengkapnya</button>
-				<div class="modal fade" id="rate18" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 18 tahun atau lebih</h4>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -194,18 +183,18 @@
 				<!-- /modal -->
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-12">
+		<div class="col-md-15 col-xs-3">
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/ratesu.png" width="150px">
-				<p><strong>Semua Umur</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
+				<p><strong>3 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ratesu">Selengkapnya</button>
-				<div class="modal fade" id="ratesu" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
+				<div class="modal fade" id="rate3" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia Semua Umur</h4>
+								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -231,7 +220,7 @@
 	<!-- /kontribusi -->
 	
 	<!-- News Feed -->
-		<div id="newsfeed" class="entertainment-and-fashion-section">
+			<div id="newsfeed" class="entertainment-and-fashion-section">
 			<!-- Container -->
 			<div class="container">
 
@@ -244,38 +233,18 @@
 						</div>
 						<!-- header newsfeed -->
 						
+						<?php foreach (array_slice($populer, 0, 3) as $populer_item):?>
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
+								<a href="#"><img src="<?php echo base_url('assets/images/'.$populer_item["cover"])?>" alt="entertainment-and-fashion" width="170" height="153"/></a>
 							</div>
 							<div class="col-md-8 col-sm-8 col-xs-8">
-								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
-								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
+								<a href="<?php echo site_url('berita/'.$populer_item['slug']); ?>" class="block-title"><?php echo $populer_item['judul']; ?></a>
+								<p class="time"><i class="fa fa-clock-o"></i> <?php echo substr($populer_item["artikel_time"], 0, 10) ?></p>
+								<?php echo $populer_item['isi']; ?>
 							</div>
-						</div><br>
-						
-						<div class="entertainment-box row">
-							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita4.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
-							</div>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<a href="#" class="block-title">Peta Industri Game Indonesia 2015</a>
-								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-								<p>Buku peta pelaku permainan interaktif elektronik Indonesia 2015 hasil kajian yang dibuat antara Kominfo, Akademisi, Praktisi dengan melibatkan beberapa pelaku ekosistem yang</p>
-							</div>
-						</div><br>
-						
-						<div class="entertainment-box row">
-							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><img src="<?php echo base_url()?>assets/images/berita1.jpg" alt="entertainment-and-fashion" width="170" height="153"/></a>
-							</div>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<a href="#" class="block-title">Kemkominfo bersama AGI, Kemendikbud, KPPPA, Psikolog dalam mepersiapakn pelaksanaan IGRS</a>
-								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
-								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
-							</div>
-						</div><br>
+						</div>
+						<?php endforeach; ?>
 						
 					</div><!-- col-md-6 /- -->
 					
@@ -297,7 +266,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							</div>
-						</div><br>
+						</div>
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
@@ -308,7 +277,7 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Buku peta pelaku permainan interaktif elektronik Indonesia 2015 hasil kajian yang dibuat antara Kominfo, Akademisi, Praktisi dengan melibatkan beberapa pelaku ekosistem yang</p>
 							</div>
-						</div><br>
+						</div>
 						
 						<div class="entertainment-box row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
@@ -319,11 +288,13 @@
 								<p class="time"><i class="fa fa-clock-o"></i> 1 Hour ago</p>
 								<p>Kemkominfo Berasama Asoasiasi Game Indonesia, Kemendikbud, KPPPA, Psikolog mempersiapkan Perangkat Pedukung serta Materi Sosialisasi IGRS</p>
 							</div>
-						</div><br>
+						</div>
 					</div><!-- col-md-6 /- -->
 				</div>
 			</div><!-- container /- -->
 		</div><!-- News Feed -->
+	
+		<!-- News Feed -->
 	
 		
 	<script type="text/javascript">

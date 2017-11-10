@@ -54,11 +54,13 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //login
-$route['login'] ='login';
+$route['login'] ='Login';
 $route['logging'] = 'Login/logging';
 $route['logout'] = 'Login/logout';
 
-
+//register
+$route['register/respond'] = 'Register/regis_user';
+$route['verifikasi/(:any)'] = 'Register/verif_account/$1';
 //contributor//
 
 //profil

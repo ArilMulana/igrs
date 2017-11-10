@@ -69,8 +69,10 @@ class Home extends CI_Controller {
 	{
 		$data = 
 			array(
+				'action'=>'',
 				'selected'=>array('parent'=>'','child'=>''),
 				'sesdat'=>$this->whoami->sesdat(),
+				'populer'=>$this->ArtikelModel->get_artikel_popular(),
 			);	
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
@@ -122,8 +124,13 @@ class Home extends CI_Controller {
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS');
 
+		//$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
 		$data['artikel'] = $this->ArtikelModel->get_artikel_pinpost();
-		print_r($data['artikel']);
+		$data['publish'] = $this->ArtikelModel->get_artikel_publish();
+		$data['latestpost'] = $this->ArtikelModel->get_artikel_latest();
+		$data['jml_komen'] = $this->ArtikelModel->jml_komen();
+
+		//print_r($data['artikel']);
 		$this->load->view('berita', $data);
 
 		//die(print_r($data1));

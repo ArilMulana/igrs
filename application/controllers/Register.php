@@ -22,9 +22,14 @@ class Register extends CI_Controller {
 	{
 	parent::__construct();
 	$this->load->helper('url', 'form');
-    $this->load->library(array('form_validation','session','Whoami','Recaptcha'));
+    $this->load->library(array('form_validation','session','Whoami','Recaptcha','encryption'));
+    $this->load->library('email');
     $this->load->model(array('UserModel'));
 	$this->_init();
+	}
+
+	private function encrypt_id($id){
+		return $this->encryption->encrypt($id);
 	}
 
 	private function _init()
@@ -43,6 +48,7 @@ class Register extends CI_Controller {
 	    //$this->load->js('assets/dist/js/app.min.js');
 	 $this->load->js('assets/js/functions.js');
 	 $this->load->js('assets/js');
+
 	}
 
 
@@ -63,7 +69,7 @@ class Register extends CI_Controller {
 			redirect('home');
 		}else{
 			$data = array(
-				'action'=>$this->regis_user(),
+				'action'=>"register/regis_user",
 				'selected'=>array('parent'=>'','child'=>'',),
 				'captcha'=>$this->recaptcha->getWidget(),
 				'script_captcha'=>$this->recaptcha->getScriptTag(),
@@ -71,19 +77,72 @@ class Register extends CI_Controller {
 			$this->output->set_template('home');
 			$this->load->view('register',$data);
 		}
-		
-		// if(!(isset($this->whoami->isLogged()))){
-		// 	$this->output->set_template('home');
-		// 	$this->load->view('blank');
-		// }else{
-
-		// }
-		
-		// $this->load->view('home');
 	}
 	
 	public function regis_user(){
-		$this->UserModel->register();
+		$this->output->set_template('home');
+		$data = array(
+			'action'=>'',
+			'selected'=>array('parent'=>'','child'=>''),
+			'captcha'=>$this->recaptcha->getWidget(),
+			'script_captcha'=>$this->recaptcha->getScriptTag(),
+		);
+		$this->form_validation->set_rules('name','Nama Lengkap','required|min_length[4]',array('required'=>'Nama Lengkap Harus Diisi'));
+		$this->form_validation->set_rules('password','Password','required|min_length[5]',array('required'=>'Masukkan Kata Sandi Anda'));
+		$this->form_validation->set_rules('re-password','Password Confirmation','required|matches[password]',array('required'=>'Masukkan Ulang Kata Sandi Anda'));
+		$this->form_validation->set_rules('email','Email','required|valid_email',array('required'=>'Masukkan Alamat Email dengan Benar'));
+		if($this->form_validation->run() == FALSE){
+			$this->load->view('register',$data);
+		}else{
+			$get_lastid = $this->UserModel->register();
+			//$this->UserModel->verif_acc($get_lastid);
+			//echo $data[0]['konfirmasi'];
+			$this->send_verif($get_lastid);	
+		}
+	}
+
+	public function send_verif($get_lastid){
+		//kirim link ke email
+		$destination=$this->input->post('email');
+
+		//$code_id = $this->encrypt_id($get_lastid);
+	    //$subject='verif_account';
+	    //$url = LOCAL_URL;
+
+	    $config['protocol'] = "smtp";
+	    $config['smtp_host'] = "ssl://smtp.gmail.com";
+	    $config['smtp_port'] = "465";
+	    $config['smtp_user'] = "igrsunj@gmail.com";
+	    $config['smtp_pass'] = "namasayaaril";
+	    $config['charset'] = "utf-8";
+    	$config['mailtype'] = "html";
+    	$config['newline'] = "\r\n";
+	  
+	    $this->email->initialize($config);
+	    $this->email->clear(true);
+	    $this->email->from('igrsunj@gmail.com', 'IGRS UNJ');
+	    $this->email->subject('Verifikasi Akun Indonesia Game Rating System');
+	    $this->email->message('<p style="font-weight:bold;">Waktu Verifikasi hanya 1x24 jam </p> silahkan kamu melakukan registrasiClick <a href="'.LOCAL_URL.'verifikasi/'.$get_lastid.'">Link ini </a> untuk melakukan verifikasi account');
+	    $this->email->to($destination);
+	    if($this->email->send()){
+	     echo "<script>
+	      alert('Silahkan Lakukan Verifikasi ID pada Email Anda');
+	      window.location.href='".base_url()."register';
+	      </script>";
+	    }else{
+	      show_error($this->email->print_debugger());
+	    }
+	    // $this->email->attach($b);
+
+	}
+	public function verif_account($id){
+		 //$decrypt_id = $this->encryption->decrypt($id);
+		 //echo $decrypt_id;
+		$this->UserModel->verif_acc($id);
+		echo "<script>
+	      alert('Selamat account anda telah aktif');
+	      window.location.href='".base_url()."login';
+	      </script>";
 	}
 
 	
