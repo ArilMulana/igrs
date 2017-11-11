@@ -15,7 +15,9 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th>Aksi</th>
+              <th>Konfirmasi</th>
+              <th>Edit</th>
+              <th>Tolak</th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +44,19 @@
     </div>
     <!-- /.row (main row) -->
   </section>
-  <!-- /.content -->
-</div>
+
 <!-- /.content-wrapper -->
+
+<script>
+ // $.widget.bridge('uibutton', $.ui.button);
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>

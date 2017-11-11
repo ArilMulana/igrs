@@ -36,10 +36,10 @@
 								<li class="dropdown">
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/more-icon.png')?>" alt="more-icon" /></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Facebook</a></li>
-										<li><a href="#">Twitter</a></li>
-										<li><a href="#">Google</a></li>
-										<li><a href="#">Linkedin</a></li>
+										<li><a href="http://www.facebook.com/sharer.php?u=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank">Facebook</a></li>
+										<li><a href="http://twitter.com/share?url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank">Twitter</a></li>
+										<li><a href="https://plus.google.com/share?url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>" target="_blank">Google</a></li>
+										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo site_url('berita/'.$artikel_item['slug']); ?>&summary=" target="_blank">Linkedin</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -47,7 +47,7 @@
 								<a href="<?php echo site_url('berita/'.$artikel_item['slug']); ?>" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
 								<div class="box-content">
 									<a href="#" class="block-title"><?php echo $artikel_item["judul"] ?></a>
-									<p class="time"><i class="fa fa-clock-o"></i> <?php echo substr($artikel_item["artikel_time"], 0, 10) ?></p>
+									<p class="time"><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($artikel_item['artikel_time'])); ?></p>
 									<?php echo $artikel_item["isi"] ?>
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/comment-icon.png')?>" alt="comment" /> <?php echo $count ?></a>
 								</div>
@@ -84,10 +84,10 @@
 								<li class="dropdown">
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/more-icon.png')?>" alt="more-icon" /></a> 
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Facebook</a></li>
-										<li><a href="#">Twitter</a></li>
-										<li><a href="#">Google</a></li>
-										<li><a href="#">Linkedin</a></li>
+										<li><a href="http://www.facebook.com/sharer.php?u=<?php echo site_url('berita/'.$publish_item['slug']); ?>" target="_blank">Facebook</a></li>
+										<li><a href="http://twitter.com/share?url=<?php echo site_url('berita/'.$publish_item['slug']); ?>" target="_blank">Twitter</a></li>
+										<li><a href="https://plus.google.com/share?url=<?php echo site_url('berita/'.$publish_item['slug']); ?>" target="_blank">Google</a></li>
+										<li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo site_url('berita/'.$publish_item['slug']); ?>&summary=" target="_blank">Linkedin</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -97,7 +97,7 @@
 								<div class="box-content">
 									<span>Industri Game</span>
 									<a href="#" class="block-title"><?php echo $publish_item["judul"] ?></a>
-									<p class="time"><i class="fa fa-clock-o"></i> <?php echo substr($publish_item["artikel_time"], 0, 10) ?></p>
+									<p class="time"><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($publish_item['artikel_time'])); ?></p>
 									<?php echo $publish_item["isi"] ?>
 									<a href="#"><img src="<?php echo base_url('assets/images/icon/comment-icon.png')?>" alt="comment" /><?php echo $count; ?> </a>
 								</div>
@@ -108,13 +108,16 @@
 					<?php endforeach; ?>
 				</div>
 								
-			</div><!-- col-md-8 /- -->				
+			</div><!-- col-md-8 /- -->
 			
 			<!-- col-md-4 -->
 			<div class="col-md-4 col-sm-6 widget-sidebar">
 				<div class="search">
-					<input type="text" name="search">
-					<button class="btn btn-primary" type="submit">Search</button>
+
+					<form  method = "post">
+					<input type="text" name="keyword">
+					<button class="btn btn-primary" type="submit">Cari</button>
+					</form>
 				</div>
 				<br>
 				<!-- Latest Post -->
@@ -122,18 +125,11 @@
 					<h3 class="widget-title">Kategori</h3>
 					<div class="widget-inner">
 						<ul>
+							<?php foreach ($kategori as $kategori_item):?>
 							<li class="cat-item">
-								<a title="design" href="#">Game <span>(10)</span></a>
+								<a title="design" href="#"><?php echo $kategori_item["artikel_kategori"] ?> <span>(<?php echo $kategori_item["jumlah"] ?>)</span></a>
 							</li>
-							<li class="cat-item">
-								<a title="design" href="#">Kebijakan <span>(7)</span></a>
-							</li>
-							<li class="cat-item">
-								<a title="design" href="#">Politik <span>(9)</span></a>
-							</li>
-							<li class="cat-item">
-								<a title="design" href="#">Industri Game <span>(15)</span></a>
-							</li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 				</aside><!-- Latest Post /- -->
@@ -161,7 +157,11 @@
 									<a href="<?php echo site_url('berita/'.$latestpost_item['slug']); ?>" class="post-title"><?php echo $latestpost_item["judul"] ?> </a>
 									<p>
 										<a href="#"><img src="<?php echo base_url('assets/images/icon/comment-icon.png')?>" alt="comment" /> <?php echo $count; ?> </a> 
+<<<<<<< HEAD
 										<span><i class="fa fa-clock-o"></i> <?php echo substr($latestpost_item["artikel_time"], 0, 10) ?></span>
+=======
+										<span><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($latestpost_item['artikel_time'])); ?></span>
+>>>>>>> artikel-baru
 									</p>
 								</div>
 								<?php $count = 0; ?>

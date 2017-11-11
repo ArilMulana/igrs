@@ -8,6 +8,7 @@ class Artikel extends CI_Controller {
     $this->load->model('ArtikelModel');
     $this->load->helper(array('url_helper', 'form', 'url'));
     $this->load->library(array('pagination','form_validation'));
+    $this->_init();
 
     function excerpt($string){
     	$string = substr($string, 0, 100);
@@ -30,7 +31,7 @@ class Artikel extends CI_Controller {
 	{
 	setlocale(LC_ALL, 'id_ID.UTF8', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', 'IND.UTF-8', 'IND.8859-1', 'IND', 'Indonesian.UTF8', 'Indonesian.UTF-8', 'Indonesian.8859-1', 'Indonesian', 'Indonesia', 'id', 'ID', 'en_US.UTF8', 'en_US.UTF-8', 'en_US.8859-1', 'en_US', 'American', 'ENG', 'English');
 	date_default_timezone_set('Asia/Jakarta');
-	$this->load->css('assets/css/bootstrap.min.css');
+	 $this->load->css('assets/css/bootstrap.css');
     $this->load->js('assets/js/jquery-2.2.3.js');
     $this->load->css('assets/dist/css/skins/_all-skins.min.css');
     $this->load->js('assets/plugins/fastclick/fastclick.min.js');
@@ -40,23 +41,39 @@ class Artikel extends CI_Controller {
 
 	public function index()
 	{
-		$data['artikel'] = $this->ArtikelModel->get_artikel();
-		$this->load->view('cms/header');	
+		$this->load->js('assets/js/datatables.min.js');
+		 $this->load->css('assets/css/datatables.min.css');
+		//$this->load->js('assets/bootstrap/js/bootstrap.min.js');
+		$data = array(
+			'sesdat'=>$this->whoami->sesdat(),
+			'artikel'=>$this->ArtikelModel->get_artikel(),
+		);
+		//$data['artikel'] = $this->ArtikelModel->get_artikel();
+		$this->output->set_template('dashboard');
+		// $this->load->view('cms/header');	
 		$this->load->view('cms/kelola_artikel', $data);
-		$this->load->view('cms/footer');
+		//$this->load->view('cms/footer');
 	}
 
 
   public function view($slug = NULL)
 	{
-	    $artikel = $this->ArtikelModel->get_artikel($slug);
-	    $data['artikel_item'] = $artikel;
-	    $this->load->view('cms/header');
+		 $artikel = $this->ArtikelModel->get_artikel($slug);
+		$data = array(
+			'sesdat'=>$this->whoami->sesdat(),
+			'artikel_item'=>$artikel,
+		);
+	    $this->output->set_template('dashboard');
+	   // $this->load->view('cms/header');
 		$this->load->view('cms/lihat_artikel', $data);
-		$this->load->view('cms/footer');
+		//$this->load->view('cms/footer');
 	}
 
 	public function create(){
+		$data = array(
+			'sesdat'=>$this->whoami->sesdat(),
+			//'artikel'=>$this->ArtikelModel->get_artikel(),
+		);
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -65,9 +82,10 @@ class Artikel extends CI_Controller {
 		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));
 
 		if($this->form_validation->run() === FALSE){
-			$this->load->view('cms/header');
-			$this->load->view('cms/tambah_artikel');
-			$this->load->view('cms/footer');
+			$this->output->set_template('dashboard');
+			//$this->load->view('cms/header');
+			$this->load->view('cms/tambah_artikel',$data);
+			//$this->load->view('cms/footer');
 		}
 		else{
 			$this->ArtikelModel->set_artikel();
@@ -105,10 +123,14 @@ class Artikel extends CI_Controller {
 
 	public function validasi()
 	{
-		$data['artikel'] = $this->ArtikelModel->get_artikel_validasi();
-		$this->load->view('cms/header');	
+		$data = array(
+			'sesdat'=>$this->whoami->sesdat(),
+			'artikel'=>$this->ArtikelModel->get_artikel_validasi(),
+		);
+		//$this->load->view('cms/header');
+		$this->output->set_template('dashboard');	
 		$this->load->view('cms/artikel_validasi', $data);
-		$this->load->view('cms/footer');
+		//$this->load->view('cms/footer');
 	}
 
 	public function konfirmasi($id){

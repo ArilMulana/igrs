@@ -115,7 +115,7 @@ class Artikel extends CI_Controller
 
 	public function upload(){
 	
-	$type = "Artikel";
+	$type = "Artikel"; // nama forlder
 	//$this->load->library('upload');
     $this->output->set_title('Create Artikel');
     $this->output->set_template('home'); 
@@ -144,7 +144,7 @@ class Artikel extends CI_Controller
 				$this->form_validation->set_rules('isi', 'Isi', 'trim|required');
 	   			if($this->form_validation->run() == false)
 					{
-						$this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data !!</div></div>");
+						$this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data  1!!</div></div>");
                 		redirect('artikel/buatartikel','refresh');
 					}else
 					{
@@ -154,7 +154,7 @@ class Artikel extends CI_Controller
                		}
             }else{
                 //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data !!</div></div>");
+                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data 2!!</div></div>");
                 redirect('artikel/buatartikel','refresh'); //jika gagal maka akan ditampilkan form upload
                 //echo "<script>alert('gagal')</script>";
             }

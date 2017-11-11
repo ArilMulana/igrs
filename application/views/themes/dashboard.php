@@ -1,20 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Kinerja | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="<?php echo base_url('assets/font-awesome/css/font-awesome.min.css')?>">
+  <head>
+   <link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.min.css')?>">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css') ?> ">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/datepicker/datepicker3.css') ?>">
-  
-     <?php
+  <link rel="icon" href="<?php echo base_url('assets/images/logoRK.png')?>" type="png" sizes="16x16">
+  <title><?php echo $title; ?></title>
+
+  <?php
   /** -- Copy from here -- */
   if(!empty($meta))
   foreach($meta as $name=>$content){
@@ -40,18 +33,35 @@
       ?><script src="<?php echo $file; ?>"></script><?php
   } echo "\n\t";
   ?>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/AdminLTE.min.css" type="text/css" />
+<style type="text/css">
+ .navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+    height: auto;
+    padding: 10px;
+    text-align: center;
+}
 
+.navbar-nav > .user-menu > .dropdown-menu {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  padding: 1px 0 0 0;
+  border-top-width: 0;
+  width: 280px;
+}
+</style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue layout-boxed sidebar-mini">
+<!-- Site wrapper -->
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini" ><img src="bukalapak.jpg" style="width: 80%;height: 50%;"></span>
+      <span class="logo-mini" ><img src="<?php echo base_url('assets/bukalapak.jpg')?>" style="width: 80%;height: 50%;"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Kominfo</b></span>
+      <span class="logo-lg"><b>IGRS</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -62,40 +72,27 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $sesdat['nama'];?></span>
+              <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?php echo $sesdat['nama_pemilik']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>"  class="img-circle" alt="User Image">
 
                 <p>
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $sesdat['nama_pemilik']; ?>
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
+
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Profil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat">Keluar</a>
                 </div>
               </li>
             </ul>
@@ -104,74 +101,53 @@
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+   <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Amelia Apriliani</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p><?php echo $sesdat['nama_pemilik']; ?></p>
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i>
+          <a href="<?php echo site_url('cms/artikel'); ?>">
+            <i class="fa fa-book"></i>
+            <span>Kelola artikel</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo site_url('cms/artikel-belum-konfirmasi'); ?>">
+            <i class="fa fa-book"></i>
+            <span>Validasi artikel</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo site_url('cms/profil'); ?>"> 
+            <i class="fa fa-book"></i>
             <span>Profil</span>
           </a>
         </li>
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-book"></i>
-            <span>Sasaran Kerja</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i>
-            <span>Tupoksi</span>
+          <a href="<?php echo site_url('home'); ?>"> 
+            <i class="fa fa-home"></i>
+            <span>Halaman Depan</span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i>
-            <span>Master Aktifitas</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="amel.html">
-            <i class="fa fa-files-o"></i>
-            <span>Aktifitas Staff</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>Validasi</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-edit"></i>
-            <span>Penilaian</span>
+            <span>Keluar</span>
           </a>
         </li>
       </ul>
@@ -179,63 +155,45 @@
     <!-- /.sidebar -->
   </aside>
 
+  <!-- =============================================== -->
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+        <li><a href="#">Layout</a></li>
+        <li class="active">Boxed</li>
+      </ol> -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
- 
-      <!-- /.row -->
-      <!-- Main row -->
-   <div class="row">
-    <div class="col-lg-12">
-      <div class="box box-default">
-          <div class="box-header with-border">
-              <div class="box-body">
-                <!-- Put your code here -->
-                <?= $output ?>
-              </div>
-          </div>
+      <div class="callout callout-info">
+        <h4>Tip!</h4>
+        <p>Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
+          large screens because it prevents the site from stretching very wide.</p>
       </div>
-    </div>
-   </div>
-      <!-- /.row (main row) -->
-
+      <!-- Default box -->
+      <?= $output;?>
+      <!-- /.box -->
     </section>
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.3
-    </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Default Web Division &copy; <?php echo date("Y");?></strong> All rights
     reserved.
   </footer>
-
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
 
-<script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?> "></script>
-<script src="<?= base_url('assets/dist/js/app.min.js')?>"></script>
-<script src="<?= base_url('assets/plugins/jQueryUI/jquery-ui.min.js')?>" type="text/javascript"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script type="text/javascript" src="<?= base_url()?>assets/dist/js/app.min.js"></script>
 
 </body>
 </html>
+

@@ -14,7 +14,9 @@
               <th>Penulis</th>
               <th>Status</th>
               <th>Waktu Pembuatan</th>
-              <th>Aksi</th>
+              <th>Konfirmasi</th>
+              <th>Edit</th>
+              <th>Tolak</th>
             </tr>
           </thead>
           <tbody>
@@ -38,5 +40,3 @@
     <!-- /.row (main row) -->
   </section>
   <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->

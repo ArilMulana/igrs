@@ -71,7 +71,7 @@
 						<div class="col-md-9">
 							<input value="<?php
 							$oridate = $sesdat['tgl_lahir'];
-							$newDate = date("d/m/Y",strtotime($oridate));
+							$newDate = date("d-m-Y",strtotime($oridate));
 							
 							if(!isset($sesdat['tgl_lahir']))
 								{echo "";}
@@ -125,7 +125,7 @@
 	      //lang:'id',
 	      	timepicker:false,
 	     	datepicker:true,
-	     	format:'d/m/Y',
+	     	format:'Y-m-d',
         });
 
 	function bacaGambar(input) {
