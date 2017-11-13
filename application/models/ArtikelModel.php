@@ -299,6 +299,7 @@ class ArtikelModel extends CI_Model {
     return $query->row_array();
 
   }
+  
   public function get_artikel_related($kategori, $id){
 
       //SELECT * FROM `ig_artikel` ORDER BY FIELD(artikel_kategori, "edukasi") DESC

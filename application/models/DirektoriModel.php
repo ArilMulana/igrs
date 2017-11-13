@@ -20,6 +20,13 @@ class DirektoriModel extends CI_Model {
 
     }
 
+    public function get_direktori_related($genre, $id){
+
+      $query = $this->db->query("SELECT * FROM ig_game WHERE no_aplikasi != $id ORDER BY FIELD(genre, '$genre') DESC");
+      return $query->result_array();
+
+  }
+
 
 }
 ?>

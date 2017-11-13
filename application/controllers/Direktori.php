@@ -94,7 +94,7 @@ class Direktori extends CI_Controller {
 
 	}
 
-	public function view_game($slug = NULL)
+	public function view_direktori($slug = NULL)
 	{
 
 		// $data = 
@@ -114,23 +114,23 @@ class Direktori extends CI_Controller {
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS - Indonesian Game Rating System');
 
-	    $artikel = $this->ArtikelModel->get_artikel($slug);
-	    $data['artikel_item'] = $artikel;
-	    $id = $data['artikel_item']['id_artikel'];
-	    $komentar = $this->ArtikelModel->get_komentar($id);
-	    $data['komentar_item'] = $komentar;
+	    $direktori = $this->DirektoriModel->get_direktori($slug);
+	    $data['direktori_item'] = $direktori;
+	    // $id = $data['artikel_item']['id_artikel'];
+	    // $komentar = $this->ArtikelModel->get_komentar($id);
+	    // $data['komentar_item'] = $komentar;
 	    
 	    $data =array(
-	    	'artikel_item'=>$artikel,
-	    	'action'=>'home/comment/'.$slug,
+	    	'direktori_item'=>$direktori,
+	    	//'action'=>'home/comment/'.$slug,
 	    	'selected'=>array('parent'=>'',),
-	    	'komentar_item'=>$komentar,
-	    	'sesdat'=>$this->whoami->sesdat(),
+	    	//'komentar_item'=>$komentar,
+	    	//'sesdat'=>$this->whoami->sesdat(),
 	    	);
 	    //die(print_r($artikel['artikel_kategori']));
-	    $kategori = $artikel['artikel_kategori'];
-	    $id = $artikel['id_artikel'];
-	    $data['terkait'] = $this->ArtikelModel->get_artikel_related($kategori, $id);
-	    $this->load->view('detail_berita', $data);
+	    $genre = $direktori['genre'];
+	    $id = $direktori['no_aplikasi'];
+	    $data['terkait'] = $this->DirektoriModel->get_direktori_related($genre, $id);
+	    $this->load->view('detail_aplikasi', $data);
 	}
 }

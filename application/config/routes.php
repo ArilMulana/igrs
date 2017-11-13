@@ -90,4 +90,4 @@ $route['berita/(:any)'] = 'Home/view_berita/$1';
 
 //direktori
 $route['direktori'] = 'Direktori';
-$route['direktori/(:any)'] = 'DIrektori/view_game/$1';
+$route['direktori/(:any)'] = 'DIrektori/view_direktori/$1';

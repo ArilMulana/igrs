@@ -69,7 +69,7 @@
 							<div class="col-md-9">
 								<div class="row">
 									<div class="col-md-12">
-									<a href="detail_applikasi.html" class="block-title"><?php echo $direktori_item["nama_produk"] ?></a>
+									<a href="<?php echo site_url('direktori/'.$direktori_item['slug']); ?>" class="block-title"><?php echo $direktori_item["nama_produk"] ?></a>
 									</div>
 									<div class="col-md-12">
 									<input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
