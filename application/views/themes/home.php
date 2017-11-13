@@ -114,7 +114,7 @@
 										</a>
 									</li>
 									<li><a href="<?php echo base_url()?>berita">Berita</a></li>
-									<li><a href="#">Direktori</a></li>
+									<li><a href="<?php echo base_url()?>direktori">Direktori</a></li>
 									<li><a href="#">Pengaduan</a></li>
 									<li><a href="#">Pertanyaan Umum</a></li>
 									<li><a href="#">Hubungi Kami</a></li>

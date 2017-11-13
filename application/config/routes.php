@@ -87,3 +87,7 @@ $route['cms/artikel/(:any)'] = 'Home/view_berita/$1';
 //berita
 $route['berita'] = 'Home/berita';
 $route['berita/(:any)'] = 'Home/view_berita/$1';
+
+//direktori
+$route['direktori'] = 'Direktori';
+$route['direktori/(:any)'] = 'DIrektori/view_game/$1';
