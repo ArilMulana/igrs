@@ -11,7 +11,7 @@ class UserModel extends CI_Model {
 
 
     //name_role
-
+   
     public function spc_role($id){
         $this->db->where('id',$id);
         $query = $this->db->get('ig_role');

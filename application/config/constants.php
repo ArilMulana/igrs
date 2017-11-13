@@ -86,3 +86,5 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 define('URL','https://igrsunj.000webhostapp.com/');
 define('LOCAL_URL', 'http://localhost/igrs/');
+define('DB_C', 'ig_contributor');
+define('DB_D', 'ig_pengembang');

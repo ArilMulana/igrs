@@ -22,15 +22,15 @@ class Register extends CI_Controller {
 	{
 	parent::__construct();
 	$this->load->helper('url', 'form');
-    $this->load->library(array('form_validation','session','Whoami','Recaptcha','encryption'));
+    $this->load->library(array('form_validation','session','Whoami','Recaptcha','encryption','Encryption_Lib'));
     $this->load->library('email');
-    $this->load->model(array('UserModel'));
+    $this->load->model(array('RegisterModel'));
 	$this->_init();
 	}
 
-	private function encrypt_id($id){
-		return $this->encryption->encrypt($id);
-	}
+	// private function encrypt_id($id){
+	// 	return $this->encryption->encrypt($id);
+	// }
 
 	private function _init()
 	{
@@ -63,6 +63,8 @@ class Register extends CI_Controller {
 
 	public function index()
 	{
+		// $now = date('Y-m-d H:i:s');
+		// echo $now;
 		$this->output->set_title('Register');
 		$this->load->js('assets/js/jquery-2.2.3.min.js');
 		if($this->isLogged()){
@@ -94,7 +96,7 @@ class Register extends CI_Controller {
 		if($this->form_validation->run() == FALSE){
 			$this->load->view('register',$data);
 		}else{
-			$get_lastid = $this->UserModel->register();
+			$get_lastid = $this->RegisterModel->register();
 			//$this->UserModel->verif_acc($get_lastid);
 			//echo $data[0]['konfirmasi'];
 			$this->send_verif($get_lastid);	
@@ -104,11 +106,9 @@ class Register extends CI_Controller {
 	public function send_verif($get_lastid){
 		//kirim link ke email
 		$destination=$this->input->post('email');
-
-		//$code_id = $this->encrypt_id($get_lastid);
-	    //$subject='verif_account';
-	    //$url = LOCAL_URL;
-
+		$encrypt_id = $this->encryption_lib->encode($get_lastid);
+		// echo $this->encrypt->decode($encrypt_id);
+		// echo $get_lastid;
 	    $config['protocol'] = "smtp";
 	    $config['smtp_host'] = "ssl://smtp.gmail.com";
 	    $config['smtp_port'] = "465";
@@ -122,7 +122,7 @@ class Register extends CI_Controller {
 	    $this->email->clear(true);
 	    $this->email->from('igrsunj@gmail.com', 'IGRS UNJ');
 	    $this->email->subject('Verifikasi Akun Indonesia Game Rating System');
-	    $this->email->message('<p style="font-weight:bold;">Waktu Verifikasi hanya 1x24 jam </p> silahkan kamu melakukan registrasiClick <a href="'.LOCAL_URL.'verifikasi/'.$get_lastid.'">Link ini </a> untuk melakukan verifikasi account');
+	    $this->email->message('<p style="font-weight:bold;">Waktu Verifikasi hanya 1x24 jam </p> silahkan kamu melakukan registrasiClick <a href="'.LOCAL_URL.'verifikasi/'.$encrypt_id.'">Link ini </a> untuk melakukan verifikasi account');
 	    $this->email->to($destination);
 	    if($this->email->send()){
 	     echo "<script>
@@ -136,9 +136,9 @@ class Register extends CI_Controller {
 
 	}
 	public function verif_account($id){
-		 //$decrypt_id = $this->encryption->decrypt($id);
-		 //echo $decrypt_id;
-		$this->UserModel->verif_acc($id);
+		$decrypt_id = $this->encryption_lib->decode($id);
+		//echo $decrypt_id;
+		$this->RegisterModel->verif_acc($decrypt_id);
 		echo "<script>
 	      alert('Selamat account anda telah aktif');
 	      window.location.href='".base_url()."login';
