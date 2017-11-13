@@ -34,6 +34,11 @@
 	      ?><script src="<?php echo $file; ?>"></script><?php
 	  } echo "\n\t";
 	  ?>
+
+	<link href="<?= base_url()?>assets/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="<?= base_url()?>assets/libraries/jquery.min.js"></script> 
+    <script src="<?= base_url()?>assets/js/rating-input.min.js" type="text/javascript"></script> 
+    
     <style type="text/css">
 
 	 .menu-block .navbar-default .navbar-nav > .active > a, .menu-block .navbar-default .navbar-nav > .active > a:focus, .menu-block .navbar-default .navbar-nav > .active > a:hover, .menu-block .navbar-default .navbar-nav > li > a:focus, .menu-block .navbar-default .navbar-nav > li > a:hover, .latest-update h3 {

@@ -63,6 +63,10 @@ class Direktori extends CI_Controller {
 			return false;
 		}
 	}
+
+	// <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+ //    <script src="libraries/jquery.min.js"></script>
+ //    <script src="js/rating-input.min.js" type="text/javascript"></script>
 	
 	public function index()
 	{
