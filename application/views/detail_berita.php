@@ -138,7 +138,7 @@
 							<div class="col-md-7 col-sm-7 col-xs-8">
 								<a href="<?php echo site_url('berita/'.$terkait_item['slug']); ?>" class="post-title"><?php echo $terkait_item["judul"] ?></a>
 								<p>									 
-									<span><i class="fa fa-clock-o"></i> <?php echo $terkait_item["artikel_time"] ?></span>
+									<span><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($terkait_item['artikel_time'])); ?></span>
 								</p>
 							</div>
 						</li>

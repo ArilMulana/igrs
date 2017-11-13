@@ -95,7 +95,6 @@
 							<div class="post-box-inner">
 								<a href="<?php echo site_url('berita/'.$publish_item['slug']); ?>" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
 								<div class="box-content">
-									<span>Industri Game</span>
 									<a href="#" class="block-title"><?php echo $publish_item["judul"] ?></a>
 									<p class="time"><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($publish_item['artikel_time'])); ?></p>
 									<?php echo $publish_item["isi"] ?>
@@ -120,7 +119,7 @@
 					</form>
 				</div>
 				<br>
-				<!-- Latest Post -->
+				<!-- Kategori -->
 				<aside class="widget widget_categories">
 					<h3 class="widget-title">Kategori</h3>
 					<div class="widget-inner">
@@ -132,7 +131,7 @@
 							<?php endforeach; ?>
 						</ul>
 					</div>
-				</aside><!-- Latest Post /- -->
+				</aside><!-- Kategori /- -->
 
 				<!-- Latest Post -->
 				<aside class="widget widget_latest_post">
@@ -157,11 +156,7 @@
 									<a href="<?php echo site_url('berita/'.$latestpost_item['slug']); ?>" class="post-title"><?php echo $latestpost_item["judul"] ?> </a>
 									<p>
 										<a href="#"><img src="<?php echo base_url('assets/images/icon/comment-icon.png')?>" alt="comment" /> <?php echo $count; ?> </a> 
-<<<<<<< HEAD
-										<span><i class="fa fa-clock-o"></i> <?php echo substr($latestpost_item["artikel_time"], 0, 10) ?></span>
-=======
 										<span><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($latestpost_item['artikel_time'])); ?></span>
->>>>>>> artikel-baru
 									</p>
 								</div>
 								<?php $count = 0; ?>
