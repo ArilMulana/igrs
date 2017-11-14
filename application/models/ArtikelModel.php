@@ -273,7 +273,7 @@ class ArtikelModel extends CI_Model {
       // $this->db->from('blogs');
       // $this->db->join('comments', 'comments.id = blogs.id');
 
-       $this->db->select('*, COUNT(id_artikel) as jumlah');
+      $this->db->select('*, COUNT(id_artikel) as jumlah');
       $this->db->from('ig_artikel');
       $this->db->join('ig_artikel_comment', 'ig_artikel.id_artikel = ig_artikel_comment.artikel_id', 'left');
       $this->db->group_by('id_artikel');
