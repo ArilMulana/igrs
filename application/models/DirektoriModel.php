@@ -15,7 +15,7 @@ class DirektoriModel extends CI_Model {
         return $query->result_array();
       }
 
-      $this->db->join('ig_pengembang', 'ig_game.no_aplikasi = ig_pengembang.id_pengembang');
+      //$this->db->join('ig_pengembang', 'ig_game.no_aplikasi = ig_pengembang.id_pengembang');
       $query = $this->db->get_where('ig_game', array('slug' => $slug));
       return $query->row_array();
 
@@ -27,7 +27,6 @@ class DirektoriModel extends CI_Model {
       return $query->result_array();
 
     }
-
 
 }
 ?>
