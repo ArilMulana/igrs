@@ -55,4 +55,27 @@ class Aplikasi extends CI_Controller {
 		//$this->load->view('cms/footer');
 	}
 
+	public function create(){
+		$data = array(
+			'sesdat'=>$this->whoami->sesdat(),
+			//'artikel'=>$this->ArtikelModel->get_artikel(),
+		);
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
+		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
+		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));
+
+		if($this->form_validation->run() === FALSE){
+			$this->output->set_template('pengembang');
+			$this->load->view('pengembang/tambah_aplikasi',$data);
+		}
+		else{
+			$this->DirektoriModel->set_artikel();
+      		redirect('pengembang/permainan');
+		}
+
+	}
+
 }

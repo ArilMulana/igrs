@@ -15,7 +15,8 @@ class DirektoriModel extends CI_Model {
         return $query->result_array();
       }
 
-      //$this->db->join('ig_pengembang', 'ig_game.no_aplikasi = ig_pengembang.id_pengembang');
+      //SELECT * FROM ig_game JOIN ig_pengembang ON ig_game.no_aplikasi = ig_pengembang.id_pengembang
+      $this->db->join('ig_pengembang', 'ig_game.id_pengembang = ig_pengembang.id_pengembang');
       $query = $this->db->get_where('ig_game', array('slug' => $slug));
       return $query->row_array();
 
@@ -26,6 +27,26 @@ class DirektoriModel extends CI_Model {
       $query = $this->db->query("SELECT * FROM ig_game WHERE no_aplikasi != $id ORDER BY FIELD(genre, '$genre') DESC");
       return $query->result_array();
 
+    }
+
+    public function bintang(){
+      $id = $this->input->post('no_aplikasi');
+      $sesdat = $this->whoami->sesdat();
+      if(!isset($sesdat)){
+      $data = array(
+        'nama'=>$this->input->post('nama'),
+        'aplikasi_id'=>$id,
+        'nilai_bintang'=>$this->input->post('bintang'),
+        );
+      }else{
+        $data = array(
+        'aplikasi_id'=>$id,
+        'nilai_bintang'=>$this->input->post('bintang'),
+        );
+      }
+      //$data['artikel_id']=$id;
+      //$data['comment_post']=$this->input->post('comment');
+      $this->db->insert('ig_game_bintang',$data);
     }
 
 }

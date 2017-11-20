@@ -1,7 +1,3 @@
-<?php 
-	print_r($direktori_item);
-	die();
- ?>
 <!-- isi apapun dibawah ini -->
 
 	<!-- Slider Section -->
@@ -137,8 +133,13 @@
   					</table>
 				<form>
 					<h2> Berikan ulasan anda</h2>
-					<input value="4" type="text" class="rating" data-min=0 data-max=5 data-step=0.2 data-size="lg">
-					<button type="button" class="btn btn-primary btn-md">Masukan</button>
+					<?php
+					$attribute = array('id'=>'bintang','class'=>'form-horizontal','role'=>'form');
+			      	  echo form_open($action,$attribute);?> 
+			      	<input type="hidden" id="no_aplikasi" name="no_aplikasi" value="<?php echo $direktori_item['no_aplikasi'];?>">
+					<input id="bintang" name="bintang" value="4" type="text" class="rating" data-min=0 data-max=5 data-step=0.2 data-size="lg">
+					<button type="submit" id="send" class="btn btn-primary btn-md">Masukan</button>
+					<?php echo form_close();?>
 					<div class="clearfix"></div>
 
 				</form>

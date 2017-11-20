@@ -75,7 +75,8 @@ class Direktori extends CI_Controller {
 		$data = 
 			array(
 				'selected'=>array('parent'=>'','child'=>'',),
-			);	
+			);
+
 		$this->load->css('assets/libraries/owl-carousel/owl.carousel.css');
 		$this->load->css('assets/libraries/owl-carousel/owl.theme.css');
 		$this->load->css('assets/css/media.css');
@@ -88,7 +89,7 @@ class Direktori extends CI_Controller {
 		$this->load->js('assets/libraries/jquery.marquee.js');
 		$this->output->set_template('home');
 		$this->output->set_title('IGRS');
-
+ 
 		$data['direktori'] = $this->DirektoriModel->get_direktori();
 		$this->load->view('direktori', $data);
 
@@ -111,7 +112,7 @@ class Direktori extends CI_Controller {
 		$this->load->js('assets/libraries/jssor.js');
 		$this->load->js('assets/libraries/jssor.slider.min.js');
 		$this->load->js('assets/libraries/jquery.marquee.js');
-		$this->output->set_template('home');
+		$this->output->set_template('home2');
 		$this->output->set_title('IGRS - Indonesian Game Rating System');
 
 	    $direktori = $this->DirektoriModel->get_direktori($slug);
@@ -122,15 +123,39 @@ class Direktori extends CI_Controller {
 	    
 	    $data =array(
 	    	'direktori_item'=>$direktori,
-	    	//'action'=>'home/comment/'.$slug,
+	    	'action'=>'direktori/bintang/'.$slug,
 	    	'selected'=>array('parent'=>'',),
 	    	//'komentar_item'=>$komentar,
-	    	//'sesdat'=>$this->whoami->sesdat(),
+	    	'sesdat'=>$this->whoami->sesdat(),
 	    	);
 	    //die(print_r($artikel['artikel_kategori']));
 	    $genre = $direktori['genre'];
 	    $id = $direktori['no_aplikasi'];
 	    $data['terkait'] = $this->DirektoriModel->get_direktori_related($genre, $id);
 	    $this->load->view('detail_aplikasi', $data);
+	}
+
+	public function bintang($slug = NULL){
+
+	    $artikel = $this->DirektoriModel->get_direktori($slug);
+	    $data['direktori_item'] = $direktori;
+		$data = array(
+			'artikel_item'=>$artikel,
+			'sesdat'=>$this->whoami->sesdat(),
+			'selected'=>'',
+			'action'=>'',
+			);
+		$sesdat = $this->whoami->sesdat() ;
+		$this->output->set_template('home1');
+		$this->form_validation->set_rules('komentar','Komentar','trim|required');
+		if($this->form_validation->run() == false){
+			echo "error";
+			die();
+			$this->load->view('detail_aplikasi',$data);
+		}else{
+			echo "bisa";
+			$this->DirektoriModel->bintang();
+			redirect('home/view_direktori/'.$slug);
+		}
 	}
 }

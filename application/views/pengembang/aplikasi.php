@@ -44,3 +44,17 @@
     <!-- /.row (main row) -->
   </section>
   <!-- /.content -->
+
+<script>
+ // $.widget.bridge('uibutton', $.ui.button);
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
