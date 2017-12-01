@@ -6,11 +6,12 @@
 	<div class="container">
 		<div class="row">
 			<div id="political-world" class="owl-carousel owl-theme">	
+				<?php foreach ($populer as $populer_item): ?>
 				<div class="item">
 					<div class="col-md-12">
 						<div class="post-box">
 							<div class="image-box">
-								<img src="images/sample/dadufall.jpg" alt="political world" />
+								<img src="<?php echo base_url('assets/images/direktori/'.$populer_item["logo"])?>" alt="political world" />
 							</div>
 							<div class="post-box-inner">
 								<div class="box-content">
@@ -18,7 +19,7 @@
 										<div class="col-md-9">
 											<div class="row">
 												<div class="col-md-12">
-												<a href="detail_applikasi.html" class="block-title">Dadufall</a>
+												<a href="<?php echo site_url('direktori/'.$populer_item['slug']); ?>" class="block-title"><?php echo $populer_item["nama_produk"] ?></a>
 												</div>
 												<div class="col-md-12">
 												<input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
@@ -34,6 +35,7 @@
 						</div>
 					</div>
 				</div>
+				<?php endforeach; ?>
 				
 			</div>
 		</div>

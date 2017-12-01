@@ -91,6 +91,7 @@ class Direktori extends CI_Controller {
 		$this->output->set_title('IGRS');
  
 		$data['direktori'] = $this->DirektoriModel->get_direktori();
+		$data['populer'] = $this->DirektoriModel->get_direktori_popular();
 		$this->load->view('direktori', $data);
 
 	}
@@ -117,11 +118,14 @@ class Direktori extends CI_Controller {
 
 	    $direktori = $this->DirektoriModel->get_direktori($slug);
 	    $data['direktori_item'] = $direktori;
+	    $cek = $this->DirektoriModel->cek_bintang($slug);
+	    $data['cek_item'] = $cek;
 	    // $id = $data['artikel_item']['id_artikel'];
 	    // $komentar = $this->ArtikelModel->get_komentar($id);
 	    // $data['komentar_item'] = $komentar;
 	    
 	    $data =array(
+	    	'cek_item'=>$cek,
 	    	'direktori_item'=>$direktori,
 	    	'action'=>'direktori/bintang/'.$slug,
 	    	'selected'=>array('parent'=>'',),
@@ -137,25 +141,25 @@ class Direktori extends CI_Controller {
 
 	public function bintang($slug = NULL){
 
-	    $artikel = $this->DirektoriModel->get_direktori($slug);
+	    $direktori = $this->DirektoriModel->get_direktori($slug);
 	    $data['direktori_item'] = $direktori;
 		$data = array(
-			'artikel_item'=>$artikel,
+			'artikel_item'=>$direktori,
 			'sesdat'=>$this->whoami->sesdat(),
 			'selected'=>'',
 			'action'=>'',
 			);
 		$sesdat = $this->whoami->sesdat() ;
 		$this->output->set_template('home1');
-		$this->form_validation->set_rules('komentar','Komentar','trim|required');
+		$this->form_validation->set_rules('bintang','Rating','trim|required');
 		if($this->form_validation->run() == false){
 			echo "error";
-			die();
+			// die();
 			$this->load->view('detail_aplikasi',$data);
 		}else{
-			echo "bisa";
+			//echo "bisa";
 			$this->DirektoriModel->bintang();
-			redirect('home/view_direktori/'.$slug);
+			redirect('direktori/'.$slug);
 		}
 	}
 }

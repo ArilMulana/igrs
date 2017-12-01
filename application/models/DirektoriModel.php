@@ -32,22 +32,48 @@ class DirektoriModel extends CI_Model {
     public function bintang(){
       $id = $this->input->post('no_aplikasi');
       $sesdat = $this->whoami->sesdat();
-      if(!isset($sesdat)){
-      $data = array(
-        'nama'=>$this->input->post('nama'),
-        'aplikasi_id'=>$id,
-        'nilai_bintang'=>$this->input->post('bintang'),
-        );
-      }else{
+      // print_r($sesdat);
+      // die();
+      if($sesdat['role'] == 6){
         $data = array(
+        'contri_id'=>$sesdat['id_contri'],  
         'aplikasi_id'=>$id,
         'nilai_bintang'=>$this->input->post('bintang'),
         );
+        $this->db->insert('ig_game_bintang',$data);
       }
-      //$data['artikel_id']=$id;
-      //$data['comment_post']=$this->input->post('comment');
-      $this->db->insert('ig_game_bintang',$data);
+      elseif($sesdat['role'] == 7){
+        $data = array(
+        'pengembang_id'=>$sesdat['id_pengembang'],  
+        'aplikasi_id'=>$id,
+        'nilai_bintang'=>$this->input->post('bintang'),
+        );
+        $this->db->insert('ig_game_bintang',$data);
+      }
     }
+
+    public function cek_bintang($slug){
+      $this->db->join('ig_game_bintang', 'ig_game.no_aplikasi = ig_game_bintang.aplikasi_id');
+      $query = $this->db->get_where('ig_game', array('slug' => $slug));
+      return $query->row_array();
+    }
+
+    public function get_direktori_popular($slug = FALSE){
+
+      if($slug === FALSE){
+        $this->db->select('*, COUNT(no_aplikasi) as jumlah');
+        $this->db->from('ig_game');
+        $this->db->join('ig_game_bintang', 'ig_game.no_aplikasi = ig_game_bintang.aplikasi_id', 'left');
+        $this->db->group_by('aplikasi_id');
+        $this->db->order_by('jumlah', 'DESC');
+    
+        $query = $this->db->get('');
+        return $query->result_array();
+      }
+
+      $query = $this->db->get_where('no_aplikasi', array('slug' => $slug));
+      return $query->row_array();
+     }
 
 }
 ?>

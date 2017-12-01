@@ -1,3 +1,18 @@
+<?php 
+	
+	//print_r($cek_item);
+	//die();
+	$nilai = 0;
+	if($cek_item['contri_id'] == $sesdat['id_contri'] && $cek_item['aplikasi_id'] == $direktori_item['no_aplikasi']){
+		$nilai = 1;
+	}
+	elseif($cek_item['pengembang_id'] == $sesdat['id_pengembang'] && $cek_item['aplikasi_id'] == $direktori_item['no_aplikasi']){
+		$nilai = 1;
+	}
+	
+
+ ?>
+
 <!-- isi apapun dibawah ini -->
 
 	<!-- Slider Section -->
@@ -131,7 +146,9 @@
   							<td><?php echo $direktori_item['anjuran_waktu']; ?></td>
   						</tr>
   					</table>
-				<form>
+
+  					<?php if(isset($sesdat) && $nilai = 0):?>
+			
 					<h2> Berikan ulasan anda</h2>
 					<?php
 					$attribute = array('id'=>'bintang','class'=>'form-horizontal','role'=>'form');
@@ -141,8 +158,8 @@
 					<button type="submit" id="send" class="btn btn-primary btn-md">Masukan</button>
 					<?php echo form_close();?>
 					<div class="clearfix"></div>
-
-				</form>
+					<?php endif; ?>
+				
 			</div>	<!-- col md 8 akhir -->
 
 			<div class="col-md-4 widget-sidebar">
