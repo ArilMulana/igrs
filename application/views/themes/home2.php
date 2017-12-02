@@ -37,7 +37,7 @@
 
 	<link href="<?= base_url()?>assets/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
     <script src="<?= base_url()?>assets/libraries/jquery.min.js"></script> 
-    <script src="<?= base_url()?>assets/js/rating-input.min.js" type="text/javascript"></script> 
+    <script src="<?= base_url()?>assets/js/star-rating.min.js" type="text/javascript"></script> 
     
     <style type="text/css">
 

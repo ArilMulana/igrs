@@ -86,6 +86,17 @@ $route['cms/artikel'] = 'Cms/Artikel';
 $route['cms/artikel-belum-konfirmasi'] = 'Cms/Artikel/validasi';
 $route['cms/artikel/(:any)'] = 'Home/view_berita/$1';
 
+//pengembang
+$route['pengembang/permainan'] = 'Pengembang/Aplikasi';
+$route['pengembang/permainan/tambah'] = 'Pengembang/Aplikasi/create';
+$route['pengembang/permainan/edit'] = 'Pengembang/Aplikasi/update';
+$route['pengembang/permainan/hapus'] = 'Pengembang/Aplikasi/delete';
+
+
 //berita
 $route['berita'] = 'Home/berita';
 $route['berita/(:any)'] = 'Home/view_berita/$1';
+
+//direktori
+$route['direktori'] = 'Direktori';
+$route['direktori/(:any)'] = 'DIrektori/view_direktori/$1';
