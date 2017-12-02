@@ -19,7 +19,7 @@ class Artikel extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url', 'form');
 	    $this->load->library('form_validation','session');
-	    $this->load->library(array('Upload_img','Whoami'));
+	    $this->load->library(array('Upload_img','Whoami','pagination'));
 	    $this->load->model('LoginModel');
 	    $this->load->model('ArtikelModel');
 	    $this->load->model('UploadModel');
@@ -53,20 +53,21 @@ class Artikel extends CI_Controller
 	// }
 
 	public function my_artikel(){
-		$data = $this->whoami->get_role_id();
-		print_r($this->ArtikelModel->artikel_saya());
-		if($data['my_role'] == '6'){
-				$data = array(
-				'selected'=>array('parent'=>'','child'=>$this->m_artikel),
-				'get_artikel'=>$this->ArtikelModel->my_artikel($data['id'],$data['my_role']),
-				);
-		//$this->whoami->decrypt_identity($id);
-			$this->output->set_title('Artikel Saya');
-			$this->output->set_template('profil');
-			$this->load->view($this->folder.'/'.'my_artikel',$data);
-			}else{
-				show_404();
-			}
+		
+			$data = $this->whoami->get_role_id();
+				if($data['my_role'] == '6'){
+					$data = array(
+					'selected'=>array('parent'=>'','child'=>$this->m_artikel),
+					'get'=>$this->ArtikelModel->artikel_saya(),
+					
+					);
+				$this->output->set_title('Artikel Saya');
+				$this->output->set_template('profil');
+				$this->load->view($this->folder.'/'.'my_artikel',$data);
+				}else{
+					show_404();
+				}
+		
 	} 
 
 	function buatartikel(){
@@ -89,7 +90,7 @@ class Artikel extends CI_Controller
 		$sesdat = $this->whoami->isLogged();
 		$identity = $this->whoami->get_role_id($sesdat);
 		$data = array(
-			'action'=>'',
+			'action'=>'contributor/artikel/update_artikel'.'/'.$id_artikel,
 			'id_user'=>'',
 			'id_artikel'=>'',
 			'selected'=>array('parent'=>'','child'=>''),
@@ -126,19 +127,7 @@ class Artikel extends CI_Controller
             if ($this->upload->do_upload('cover'))
             {
                 $images = $this->upload->data();
-                $data = array(
-                    'cover'=>$images['file_name'],
-        			'judul'=>$this->input->post('judul'),
-			        'slug'=>url_title(strtolower($this->input->post('judul'))),
-			        'isi'=>$this->input->post('isi'),
-			        'kategori_artikel'=>$this->input->post('cat'),
-			        'artikel_status'=>0, //no publish
-                  );
-                  if($this->session->userdata('logged_in')['role'] == "6"){
-                  	$data['artikel_contributor'] = $this->session->userdata('logged_in')['id_contri'];
-                  }else{
-                  	$data['artikel_admin'] = $this->session->userdata('logged_in')['id'];
-                  }
+                $data = $this->UploadModel->upload_artikel_img($images);
                 $this->load->js('assets/tinymce/tinymce.min.js');
 				$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
 				$this->form_validation->set_rules('isi', 'Isi', 'trim|required');
@@ -160,5 +149,101 @@ class Artikel extends CI_Controller
             }
         }
 		
+	}
+
+	public function update_artikel($id){
+		$type= "Artikel";
+		$this->output->set_title('Update Artikel');
+		$this->output->set_template('home');
+		$config = $this->upload_img->set_upload($type);
+		$this->upload->initialize($config);
+	     if($_FILES['cover']['name'])
+	        {
+	            if ($this->upload->do_upload('cover'))
+	            {
+	                $images = $this->upload->data();
+	                $data = $this->UploadModel->upload_artikel_img($images);
+	                $this->load->js('assets/tinymce/tinymce.min.js');
+					$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+					$this->form_validation->set_rules('isi', 'Isi', 'trim|required');
+		   			if($this->form_validation->run() == false)
+						{
+							$this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Ubah Data!!</div></div>");
+	                		redirect('my_artikel/edit'.'/'.$id,'refresh');
+						}else
+						{
+							 $this->ArtikelModel->update_artikel_con($id,$data);
+	               			 $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Data Berhasil Di Ubah !!</div></div>");
+	               			 redirect('my_artikel/edit/'.$id,'refresh'); //jika berhasil maka akan ditampilkan view vupload
+	               		}
+	            }else{
+	                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+	                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Ubah Data!!</div></div>");
+	                redirect('my_artikel/edit/'.$id,'refresh'); //jika gagal maka akan ditampilkan form upload
+	                //echo "<script>alert('gagal')</script>";
+	            }
+	        }
+	}
+
+	public function list_artikel(){
+		//$data = $this->whoami->get_role_id();
+
+		$this->whoami->isLogged();
+		// $id = $userid['id'];
+		// $this->whoI($id);
+		//$this->whoAmI($user);
+		// if($user !=''){
+		// 	if($user == url_title(strtolower($this->session->userdata('logged_in')['name'])))
+		// 	{
+				//$name = $this->session->userdata('logged_in')['nama_contributor'];
+				$count = count($this->ArtikelModel->artikel_saya());
+		        $config = array();
+				$config["base_url"] =base_url('my_artikel/list/');
+				$config["total_rows"] = $count;
+				$config["per_page"] = 5;
+				$config['use_page_numbers'] = TRUE;
+				$config['num_links'] = $count;
+				$config['display_pages'] = FALSE;
+				$config['cur_tag_open'] = '&nbsp;<a class="current">';
+				$config['cur_tag_close'] = '</a>';
+				// $config['next_tag_open']='<a>';
+				// $config['next_tag_close']='</a>';
+				//For PREVIOUS PAGE Setup
+				$config['prev_link'] = 'prev';
+				$config['prev_tag_open'] = '<li>';
+				$config['prev_tag_close'] = '</li>';
+				//For NEXT PAGE Setup
+				$config['next_link'] = 'Next';
+				$config['next_tag_open'] = '<li>';
+				$config['next_tag_close'] = '</li>';
+				// $config['prev_link'] = 'Previous 1111111111111111';
+				// $config['next_link'] = 'Next';
+				$this->pagination->initialize($config);
+
+			  if($this->uri->segment(3) != 1 && $this->uri->segment(3)){
+		          $page = ($this->uri->segment(3)*5 - 5) ;
+		          //echo $page;
+		        } else {
+		          $page = 0;
+		        }
+
+				$data['get']= $this->ArtikelModel->pagination_article($config['per_page'],$page);
+		    	$str_links = $this->pagination->create_links();
+		        $data['links'] = explode('&nbsp;',$str_links);
+		        $data['selected']= array('parent'=>'','child'=>$this->m_artikel);
+				//explode('&nbsp;',$str_links);
+				//$data['update']= $this->UserModel->updateNotif($id);
+				$data['sesdat']= $this->whoami->isLogged();
+				$this->load->js('assets/js/bootstrap.min.js');
+				$this->output->set_title('Artikel');
+				$this->output->set_template('profil');
+				$this->load->view($this->folder.'/'.'my_artikel',$data);
+			// }else{
+			// 	show_404();
+			// }
+	
+		// }else{
+		// 	show_404();
+		// }
 	}
 }

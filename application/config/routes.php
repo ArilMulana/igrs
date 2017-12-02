@@ -68,7 +68,9 @@ $route['profil/(.+)'] = 'Contributor/Profil/get_profil/$1';
 //artikel
 $route['artikel']= 'Contributor/Artikel';
 $route['artikel/buatartikel'] = 'Contributor/Artikel/buatartikel'; // create_artikel
-$route['my_artikel'] = 'Contributor/Artikel/my_artikel'; // read_artikel
+$route['my_artikel/list'] = 'Contributor/Artikel/list_artikel'; // read_artikel
+$route['my_artikel'] = 'Contributor/Artikel/list_artikel'; // list_artikel
+$route['my_artikel/list/(:any)'] = 'Contributor/Artikel/list_artikel/$1';
 $route['my_artikel/edit/(:any)'] = 'Contributor/Artikel/edit_artikel/$1';
 //$route['artikel/feedartikel'] = 'contributor/artikel/feedartikel';
 

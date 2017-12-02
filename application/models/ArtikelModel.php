@@ -29,7 +29,7 @@ class ArtikelModel extends CI_Model {
 
   public function get_artikel_id($id = FALSE){
 
-    $query = $this->db->get_where('ig_artikel', array('id_artikel' => $id));
+    $query = $this->db->get_where('ig_artikel', array('id' => $id));
     return $query->row_array();
 
   }
@@ -60,12 +60,12 @@ class ArtikelModel extends CI_Model {
       'slug' => $slug
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
   public function delete_artikel($id){
-    return $this->db->delete('ig_artikel', array('id_artikel' => $id));
+    return $this->db->delete('ig_artikel', array('id' => $id));
   }
 
   public function get_artikel_validasi($slug = FALSE){
@@ -121,7 +121,7 @@ class ArtikelModel extends CI_Model {
       'artikel_status' => 1,
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
@@ -132,7 +132,7 @@ class ArtikelModel extends CI_Model {
       'artikel_status' => 2,
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
@@ -143,7 +143,7 @@ class ArtikelModel extends CI_Model {
       'artikel_status' => 1,
     );
 
-    $this->db->where('id_artikel', $id);
+    $this->db->where('id', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
@@ -184,19 +184,26 @@ class ArtikelModel extends CI_Model {
     public function artikel_saya(){
       $sesdat= $this->whoami->get_role_id();
       $this->db->select('*');
-      $this->db->from('ig_artikel_comment');
-      $this->db->where('contri_id',$sesdat['id']);
+      $this->db->from('ig_artikel');
+      $this->db->where('artikel_contributor',$sesdat['id']);
+      $this->db->order_by('artikel_time','desc');
       $query = $this->db->get();
-      $artikel_com = $query->result_array();
-      if(count($artikel_com) == 0){ //gaada comentar
-          $this->db->where('artikel_contributor',$sesdat['id']);
-          $query = $this->db->get('ig_artikel');
-          return $query->result_array();
-      }else{
-        return $artikel_com;
-      }
-
+      return $query->result_array();
     }
+
+    public function pagination_article($limit,$page){
+      $sesdat= $this->whoami->get_role_id();
+      $this->db->select('*');
+      $this->db->from('ig_artikel');
+      $this->db->where('artikel_contributor',$sesdat['id']);
+      $this->db->limit($limit,$page);
+      $this->db->order_by('artikel_time','desc');
+      $query = $this->db->get('');
+      return $query->result_array();
+      //$query = $this->db->get();
+    }
+
+
     public function my_artikel($id,$role){
       $this->db->select('artikel_id,cover,judul,isi,artikel_admin,artikel_contributor,artikel_status,comment_time,count(artikel_id) as total_comment');
       $this->db->from('ig_artikel_comment');
@@ -320,10 +327,30 @@ class ArtikelModel extends CI_Model {
       $query = $this->db->get('ig_artikel');
       return $query->result_array();
     }
-
     $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
     return $query->row_array();
+  }
 
+  public function update_artikel_con($id,$data){
+    $this->db->where('id_artikel',$id);
+    return $this->db->update('ig_artikel',$data);
+  }
+
+  public function get_search_artikel($key){
+      $this->db->where('isi',$key);
+      $query = $this->db->get('ig_artikel');
+      if($query->num_rows() > 0){
+        return $query->result_array();
+      }else{
+        return false;
+      }
+  }
+  public function search_keyword($key){
+      $this->db->where('isi',$key);
+      $get_artikel_search = $this->db->get('ig_artikel');
+      $this->db->where('deskripsi',$key);
+      $get_direktori_search = $this->db->get('ig_apps');
+      //if($get_artikel_search)
   }
 
 }

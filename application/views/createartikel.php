@@ -32,7 +32,7 @@
 			              <div class="col-md-5 col-md-offset-5">
 			                <div class="input-group input-group-sm col-md-8 clearfix">
 			                	<div class="kotak">
-			                  		<img data-toggle="tooltip" title="Cover Artikel" src="#" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
+			                  		<img src="" data-toggle="tooltip" title="Cover Artikel" src="#" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
 			                  	</div>
 			                   <input data-toggle="tooltip" title="Input Cover Artikel" style="width: 170px;" id="cover" name="cover" required type="file" class="form-control" />
 			                  <span class="label label-danger"><i>Gambar ini ditampilkan untuk cover artikel</i></span>
@@ -177,6 +177,7 @@
   			images_upload_base_path: './assets/images'
 		});	
 	function bacaGambar(input) {
+
 	   if (input.files && input.files[0]) {
 	      var reader = new FileReader();
 	 

@@ -95,6 +95,7 @@
 							<div class="post-box-inner">
 								<a href="<?php echo site_url('berita/'.$publish_item['slug']); ?>" class="box-read-more"><img src="<?php echo base_url('assets/images/icon/arrow.png')?>" alt="arrow" /> Read More</a> 
 								<div class="box-content">
+									<span>Industri Game</span>
 									<a href="#" class="block-title"><?php echo $publish_item["judul"] ?></a>
 									<p class="time"><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($publish_item['artikel_time'])); ?></p>
 									<?php echo $publish_item["isi"] ?>
@@ -119,7 +120,7 @@
 					</form>
 				</div>
 				<br>
-				<!-- Kategori -->
+				<!-- Latest Post -->
 				<aside class="widget widget_categories">
 					<h3 class="widget-title">Kategori</h3>
 					<div class="widget-inner">
@@ -131,7 +132,7 @@
 							<?php endforeach; ?>
 						</ul>
 					</div>
-				</aside><!-- Kategori /- -->
+				</aside><!-- Latest Post /- -->
 
 				<!-- Latest Post -->
 				<aside class="widget widget_latest_post">

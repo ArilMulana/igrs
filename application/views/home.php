@@ -77,14 +77,16 @@
 		yang berfungsi sebagai alat untuk mengklasifikasikan game berdasarkan kategori konten 
 		dan kelompok usia pengguna. <a href="faq.html"><small>Selengkapnya</small></a></p>
 		
-		<form class="form-inline">
+		<?php 
+		$attr = array('id'=>'form_search','name'=>'form_search','class'=>'form-inline','role'=>'form');
+		echo form_open($action,$attr)?>
 			<div class="input-group">
-				<input type="text" class="form-control" size="90" placeholder="Search" required>
+				<input type="text" id="search" name="search" class="form-control" size="90" placeholder="Search" required="">
 				<div class="input-group-btn">
-					<button type="button" class="btn btn-primary">   Cari   </button>
+					<button type="submit" class="btn btn-primary">   Cari   </button>
 				</div>
 			</div>
-		</form>
+		<?php echo form_close();?>
 	</div>
 	<!-- /jumbotron Section -->
 	

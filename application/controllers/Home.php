@@ -69,7 +69,7 @@ class Home extends CI_Controller {
 	{
 		$data = 
 			array(
-				'action'=>'',
+				'action'=>'search',
 				'selected'=>array('parent'=>'','child'=>''),
 				'sesdat'=>$this->whoami->sesdat(),
 				//'populer'=>$this->ArtikelModel->get_artikel_popular(),

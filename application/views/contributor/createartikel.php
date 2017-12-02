@@ -36,7 +36,7 @@
 			              <div class="col-md-5 col-md-offset-5">
 			                <div class="input-group input-group-sm col-md-8 clearfix">
 			                	<div class="kotak">
-			                  		<img data-toggle="tooltip" title="Cover Artikel" src="<?php if(isset($get['cover'])){echo $get['cover'].base_url('assets/images/');}else{echo "#";}?>" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
+			                  		<img data-toggle="tooltip" title="Cover Artikel" src="<?php if(isset($get['cover'])){echo base_url('assets/images/Artikel').'/'. $get['cover'];}else{"";}?>" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
 			                  	</div>
 			                   <input data-toggle="tooltip" title="Input Cover Artikel" style="width: 170px;" id="cover" name="cover" required type="file" class="form-control" />
 			                  <span class="label label-danger"><i>Gambar ini ditampilkan untuk cover artikel</i></span>
@@ -78,7 +78,9 @@
 			              <div class="col-sm-10">
 			              	<select id="cat" name="cat" class="form-control">
 			              		<option>Pilih Categori</option>
-			              		<option value="2">Game</option>
+			              		<option value="2" <?php if(isset($get['kategori_artikel'])){
+			              			if($get['kategori_artikel'] == "2"){echo "selected";}
+			              		} ?>>Game</option>
 			              	</select>
 			              </div>
 			             </div>

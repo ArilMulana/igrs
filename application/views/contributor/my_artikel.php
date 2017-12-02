@@ -32,35 +32,41 @@
                   <th style="text-align: left;width: 15%;">Judul</th>
                   <th style="text-align: left;width: 35%;">Isi</th>
                   <th style="text-align: center;width: 15%;">Status</th>
-                  <th style="text-align: center;width: 15%;">Komentar</th>
                   <th style="text-align: center;width: 15%;">Action</th>
                 </tr>
                 <?php 
                   $no = 1;
-                  //echo print_r($get_artikel);
-                foreach($get_artikel as $my_artikel){?>
+                  //echo print_r($get);
+                foreach($get as $my_artikel){?>
                 <tr>
                   <td style="text-align: left;"><?php echo $no++ ;?></td>
                   <td style="text-align: left;"><?php echo $my_artikel['judul'];?></td>
                   <td style="text-align: left;"><?php echo substr(strip_tags($my_artikel['isi']),0,20)."...";?></td>
                   <td>
-                    <?php if($my_artikel['artikel_status'] == "2"){?>
-                    <span class="label label-success">Approved</span>
-                    <?php }else if($my_artikel['artikel_status'] == "1"){?>
-                    <span class="label label-warning">Wait</span>
+                   <?php if($my_artikel['artikel_status'] == "1"){?>
+                    <span class="label label-success">Telah disetujui</span>
+                    <?php }else if($my_artikel['artikel_status'] == "0"){?>
+                    <span class="label label-warning">Menunggu</span>
                     <?php }else{?>
                     <span class="label label-danger">Ditolak</span>
-                    <?php }?>
+                     <?php }?>
                   </td>
-                  <td><a class="btn btn-info" href="#"><span class="fa fa-comment"></span><?php echo $my_artikel['total_comment'];?></a></td>
                   <td>
-                    <a href="<?php echo base_url("my_artikel/edit".'/'.$my_artikel['artikel_id']);?>" class="btn btn-info"><span class="fa fa-edit"></span></a>
+                    <a href="<?php echo base_url("my_artikel/edit".'/'.$my_artikel['id_artikel']);?>" class="btn btn-info"><span class="fa fa-edit"></span></a>
                     <a class="btn btn-danger"><span class="fa fa-close"></span></a>
                   </td>
                 </tr>
                 <?php }?>
               </table>
             </div>
+            <div class="paging" style="text-align: center;">
+                <ul class="pagination">
+                <?php foreach ($links as $link) {
+                  echo "<li>". $link."</li>";
+                } ?>
+
+                </ul>
+              </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
