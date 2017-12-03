@@ -74,7 +74,7 @@
 									<a href="<?php echo site_url('direktori/'.$direktori_item['slug']); ?>" class="block-title"><?php echo $direktori_item["nama_produk"] ?></a>
 									</div>
 									<div class="col-md-12">
-									<input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
+									<input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="<?php echo $direktori_item["rata_rata"] ?>" data-readonly/>
 									</div>
 								</div>
 							</div>
