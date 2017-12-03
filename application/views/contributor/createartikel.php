@@ -6,10 +6,6 @@
 	width: 170px;
 	height: 153px;
 }
-.judul_count{
-	margin-left: 180px;
-	padding-top: 40px;
-}
 </style>
 <div  class="container">
 <?= $this->session->flashdata('pesan');?>
@@ -36,7 +32,13 @@
 			              <div class="col-md-5 col-md-offset-5">
 			                <div class="input-group input-group-sm col-md-8 clearfix">
 			                	<div class="kotak">
-			                  		<img data-toggle="tooltip" title="Cover Artikel" src="<?php if(isset($get['cover'])){echo base_url('assets/images/Artikel').'/'. $get['cover'];}else{"";}?>" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
+			                  		<img data-toggle="tooltip" title="Cover Artikel" src="<?php 
+							if(!isset($get['cover'])){
+								echo base_url("assets/images/footer/popular-post-3.png");	
+							}else{
+								echo base_url('assets/images/Artikel'.'/'.strtolower($get['cover']));
+							}
+							?>" id="gambar_nodin" alt="Preview Cover Image" style="width: 170px;height: 153px;">
 			                  	</div>
 			                   <input data-toggle="tooltip" title="Input Cover Artikel" style="width: 170px;" id="cover" name="cover" required type="file" class="form-control" />
 			                  <span class="label label-danger"><i>Gambar ini ditampilkan untuk cover artikel</i></span>
@@ -51,39 +53,87 @@
 			            </div>
 			              
 			            <div class="form-group">
-			              <label for="judul" class="col-sm-2 control-label" style="text-align: center;">Judul berita<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
+			              <label for="judul" class="col-sm-2 control-label" style="text-align: center;">Judul berita <span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 			              <div class="col-sm-10">
-			               <input value="<?php if(isset($get['judul'])){echo $get['judul'];}else{echo "";}?>" id="judul" name="judul" type="text" maxlength="30" class="form-control" placeholder="">
+			               <input id="judul" name="judul" type="text" maxlength="100" class="form-control" placeholder="" value="<?php if(isset($get['judul']))
+			               {echo $get['judul'];}
+			               else{echo "";}?>">
+			               <span id="count" class="label label-info"> </span>
 			               <?php echo form_error('judul');?>
-			              </div>
-			              <div class="judul_count">
-			              <span id="judul_count" class="label label-info"></span>
 			              </div>	              
 			            </div>
 			            <div class="form-group">
 		                  <label for="inputIsi" style="text-align: center;" class="col-sm-2 control-label">Isi<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
 		                  <div class="col-sm-10">
 		                    <div class="box">
-		                        <textarea id="isi" name="isi" class="textarea" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($get['isi'])){
-		                        	echo $get['isi'];
-		                        }else{
-		                        	echo "";
-		                        }?></textarea>
+		                        <textarea id="isi" name="isi" class="textarea" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+		                        	 <?php if(isset($get['isi'])){
+		                        	 	echo $get['isi'];}else{echo "";}?>
+		                        </textarea>
+		                      
 		                    </div>
 		                   <?php echo form_error('isi')?>
 		                  </div>
 		                </div>
-			            <div class="form-group">
-			              <label style="text-align: center;" for="kategori" class="col-sm-2 control-label">Kategori<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
-			              <div class="col-sm-10">
-			              	<select id="cat" name="cat" class="form-control">
-			              		<option>Pilih Categori</option>
-			              		<option value="2" <?php if(isset($get['kategori_artikel'])){
-			              			if($get['kategori_artikel'] == "2"){echo "selected";}
-			              		} ?>>Game</option>
-			              	</select>
+		                <div class="form-group">
+		                  <label for="inputIsi" style="text-align: center;" class="col-sm-2 control-label">Kategori<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
+		                  <div class="col-sm-10">
+		                    <div class="box">
+		                    	<select name="cat" id="cat" class="form-control">
+		                    		<option value="" <?php if(!isset($get['artikel_kategori'])){echo "selected";}?>>Pilih Kategori</option>
+		                    		<option value="Edukasi" <?php 
+		                    		if(isset($get['artikel_kategori'])){
+		                    			if($get['artikel_kategori'] == "Edukasi"){
+		                    				echo "selected";
+		                    			}else{
+		                    				echo"";
+		                    			}
+		                    		}?>>Edukasi</option>
+		                    		<option value="Tips dan trick" <?php 
+		                    		if(isset($get['artikel_kategori'])){
+		                    			if($get['artikel_kategori'] == "Tips dan trick"){
+		                    				echo "selected";
+		                    			}else{
+		                    				echo"";
+		                    			}
+		                    		}?>>Tips dan trick</option>
+		                    		<option value="Keluarga" <?php 
+		                    		if(isset($get['artikel_kategori'])){
+		                    			if($get['artikel_kategori'] == "Keluarga"){
+		                    				echo "selected";
+		                    			}else{
+		                    				echo"";
+		                    			}
+		                    		}?>>Keluarga</option>
+		                    		<option value="Pendidikan" <?php 
+		                    		if(isset($get['artikel_kategori'])){
+		                    			if($get['artikel_kategori'] == "Pendidikan"){
+		                    				echo "selected";
+		                    			}else{
+		                    				echo"";
+		                    			}
+		                    		}?>>Pendidikan</option>
+		                    		<option value="Lain-lain" <?php 
+		                    		if(isset($get['artikel_kategori'])){
+		                    			if($get['artikel_kategori'] == "Lain-lain"){
+		                    				echo "selected";
+		                    			}else{
+		                    				echo"";
+		                    			}
+		                    		}?>>Lain-lain</option>
+		                    	</select>
+		                        
+		                    </div>
+		                   <?php echo form_error('cat')?>
+		                  </div>
+		                </div>
+			            <!-- <div class="form-group">
+			              <label style="text-align: center;" for="referensi" class="col-sm-2 control-label">Referensi<span style="font-weight: bold;color: red;margin-left: 10px;">*</span></label>
+			              <div class="col-sm-9">
+			               <input id="refer" name="refer" type="url" class="form-control" placeholder="http://www.lalala.com">
 			              </div>
-			             </div>
+			              	<a data-toogle="tooltip" title="referensi tambahan" id="add_refer" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+			             </div> -->
 			            <!--   <div id="refer2" style="">
 			             	<div class="form-group">
 			              		<div class="col-sm-9 col-sm-offset-2">
@@ -175,10 +225,13 @@
 <script type="text/javascript">
 	var judul = document.getElementById('judul');
 	var length = judul.getAttribute("maxlength");
-	var count = document.getElementById('judul_count');
+	var count = document.getElementById('count');
 	count.innerHTML = length;
 	judul.onkeyup = function () {
-  		count.innerHTML = (length - this.value.length);
+  		document.getElementById('count').innerHTML = (length - this.value.length);
+  		if(length-this.value.length <20){
+
+  		}
 	};
 		tinymce.init({
   			selector: 'textarea',  // change this value according to your HTML
@@ -188,8 +241,10 @@
   			images_upload_base_path: './assets/images'
 		});	
 	function bacaGambar(input) {
+
 	   if (input.files && input.files[0]) {
 	      var reader = new FileReader();
+	 
 	      reader.onload = function (e) {
 	          $('#gambar_nodin').attr('src', e.target.result);
 	      }
@@ -208,15 +263,11 @@
 	// 	$(save).click(function(){
 	// 		$.ajax({
 	// 			type:"POST",
-	// 			url:base_url + "contributor/artikel/upload",
+	// 			url:base_url + "artikel/artikel/upload",
 	// 			data:{
-	// 				//cover:$("#cover").val(),
-	// 				judul:$("#judul").val(),
-	// 				isi:$("#isi").text(),
-	// 				//kategory_artikel:$("#cat").val(),
-	// 			},
-	// 			success:function(res){
-	// 				alert(res);
+	// 				cover:$("#cover").val(),
+	// 				isi:$("#isi").val(),
+
 	// 			}
 	// 		})
 	// 	})

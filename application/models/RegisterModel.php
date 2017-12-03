@@ -19,6 +19,7 @@ class RegisterModel extends CI_Model {
     private function check_email($email,$role){
         $this->db->where('email',$email);
         $this->db->where('konfirmasi','1');
+        $this->db->or_where_in('konfirmasi','0');
         if($role == "7"){ // pengembang
             $this->db->limit(1);
             $query = $this->db->get('ig_pengembang');

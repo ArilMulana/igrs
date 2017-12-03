@@ -242,7 +242,7 @@ class ArtikelModel extends CI_Model {
           $query = $this->db->get('ig_artikel');
           $data = $query->row_array();
           if(isset($data)){
-            print_r($data);
+            //print_r($data);
             return $data;
           }else{
             show_404();

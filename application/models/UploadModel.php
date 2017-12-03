@@ -20,7 +20,7 @@ class UploadModel extends CI_Model {
                     'judul'=>$this->input->post('judul'),
                     'slug'=>url_title(strtolower($this->input->post('judul'))),
                     'isi'=>$this->input->post('isi'),
-                    'kategori_artikel'=>$this->input->post('cat'),
+                    'artikel_kategori'=>$this->input->post('cat'),
                     'artikel_status'=>0, //no publish
         );
          if($this->session->userdata('logged_in')['role'] == "6"){
