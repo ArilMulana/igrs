@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div id="political-world" class="owl-carousel owl-theme">	
-				<?php foreach ($populer as $populer_item): ?>
+				<?php foreach (array_slice($populer, 0, 5) as $populer_item): ?>
 				<div class="item">
 					<div class="col-md-12">
 						<div class="post-box">
@@ -22,7 +22,7 @@
 												<a href="<?php echo site_url('direktori/'.$populer_item['slug']); ?>" class="block-title"><?php echo $populer_item["nama_produk"] ?></a>
 												</div>
 												<div class="col-md-12">
-												<input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
+												<input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="<?php echo $populer_item["rata_rata"] ?>" data-readonly/>
 												</div>
 											</div>
 										</div>

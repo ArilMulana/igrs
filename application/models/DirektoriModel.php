@@ -66,11 +66,11 @@ class DirektoriModel extends CI_Model {
     public function get_direktori_popular($slug = FALSE){
 
       if($slug === FALSE){
-        $this->db->select('*, COUNT(no_aplikasi) as jumlah');
+        $this->db->select('*, COUNT(no_aplikasi) as jumlah, AVG(nilai_bintang) as rata_rata');
         $this->db->from('ig_game');
         $this->db->join('ig_game_bintang', 'ig_game.no_aplikasi = ig_game_bintang.aplikasi_id', 'left');
-        $this->db->group_by('aplikasi_id');
-        $this->db->order_by('jumlah', 'DESC');
+        $this->db->group_by('no_aplikasi');
+        $this->db->order_by('rata_rata', 'DESC');
     
         $query = $this->db->get('');
         return $query->result_array();
