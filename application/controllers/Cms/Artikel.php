@@ -5,9 +5,11 @@ class Artikel extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
-    $this->load->model('ArtikelModel');
+     $this->load->model('LoginModel');
+	    $this->load->model('ArtikelModel');
+	    $this->load->model('UploadModel');
     $this->load->helper(array('url_helper', 'form', 'url'));
-    $this->load->library(array('pagination','form_validation'));
+    $this->load->library(array('pagination','form_validation','Upload_img'));
     $this->_init();
 
     function excerpt($string){
@@ -47,6 +49,7 @@ class Artikel extends CI_Controller {
 		$data = array(
 			'sesdat'=>$this->whoami->sesdat(),
 			'artikel'=>$this->ArtikelModel->get_artikel(),
+			'get'=>$this->ArtikelModel->artikel_saya(),
 		);
 		//$data['artikel'] = $this->ArtikelModel->get_artikel();
 		$this->output->set_template('dashboard');
@@ -63,6 +66,7 @@ class Artikel extends CI_Controller {
 			'sesdat'=>$this->whoami->sesdat(),
 			'artikel_item'=>$artikel,
 		);
+		$this->load->js('assets/tinymce/tinymce.min.js');
 	    $this->output->set_template('dashboard');
 	   // $this->load->view('cms/header');
 		$this->load->view('cms/lihat_artikel', $data);
@@ -72,25 +76,14 @@ class Artikel extends CI_Controller {
 	public function create(){
 		$data = array(
 			'sesdat'=>$this->whoami->sesdat(),
+			'action'=>'cms/artikel/coba',
 			//'artikel'=>$this->ArtikelModel->get_artikel(),
 		);
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('judul', 'Judul', 'required', array('required'=>'%s Harus diisi'));
-		$this->form_validation->set_rules('isi', 'Isi', 'required', array('required'=>'%s Harus diisi'));
-		$this->form_validation->set_rules('artikel_status', 'status', 'required', array('required'=>'%s Harus diisi'));
-
-		if($this->form_validation->run() === FALSE){
+		$this->load->js('assets/tinymce/tinymce.min.js');
 			$this->output->set_template('dashboard');
 			//$this->load->view('cms/header');
 			$this->load->view('cms/tambah_artikel',$data);
-			//$this->load->view('cms/footer');
-		}
-		else{
-			$this->ArtikelModel->set_artikel();
-      		redirect('cms/artikel');
-		}
+
 
 	}
 
@@ -149,8 +142,39 @@ class Artikel extends CI_Controller {
 	}
 
 	public function coba(){
-		$this->load->js('assets/js/bootstrap.min.js');
-		$this->output->set_template('dashboard');
+		$type = "Artikel"; // nama forlder
+	//$this->load->library('upload');
+    $this->output->set_title('Create Artikel');
+    $this->output->set_template('home'); 
+    $config = $this->upload_img->set_upload($type); 
+     $this->upload->initialize($config);
+     if($_FILES['cover']['name'])
+        {
+            if ($this->upload->do_upload('cover'))
+            {
+                $images = $this->upload->data();
+                $data = $this->UploadModel->upload_artikel_img($images);
+                $this->load->js('assets/tinymce/tinymce.min.js');
+				$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+				$this->form_validation->set_rules('isi', 'Isi', 'trim|required');
+	   			if($this->form_validation->run() == false)
+					{
+						$this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data  1!!</div></div>");
+                		redirect('cms/artikel','refresh');
+					}else
+					{
+						 $this->ArtikelModel->create_artikel($data);
+               			 $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Data Berhasil Di Save !!</div></div>");
+               			 redirect('cms/artikel','refresh'); //jika berhasil maka akan ditampilkan view vupload
+               		}
+            }else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal Save Data 2!!</div></div>");
+                redirect('cms/artikel','refresh'); //jika gagal maka akan ditampilkan form upload
+                //echo "<script>alert('gagal')</script>";
+            }
+        }
 	}
+
 
 }

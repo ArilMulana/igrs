@@ -55,7 +55,7 @@ class Profil extends CI_Controller{
 			if($sess['role'] == "6"){
 				$this->load->view($this->folder.'/edit_profil',$data);	
 			}else{ // if( <= 5 // admin redirect profil admin ) / if(==7 developper redirect profil developper)
-				$this->load->view('blank',$data);
+				$this->load->view('blank1',$data);
 			}		
 		}else{
 			show_404();

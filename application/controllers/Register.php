@@ -63,8 +63,6 @@ class Register extends CI_Controller {
 
 	public function index()
 	{
-		// $now = date('Y-m-d H:i:s');
-		// echo $now;
 		$this->output->set_title('Register');
 		$this->load->js('assets/js/jquery-2.2.3.min.js');
 		if($this->isLogged()){

@@ -19,12 +19,6 @@ class SearchModel extends CI_Model {
    		$artikel = $query->result_array();
    		//print_r($artikel);
    		return $query->result_array();
-   		// if($query->num_rows()>0){
-   		// 	$artikel = $query->result_array();
-   		// 	return $artikel;
-   		// }else{
-   		// 	return false;
-   		// }
     }
 
     public function check_apps($key,$limit){
@@ -37,12 +31,6 @@ class SearchModel extends CI_Model {
    		$game = $query->result_array();
    		//print_r($game);
    		return $query->result_array();
-   		// if($query->num_rows()>0){
-   		// 	$game = $query->result_array();
-   		// 	return $game;
-   		// }else{
-   		// 	return false;
-   		// }
     }
 
     public function general_search($key){
@@ -50,12 +38,11 @@ class SearchModel extends CI_Model {
     	$limit_data= 9; 
     	$jml_artikel = count($this->check_artikel($key,$limit_data)); // max 9
     	$jml_game = count($this->check_apps($key,$limit_data));
-    	// echo $jml_artikel;
-    	// echo $jml_game;
+    	
 
     	if($jml_game + $jml_artikel == 9){
-    		if($jml_game > $jml_artikel){ // jumlah data game lebih besar didapatnya
-    			$sisa = $jml_game - $jml_artikel; // sisa data; buat artikel
+    		if($jml_game > $jml_artikel){ 
+    			$sisa = $jml_game - $jml_artikel; 
     			$data = array(
     				'game'=>$this->check_apps($key,$jml_game),
     				'artikel'=>$this->check_artikel($key,$sisa),
@@ -64,7 +51,7 @@ class SearchModel extends CI_Model {
 
     			return $data;
     			
-    		}else if($jml_game < $jml_artikel){// jumlah data artikel lebih besar didapatnya
+    		}else if($jml_game < $jml_artikel){
 
     			$sisa = $jml_artikel - $jml_game;
     			$data = array(
