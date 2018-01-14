@@ -128,8 +128,6 @@
        <div class="col-md-6">
          <center><h1>DAFTAR</h1></center>
          <?php 
-            // $version = apache_get_version();
-            // echo $version;
                 $attribute = array('id'=>'form_reg','class'=>'form-horizontal','role'=>'form');
                 echo form_open_multipart($action,$attribute);?>
                   <!-- <span id="reauth-email" class="reauth-email"></span> -->
