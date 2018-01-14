@@ -59,7 +59,7 @@
                 <?php }?>
               </table>
             </div>
-            <div class="paging" style="text-align: center;">
+              <div class="paging" style="text-align: center;">
                 <ul class="pagination">
                 <?php foreach ($links as $link) {
                   echo "<li>". $link."</li>";
