@@ -31,6 +31,7 @@
               </div>
               <?php echo form_error('judul');?>
             </div>
+        </div>
             <div class="form-group">
               <label for="studio" class="col-sm-2 control-label">Isi berita</label>
               <div class="col-sm-10">
