@@ -24,7 +24,7 @@
             <?php //echo form_error('cover');?>
           </div>
         </div>  
-         <div class="form-group">
+         	<div class="form-group">
               <label for="studio" class="col-sm-2 control-label">Judul</label>
               <div class="col-sm-6">
                 <input type="text" name="judul" id="judul" class="form-control">
