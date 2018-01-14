@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['recaptcha_site_key'] = '6LdXqzYUAAAAACVMGBdwiKw1FhhtYLCJwQdIj9Lu';
 $config['recaptcha_secret_key'] = '6LdXqzYUAAAAACvpACJSVd7ASJBcSBtZ4CcwIGjl';
 
-//$config['recaptcha_site_key'] = '6LfrWjcUAAAAANsBalVOfIpR2LO5N8fjSktUVckg';
-//$config['recaptcha_secret_key'] = '6LfrWjcUAAAAAJ4NmXvFG_BX25vI-MaK4NVaaXOX';
+// $config['recaptcha_site_key'] = '6LfrWjcUAAAAANsBalVOfIpR2LO5N8fjSktUVckg';
+// $config['recaptcha_secret_key'] = '6LfrWjcUAAAAAJ4NmXvFG_BX25vI-MaK4NVaaXOX';
 
 // reCAPTCHA supported 40+ languages listed here:
 // https://developers.google.com/recaptcha/docs/language
