@@ -73,7 +73,13 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $sesdat['nama_pemilik']; ?></span>
+              <span class="hidden-xs"><?php 
+                  if($sesdat['role'] != "7" ){
+                    echo $sesdat['nama'];
+                  }else{
+                    echo $sesdat['nama_pemilik']; 
+                  }
+                 ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -81,7 +87,13 @@
                 <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>"  class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $sesdat['nama_pemilik']; ?>
+                  <?php 
+                  if($sesdat['role'] != "7" ){
+                    echo $sesdat['nama'];
+                  }else{
+                    echo $sesdat['nama_pemilik']; 
+                  }
+                 ?>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -92,7 +104,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Keluar</a>
+                  <a href="<?php echo base_url()?>logout" class="btn btn-default btn-flat">Keluar</a>
                 </div>
               </li>
             </ul>
@@ -114,7 +126,13 @@
           <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $sesdat['nama_pemilik']; ?></p>
+          <p><?php 
+                  if($sesdat['role'] != "7" ){
+                    echo $sesdat['nama'];
+                  }else{
+                    echo $sesdat['nama_pemilik']; 
+                  }
+                 ?></p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
