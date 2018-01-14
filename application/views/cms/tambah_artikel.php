@@ -24,7 +24,13 @@
             </div>
             <?php echo form_error('cover');?>
           </div>
-        </div>  
+        </div>
+            <div class="form-group">
+              <label for="studio" class="col-sm-2 control-label">Judul berita</label>
+              <div class="col-sm-10">
+                <input type="text" name="judul" class="form-control" placeholder=""><?php echo form_error('judul');?>
+              </div>
+            </div>  
             <div class="form-group">
               <label for="studio" class="col-sm-2 control-label">Isi berita</label>
               <div class="col-sm-10">

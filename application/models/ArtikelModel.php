@@ -29,7 +29,7 @@ class ArtikelModel extends CI_Model {
 
   public function get_artikel_id($id = FALSE){
 
-    $query = $this->db->get_where('ig_artikel', array('id' => $id));
+    $query = $this->db->get_where('ig_artikel', array('id_artikel' => $id));
     return $query->row_array();
 
   }
@@ -60,12 +60,12 @@ class ArtikelModel extends CI_Model {
       'slug' => $slug
     );
 
-    $this->db->where('id', $id);
+    $this->db->where('id_artikel', $id);
     return $this->db->update('ig_artikel', $data);
   }
 
   public function delete_artikel($id){
-    return $this->db->delete('ig_artikel', array('id' => $id));
+    return $this->db->delete('ig_artikel', array('id_artikel' => $id));
   }
 
   public function get_artikel_validasi($slug = FALSE){
@@ -269,42 +269,17 @@ class ArtikelModel extends CI_Model {
   }
 
   public function get_artikel_popular($slug = FALSE){
-
     if($slug === FALSE){
-      //SELECT *, COUNT(DISTINCT id_comment) as jumlah  FROM ig_artikel_comment JOIN ig_artikel ON ig_artikel_comment.artikel_id = ig_artikel.id_artikel GROUP BY artikel_id ORDER BY jumlah DESC
-      //SELECT *, COUNT(id_artikel) as jumlah FROM ig_artikel LEFT JOIN ig_artikel_comment ON ig_artikel.id_artikel = ig_artikel_comment.artikel_id GROUP BY id_artikel ORDER BY jumlah DESC
-
-      //$query = $this->db->get('ig_artikel');
-      //return $query->result_array();
-      // $this->db->select('*');
-      // $this->db->from('blogs');
-      // $this->db->join('comments', 'comments.id = blogs.id');
-
       $this->db->select('*, COUNT(id_artikel) as jumlah');
       $this->db->from('ig_artikel');
       $this->db->join('ig_artikel_comment', 'ig_artikel.id_artikel = ig_artikel_comment.artikel_id', 'left');
       $this->db->group_by('id_artikel');
       $this->db->order_by('jumlah', 'DESC');
-  
-      //$query = $this->db->get('ig_artikel_comment');
-      //$query = $this->db->get('ig_artikel');
-      //$this->db->join('ig_artikel', 'ig_artikel_comment');
-      //$query = $this->db->get(array('ig_artikel', 'ig_artikel_comment'));
       $query = $this->db->get('');
       return $query->result_array();
-
-      // $this->db->select('*');
-      // $this->db->distinct('artikel_id');
-      // $this->db->from('ig_artikel_comment');
-      // $this->db->join('judul', 'judul.Business_Id = business_mapping.Business_Id');
-      // $this->db->join('category_master', 'category_master.Category_Id = business_mapping.Category_Id');
-      // $query = $this->db->get();
-      // return $query->result();
     }
-
     $query = $this->db->get_where('ig_artikel', array('slug' => $slug));
     return $query->row_array();
-
   }
   
   public function get_artikel_related($kategori, $id){
