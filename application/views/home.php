@@ -274,7 +274,7 @@
 							<div class="col-md-8 col-sm-8 col-xs-8">
 								<a href="<?php echo site_url('berita/'.$populer_item['slug']); ?>" class="block-title"><?php echo $populer_item['judul']; ?></a>
 								<p class="time"><i class="fa fa-clock-o"></i> <?php echo hitung_mundur(strtotime($populer_item['artikel_time'])); ?></p>
-								<?php echo $populer_item['isi']; ?>
+								<?php echo excerpt($populer_item['isi']); ?> 
 							</div>
 						</div>
 						<?php endforeach; ?>

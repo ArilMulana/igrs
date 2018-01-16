@@ -25,6 +25,12 @@ class Home extends CI_Controller {
     $this->load->library(array('form_validation','session','Whoami'));
     $this->load->model(array('LoginModel', 'ArtikelModel'));
 	$this->_init();
+
+	function excerpt($string){
+    	$string = substr($string, 0, 141);
+    	return $string. "...";
+    }
+
 	}
 
 	private function _init()
