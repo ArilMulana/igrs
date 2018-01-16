@@ -96,7 +96,17 @@
 			<div class="section-header">
 			<h2>Apa itu IGRS?</h2>
 			</div>
-			<iframe width="500" height="300" src="http://www.youtube.com/embed/T4uNrqPjOuM?rel=0&playlist=tvEnYKrCAXc,br98lAhoeYc" frameborder="0" allowfullscreen></iframe>
+			<center>
+			
+			<div class="col-md-2"></div>
+			<div class="col-md-8 col-xs-12">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/T4uNrqPjOuM?rel=0&playlist=tvEnYKrCAXc,br98lAhoeYc" frameborder="0" allowfullscreen=""></iframe>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+			
+			</center>
 		</div>
 	</div>
 	<!-- /apa itu igrs -->
@@ -112,7 +122,7 @@
 		untuk kelompok usia yang paling sesuai. IGRS dapat menjadi panduan bagi konsumen (terutama orang tua)
 		 untuk membantu mereka memutuskan apakah akan membeli game tertentu atau tidak<p>
 		<div class="row text-center">
-		<div class="col-md-15 col-xs-3">
+		<div class="col-md-15 col-xs-12">
 			<div class="thumbnail">
 				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
 				<p><strong>3 Tahun atau lebih</strong></p>
@@ -137,18 +147,18 @@
 				
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-3" >
+		<div class="col-md-15 col-xs-12" >
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
-				<p><strong>3 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate7.png" width="150px">
+				<p><strong>7 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
-				<div class="modal fade" id="rate3" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate7">Selengkapnya</button>
+				<div class="modal fade" id="rate7" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+								<h4 class="modal-title">Kelompok Usia 7 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -160,18 +170,18 @@
 				<!-- /modal -->
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-3">
+		<div class="col-md-15 col-xs-12">
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
-				<p><strong>3 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate13.png" width="150px">
+				<p><strong>13 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
-				<div class="modal fade" id="rate3" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate13">Selengkapnya</button>
+				<div class="modal fade" id="rate13" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+								<h4 class="modal-title">Kelompok Usia 13 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -183,18 +193,18 @@
 				<!-- /modal -->
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-3">
+		<div class="col-md-15 col-xs-12">
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
-				<p><strong>3 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/rate18.png" width="150px">
+				<p><strong>18 Tahun atau lebih</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
-				<div class="modal fade" id="rate3" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate18">Selengkapnya</button>
+				<div class="modal fade" id="rate18" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+								<h4 class="modal-title">Kelompok Usia 18 tahun atau lebih</h4>
 							</div>
 							
 							<div class="modal-body">
@@ -206,18 +216,18 @@
 				<!-- /modal -->
 			</div>
 		</div>
-		<div class="col-md-15 col-xs-3">
+		<div class="col-md-15 col-xs-12">
 			<div class="thumbnail">
-				<img src="<?php echo base_url()?>assets/images/sample/rate3.png" width="150px">
-				<p><strong>3 Tahun atau lebih</strong></p>
+				<img src="<?php echo base_url()?>assets/images/sample/ratesu.png" width="150px">
+				<p><strong>Semua Umur</strong></p>
 				<!-- modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate3">Selengkapnya</button>
-				<div class="modal fade" id="rate3" role="dialog">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ratesu">Selengkapnya</button>
+				<div class="modal fade" id="ratesu" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Kelompok Usia 3 tahun atau lebih</h4>
+								<h4 class="modal-title">Semua Umur</h4>
 							</div>
 							
 							<div class="modal-body">
